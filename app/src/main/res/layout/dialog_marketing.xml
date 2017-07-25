@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_dialog_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#aa444a59"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_marginTop="147dp"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+            <com.cnsunway.wash.view.AdImagesPlayView
+                android:id="@+id/marketing_play_view"
+                android:background="@drawable/white_shape"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </com.cnsunway.wash.view.AdImagesPlayView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_dialog_cancel"
+            android:layout_marginTop="62.5dp"
+            android:layout_marginBottom="50dp"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center"
+                android:layout_width="wrap_content"
+                android:src="@mipmap/icon_dialog_cancel"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
+

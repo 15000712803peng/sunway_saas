@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="common_title">#444a59</color>
+    <color name="white">#ffffff</color>
+    <color name="green">#50CF27</color>
+    <color name="text_black">#6a6f7b</color>
+    <color name="common_bg">#eff3f4</color>
+    <color name="text_gray">#A0B1B7</color>
+    <color name="text_gray2"> #A0B1B7</color>
+    <color name="text_dark_black">#444a59</color>
+    <color name="del_addr_bg">#d0021b</color>
+    <color name="text_dark_gray">#8f939c</color>
+    <color name="order_fetch">#FF9D00</color>
+    <color name="order_wash">#20B1D9</color>
+    <color name="order_wash2">#b3c4ca</color>
+    <color name="order_sendback">#50CF27</color>
+    <color name="order_done">#CFD6D8</color>
+    <color name="weel_line_border">#D0D0D0</color>
+    <color name="title_addr">#6a6f7b</color>
+    <color name="coupon_orange">#F29A0C</color>
+    <color name="coupon_gray">#b5b7bd</color>
+    <color name="line">#d5d5d5</color>
+    <color name="red">#F8451B</color>
+    <color name="orange">#F8451B</color>
+    <color name="yellow">#FF9D00</color>
+    <color name="home_bg">#EFF3F4</color>
+    <color name="line_bg">#F0F4F5</color>
+    <color name="shadow">#22000000</color>
+    <color name="text">#111D2D</color>
+</resources>

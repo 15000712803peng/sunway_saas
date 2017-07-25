@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_dialog_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:orientation="vertical"
+            android:background="@drawable/white_shape"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_marginTop="8dp"
+                    android:src="@mipmap/icon_gift"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="50dp"
+                    android:textSize="16sp"
+                    android:text="分享有礼，返各种优惠券哦~"
+                    android:textColor="@color/common_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/text_share"
+                    android:layout_marginBottom="38dp"
+                    android:paddingLeft="42dp"
+                    android:paddingRight="42dp"
+                    android:paddingTop="13dp"
+                    android:paddingBottom="13dp"
+                    android:text="参与活动"
+                    android:textColor="@color/white"
+                    android:background="@drawable/orange_shape"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+    <ImageView
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/iv_dialog_cancel"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:src="@mipmap/icon_dialog_cancel"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
+

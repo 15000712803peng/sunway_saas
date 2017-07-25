@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:id="@+id/rl_add_address">
+    <LinearLayout
+
+
+        android:orientation="vertical"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/back_title"/>
+
+
+            <LinearLayout
+                android:layout_marginTop="12dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:background="@drawable/white_shape"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_height="wrap_content">
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:text="联系人"
+                            android:textSize="15dp"
+                            android:textColor="#111D2D"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:text="@string/fetch_time"
+                            android:textSize="15dp"
+                            android:textColor="@color/text_gray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_marginLeft="23dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_width="0dp">
+                        <LinearLayout
+
+                          android:gravity="center_vertical"
+                            android:layout_width="match_parent"
+                            android:paddingBottom="20dp"
+                            android:orientation="horizontal"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:hint="姓名"
+                                android:textCursorDrawable="@null"
+                                android:id="@+id/edit_add_addr_name"
+                                android:layout_weight="1"
+                                android:textSize="14dp"
+                                android:background="@android:color/transparent"
+                                android:text=""
+                                android:textColor="@color/text_dark_black"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content" />
+
+
+                            <LinearLayout
+                                android:gravity="center"
+                                android:id="@+id/gender_woman_parent"
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+
+                                <TextView
+                                    android:background="@drawable/bg_sex"
+                                   android:paddingLeft="18dp"
+                                    android:paddingRight="18dp"
+                                    android:paddingTop="3dp"
+                                    android:paddingBottom="3dp"
+                                    android:id="@+id/text_gender_woman"
+                                    android:textSize="14dp"
+                                    android:textColor="@color/sex_text_color"
+                                    android:layout_width="wrap_content"
+                                    android:text="@string/woman"
+                                    android:layout_height="wrap_content" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:gravity="center"
+                                android:id="@+id/gender_man_parent"
+                                android:layout_marginLeft="12dp"
+                                android:orientation="horizontal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:background="@drawable/bg_sex"
+                                    android:paddingLeft="18dp"
+                                    android:paddingRight="18dp"
+                                    android:paddingTop="3dp"
+                                    android:paddingBottom="3dp"
+                                    android:textSize="14dp"
+                                    android:textColor="@color/sex_text_color"
+                                    android:layout_width="wrap_content"
+                                    android:text="@string/man"
+                                    android:id="@+id/text_gender_man"
+                                    android:layout_height="wrap_content" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <include layout="@layout/gray_divider"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+
+                            android:text="电话"
+                            android:textSize="15dp"
+                            android:textColor="#111D2D"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:visibility="invisible"
+                            android:text="@string/fetch_time"
+                            android:textSize="15dp"
+                            android:textColor="@color/text_gray"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_marginLeft="23dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <EditText
+                            android:hint="联系方式"
+                            android:textCursorDrawable="@null"
+                            android:id="@+id/edit_add_addr_mobile"
+                            android:background="@android:color/transparent"
+                            android:textSize="15dp"
+                            android:textColor="@color/text_dark_black"
+                            android:layout_width="match_parent"
+                            android:paddingBottom="20dp"
+                            android:text=""
+                            android:inputType="number"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <include layout="@layout/gray_divider"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="@string/addr_detail"
+                        android:textSize="15dp"
+                        android:textColor="#111D2D"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_marginLeft="23dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingBottom="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content">
+                                <TextView
+                                    android:id="@+id/edit_add_addr_prefix"
+                                    android:background="@android:color/transparent"
+                                    android:textSize="15dp"
+                                    android:textColorHint="@color/text_gray"
+                                    android:layout_width="match_parent"
+                                    android:hint="您当前所在区域"
+                                    android:textColor="@color/text_dark_black"
+                                    android:layout_height="wrap_content" />
+
+
+                            </RelativeLayout>
+
+
+                            <ImageView
+                                android:layout_marginLeft="10dp"
+                                android:src="@mipmap/icon_sel_addr"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <include layout="@layout/gray_divider"/>
+
+                    </LinearLayout>
+
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:visibility="invisible"
+                        android:text="@string/addr_detail"
+                        android:textSize="15dp"
+                        android:textColor="@color/text_gray"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_marginLeft="23dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:textCursorDrawable="@null"
+                                android:id="@+id/edit_add_addr_endfix"
+                                android:background="@android:color/transparent"
+                                android:textSize="15dp"
+                                android:textColorHint="@color/text_gray"
+                                android:hint="@string/fill_detail_addr"
+                                android:textColor="@color/text_dark_black"
+                                android:layout_width="match_parent"
+                                android:paddingBottom="20dp"
+
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+
+
+
+
+                    </LinearLayout>
+
+
+
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <include layout="@layout/gray_divider"
+
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:paddingTop="20dp"
+                    android:paddingLeft="20dp"
+                    android:paddingBottom="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:text="设为默认地址"
+                        android:textSize="15dp"
+                        android:textColor="#111D2D"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+
+                    <LinearLayout
+                        android:layout_marginLeft="23dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:orientation="vertical"
+                        android:gravity="right"
+                        android:layout_height="wrap_content">
+
+
+                        <CheckBox
+                            android:id="@+id/box_default_addr"
+                            android:background="@android:color/transparent"
+                            android:button="@drawable/check_box_bg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginLeft="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <include layout="@layout/gray_divider"
+
+                        />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+
+
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginBottom="18dp"
+                        android:clickable="true"
+                        android:id="@+id/save_addr_parent"
+                        android:padding="15dp"
+                        android:background="@drawable/dark_gray_corner"
+                        android:gravity="center"
+                        android:textColor="#111D2D"
+                        android:layout_alignParentBottom="true"
+                        android:text="@string/save_addr"
+                        android:textSize="15dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:id="@+id/ll_back_wash"
+    android:orientation="vertical">
+    <include layout="@layout/back_title"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:visibility="invisible"
+            android:id="@+id/order_deatail_parent"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+
+
+                <ScrollView
+                    android:scrollbars="none"
+                    android:paddingLeft="32dp"
+                    android:paddingRight="32dp"
+                    android:background="@color/white"
+                    android:id="@+id/sv_order_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fillViewport="true"
+                    >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <include layout="@layout/back_order_detail_status_top"/>
+                        <include layout="@layout/back_wash_order_detail_part_one"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:orientation="vertical"
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:orientation="horizontal"
+
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:text="@string/fee_detail"
+                                        android:textSize="15dp"
+                                        android:textColor="@color/text_gray"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+
+
+                                    <TextView
+                                        android:id="@+id/text_order_total_price"
+                                        android:gravity="center_vertical|right"
+                                        android:text="待计价"
+                                        android:textSize="20dp"
+                                        android:lineSpacingExtra="8dp"
+                                        android:layout_marginLeft="28dp"
+                                        android:textColor="@color/text_dark_black"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="wrap_content" />
+
+
+
+                                </LinearLayout>
+                            </RelativeLayout>
+
+
+
+                            <LinearLayout
+                                android:visibility="gone"
+                                android:orientation="vertical"
+                                android:id="@+id/order_clothes_detail_parent"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+
+                            </LinearLayout>
+
+
+
+
+                            <LinearLayout
+                                android:paddingTop="15dp"
+                                android:paddingBottom="15dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+                                <include layout="@layout/gray_divider"/>
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <include layout="@layout/order_detail_sender_info"/>"
+
+                    </LinearLayout>
+
+                </ScrollView>
+
+
+
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_margin="13dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:visibility="invisible"
+                    android:id="@+id/one_btn_operation_parent"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:id="@+id/text_one_operation"
+                        android:padding="13dp"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="invisible"
+                    android:id="@+id/two_btn_operation_parent"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textSize="15sp"
+                        android:textColor="@color/white"
+                        android:id="@+id/text_left_operation"
+                        android:padding="13dp"
+                        android:gravity="center"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                        android:id="@+id/text_right_operation"
+                        android:padding="13dp"
+                        android:gravity="center"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <include layout="@layout/no_data_view" />
+        <include layout="@layout/network_fail_view" />
+        <include layout="@layout/center_loading_view" />
+
+    </RelativeLayout>
+
+
+
+
+
+</LinearLayout>

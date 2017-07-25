@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dp"
+    android:id="@+id/ll_hasorder"
+    android:paddingRight="10dp"
+    >
+
+    <com.cnsunway.wash.view.XListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:dividerHeight="10dp"
+        android:divider="@android:color/transparent"
+        android:footerDividersEnabled="false"
+        android:headerDividersEnabled="false">
+
+    </com.cnsunway.wash.view.XListView>
+
+
+
+</RelativeLayout>

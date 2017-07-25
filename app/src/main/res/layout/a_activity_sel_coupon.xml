@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/common_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/back_title" />
+        <ListView
+            android:scrollbars="none"
+            android:id="@+id/lv_coupon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:cacheColorHint="@android:color/transparent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="16dp"
+            android:listSelector="@android:color/transparent"></ListView>
+        <include layout="@layout/center_loading_view" />
+
+        <include layout="@layout/network_fail_view" />
+
+        <include layout="@layout/no_coupon" />
+</LinearLayout>

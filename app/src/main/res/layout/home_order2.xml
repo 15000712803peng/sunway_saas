@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--710X375-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    >
+    <LinearLayout
+        android:clipChildren="false"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp"
+        android:paddingLeft="32dp"
+        android:paddingBottom="20dp"
+        android:paddingRight="36dp"
+        android:background="@mipmap/bg_white_shadow">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_gravity="center_vertical"
+                android:id="@+id/image_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/clock1"/>
+
+            <TextView
+                android:layout_marginLeft="8dp"
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="三分钟"
+                android:textSize="25sp"
+                android:textColor="@color/common_title"
+                android:gravity="center"
+                android:layout_alignTop="@+id/tv_time_tips"
+                android:layout_alignLeft="@+id/tv_status"
+                android:layout_alignStart="@+id/tv_status" />
+
+            <TextView
+                android:paddingTop="2dp"
+                android:layout_marginLeft="5dp"
+                android:id="@+id/tv_time_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:text="已用时"
+                android:textSize="13sp"
+                android:textColor="@color/text_gray"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="bottom"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_gravity="bottom"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:paddingBottom="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_gravity="center_vertical"
+                            android:visibility="invisible"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/clock1"/>
+
+                        <ImageView
+                            android:id="@+id/image_dot"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/black_dot"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </RelativeLayout>
+                    <TextView
+                        android:id="@+id/tv_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="取件中"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="13sp"
+                        android:textColor="@color/text_dark_gray"
+                        android:gravity="center"/>
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:gravity="right"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+
+                    <com.cnsunway.wash.view.OrderStatusView
+                        android:id="@+id/order_status"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_gravity="right"
+                        android:layout_alignParentRight="true"/>
+
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+</RelativeLayout>

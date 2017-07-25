@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app ="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/home_bg"
+    android:clipChildren="false"
+    android:layout_height="match_parent">
+
+
+
+    <ScrollView
+        android:clipChildren="false"
+        android:fillViewport="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <RelativeLayout
+            android:clipChildren="false"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:clipChildren="false"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layerType="software"
+                    android:clipChildren="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <com.youth.banner.Banner
+                        android:background="@mipmap/bannder_loading"
+                        android:id="@+id/ad_play_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/banner_height"/>
+                    <LinearLayout
+                        android:id="@+id/ll_city_select"
+                        android:descendantFocusability="blocksDescendants"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:paddingBottom="12dp"
+                        android:layout_marginTop="16dp"
+                        android:paddingLeft="7dp"
+                        android:background="@mipmap/city_select"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <TextView
+                            android:id="@+id/text_city"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text=""
+                            android:gravity="center"/>
+                        <ImageView
+                            android:paddingLeft="4dp"
+                            android:paddingRight="11dp"
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/city_arrow"/>
+                    </LinearLayout>
+                    <com.cnsunway.wash.view.WrapContentHeightViewPager
+                        android:clipChildren="false"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:id="@+id/order_items_pager"
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="@dimen/banner_margin"
+                        android:layout_height="wrap_content"></com.cnsunway.wash.view.WrapContentHeightViewPager>
+                </RelativeLayout>
+
+                <LinearLayout
+
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:textStyle="bold"
+                        android:paddingLeft="8dp"
+                        android:textSize="12sp"
+                        android:textColor="#444a59"
+                        android:text="推荐门店"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <com.cnsunway.wash.view.MyList
+                            android:id="@+id/list_store"
+                            android:cacheColorHint="@android:color/transparent"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"></com.cnsunway.wash.view.MyList>
+                    </LinearLayout>
+
+
+
+
+                </LinearLayout>
+
+
+
+                <include layout="@layout/home_tab"
+                            android:visibility="invisible"
+                     />
+
+
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

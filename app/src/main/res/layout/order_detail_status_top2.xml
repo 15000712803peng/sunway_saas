@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@drawable/white_shape"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:padding="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_centerVertical="true"
+            android:id="@+id/image_arrow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/clock1"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_dark_black"
+            android:textSize="27sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:paddingBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+
+            android:id="@+id/text_status"
+            android:text=""
+            android:textColor="#3D4840"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <com.cnsunway.wash.view.MySeekBar
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/order_progress_bar"
+            android:progress="0"
+            android:max="100"
+            android:thumb="@mipmap/green_thumb"
+            android:minHeight="3dp"
+            android:maxHeight="3dp"
+            android:progressDrawable="@drawable/order_progress_layer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:paddingLeft="18dp"
+            android:paddingRight="18dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_status1"
+                android:gravity="center"
+                android:text="取件"
+                android:drawableTop="@mipmap/vertical_line"
+                android:textSize="14sp"
+                android:textColor="@color/tab_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/text_status2"
+                android:gravity="center"
+                android:text="洗涤"
+                android:drawableTop="@mipmap/vertical_line"
+                android:textSize="14sp"
+                android:textColor="@color/tab_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/text_status3"
+                android:gravity="center"
+                android:text="送返"
+                android:drawableTop="@mipmap/vertical_line"
+                android:textSize="14sp"
+                android:textColor="@color/tab_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content">
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/text_status4"
+                android:gravity="center"
+                android:text="完成"
+                android:drawableTop="@mipmap/vertical_line"
+                android:textSize="14sp"
+                android:textColor="@color/tab_text_color"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

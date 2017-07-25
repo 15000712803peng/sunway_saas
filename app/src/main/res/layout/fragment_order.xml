@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/home_bg"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:gravity="center"
+        android:textSize="16dp"
+        android:textColor="#111D2D"
+        android:padding="15dp"
+        android:text="进行中"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@mipmap/tab_shadow"
+
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+
+            layout="@layout/no_order_view"/>
+
+        <include
+
+            layout="@layout/home_hasorder"/>
+
+        <include
+            layout="@layout/network_fail_view"/>
+
+        <include layout="@layout/center_loading_view"/>
+
+        <include layout="@layout/no_login"/>
+
+    </RelativeLayout>
+    <!--<include layout="@layout/home_tab"
+        android:visibility="invisible"
+        />-->
+
+</LinearLayout>

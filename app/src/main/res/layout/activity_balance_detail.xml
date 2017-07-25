@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ll_balance_detail">
+    <include layout="@layout/back_title"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.cnsunway.wash.view.XListView
+            android:visibility="invisible"
+            android:id="@+id/list_balance"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:dividerHeight="0px"
+            android:divider="@android:color/transparent">
+        </com.cnsunway.wash.view.XListView>
+
+
+        <include layout="@layout/no_data_view" />
+
+        <include layout="@layout/network_fail_view" />
+
+        <include layout="@layout/center_loading_view" />
+    </RelativeLayout>
+
+</LinearLayout>

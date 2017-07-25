@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_dialog_container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="20dp"
+            android:background="@color/common_title"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/image_dialog_cancel"
+                android:src="@mipmap/icon_arrow_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+             <TextView
+
+                 android:textSize="15dp"
+                 android:text="分享到"
+                 android:textColor="@color/white"
+                 android:layout_centerInParent="true"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="20dp"
+            android:id="@+id/share_friend_parent"
+            android:background="@color/white"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                   android:src="@mipmap/icon_wechat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView" />
+
+                <TextView
+                   android:layout_marginLeft="6dp"
+                    android:textSize="15dp"
+                    android:text="微信好友"
+                    android:textColor="@color/text_dark_black"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView2" />
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+        <include layout="@layout/gray_divider"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:padding="20dp"
+            android:id="@+id/share_session_parent"
+            android:background="@color/white"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:src="@mipmap/icon_moment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                   android:layout_marginLeft="6dp"
+                    android:textSize="15dp"
+                    android:text="朋友圈"
+                    android:textColor="@color/text_dark_black"
+                    android:layout_centerInParent="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+</RelativeLayout>

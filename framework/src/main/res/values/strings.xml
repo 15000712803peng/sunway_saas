@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">framework</string>
+    <string name="request_fail">网络服务异常,请求失败</string>
+</resources>

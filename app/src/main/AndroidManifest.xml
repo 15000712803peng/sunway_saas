@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.cnsunway.wash">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!--<uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />-->
+
+    <intent-filter>
+        <data android:scheme="myapp" android:host="splash"/>
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <action android:name="android.intent.action.VIEW" />
+    </intent-filter>
+
+    <application
+        android:name="com.cnsunway.wash.activity.MyApp"
+        android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/app_logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <activity android:name="com.cnsunway.wash.activity.HomeActivity"
+            android:launchMode="singleTop"
+            >
+
+        </activity>
+
+
+        <activity android:name="com.cnsunway.wash.activity.HomeActivity2"
+            android:launchMode="singleTop"
+            />
+        <activity
+            android:name="com.cnsunway.wash.activity.LoginActivity"
+           >
+
+        </activity>
+
+        <activity android:name="com.cnsunway.wash.activity.GuideActivity" />
+        <activity android:name=".activity.FlashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <intent-filter>
+                <data android:scheme="androidapp" android:host="sunway" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <action android:name="android.intent.action.VIEW" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name="com.cnsunway.wash.activity.DoOrderActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+
+        <activity
+            android:name="com.cnsunway.wash.activity.CouponActivity"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity
+            android:name="com.cnsunway.wash.activity.BindCouponActivity"
+            android:windowSoftInputMode="stateHidden" />
+
+        <activity android:name="com.cnsunway.wash.activity.EvaluateActivity"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+            />
+        <activity android:name="com.cnsunway.wash.activity.ServerSwitchActivity" />
+        <activity android:name="com.cnsunway.wash.activity.WebActivity" />
+
+        <activity android:name="com.cnsunway.wash.activity.DoOrderSuccActivity"
+            android:launchMode="singleTop"
+            />
+
+        <activity android:name="com.cnsunway.wash.activity.NapaCardActivity"
+            android:launchMode="singleTop"
+            />
+
+
+        <activity android:name="com.cnsunway.wash.activity.StoreCardDetailActivity"
+        android:launchMode="singleTop"
+        />
+
+        <activity android:name="com.cnsunway.wash.activity.ServiceAreaActivity"
+            android:launchMode="singleTop"
+            />
+
+        <activity android:name="com.cnsunway.wash.activity.PayActivity"
+            android:launchMode="singleTop"
+            />
+
+        <activity android:name="com.cnsunway.wash.activity.SelAddrAMapActivity"
+            android:launchMode="singleTop"
+            />
+
+        <activity android:name="com.cnsunway.wash.activity.SearchAddrActivity"
+            android:launchMode="singleTop"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden"
+            />
+
+        <activity android:name="com.cnsunway.wash.activity.SearchAddrResultActivity"
+                  android:launchMode="singleTop"
+            />
+        <!-- Umeng -->
+        <receiver
+            android:name="com.umeng.message.NotificationProxyBroadcastReceiver"
+            android:exported="false" />
+
+        <!-- <receiver android:name="com.umeng.message.BootBroadcastReceiver" > -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.BOOT_COMPLETED" /> -->
+        <!-- </intent-filter> -->
+        <!-- </receiver> -->
+
+
+
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="57fefe0f67e58e4dcc003338" />
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="052a8bc5db64df87aba0fb76f02887e4" />
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="sunway" />
+        <service android:name="com.umeng.message.UmengDownloadResourceService" />
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="homecache.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="3" />
+        <meta-data
+            android:name="AA_MODELS"
+            android:value="com.cnsunway.wash.model.OrderCache" />
+
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="542be3e86dc1bf95a0398fd43da8319a" />
+
+        <service
+            android:name="com.cnsunway.wash.services.MyPushIntentService"
+            android:exported="true" />
+        <receiver
+            android:name="com.cnsunway.wash.services.AlarmReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="ldj.intent.action.ALARM" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.cnsunway.wash.activity.AddrActivity"
+            android:launchMode="singleTop"></activity>
+        <activity
+            android:name="com.cnsunway.wash.activity.AddressSelectAMapActivity"
+            android:launchMode="singleTop"></activity>
+        <activity
+            android:name="com.cnsunway.wash.activity.CropImageActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden"></activity>
+
+        <activity
+            android:name="com.cnsunway.wash.activity.AddAddrActivity"
+            android:launchMode="singleTop"></activity>
+        <activity
+            android:name="com.cnsunway.wash.activity.AddAddrActivity2"
+            android:launchMode="singleTop"></activity>
+
+        <activity
+            android:name="com.cnsunway.wash.activity.GetPayOrderActivity"
+            android:launchMode="singleTop"></activity>
+
+
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name="com.cnsunway.wash.activity.SelCouponActivity"
+            android:launchMode="singleTop"></activity>
+
+        <activity
+            android:name="com.cnsunway.wash.activity.BalanceActivity"
+            android:launchMode="singleTop">
+        </activity>
+
+
+        <activity
+            android:name="com.cnsunway.wash.activity.BalanceDetailActivity"
+            android:launchMode="singleTop"></activity>
+
+        <activity
+            android:name="com.cnsunway.wash.activity.OrderDetailActivity2"
+            >
+            <intent-filter >
+                <action android:name="com.cnsunway.wash.OrderDetailActivity2"/>
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name="com.cnsunway.wash.activity.OrderDetailActivity"
+            >
+            <intent-filter >
+                <action android:name="com.cnsunway.wash.OrderDetailActivity"/>
+            </intent-filter>
+
+        </activity>
+
+
+        <activity
+            android:name="com.cnsunway.wash.activity.BackWashOrderDetailActivity"
+            android:launchMode="singleTop"></activity>
+
+        <activity
+            android:name="com.cnsunway.wash.activity.HistoryOrdersActivity"
+            android:launchMode="singleTop"></activity>
+
+        <activity
+            android:name="com.cnsunway.wash.activity.HistoryCouponsActivity"
+            android:launchMode="singleTop"></activity>
+
+       <activity
+            android:name="com.cnsunway.wash.wxapi.WXPayEntryActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/CustomDialog"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name="com.cnsunway.wash.wxapi.WXEntryActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:windowSoftInputMode="stateAlwaysHidden"
+            />
+
+        <receiver android:name=".receiver.NotificationBroadcastReceiver">
+            <intent-filter>
+                <action android:name="notification_cancelled"/>
+                <action android:name="notification_clicked"/>
+            </intent-filter>
+        </receiver>
+
+
+
+    </application>
+</manifest>

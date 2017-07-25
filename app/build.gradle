@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+    useLibrary('org.apache.http.legacy')
+    defaultConfig {
+        applicationId 'com.cnsunway.wash'
+        minSdkVersion 11
+        targetSdkVersion 22
+        versionCode 19
+        versionName '2.0.8'
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    } 
+    productFlavors {
+    }
+}
+
+dependencies {
+    //compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile project(':framework')
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile files('libs/alipaysdk.jar')
+    compile files('libs/alipaysecsdk.jar')
+    provided files('libs/alipayutdid.jar')
+    compile files('libs/AMap_3DMap_v2.6.0_20150914.jar')
+    compile files('libs/AMap_Location_v2.0.0_20151117.jar')
+    compile files('libs/AMap_Services_V2.7.0_20151125.jar' )
+    compile files('libs/libammsdk.jar')
+    compile 'com.qiniu:happy-dns:0.2.5'
+    compile 'com.squareup.okhttp:okhttp:2.7.2'
+    compile files('libs/qiniu-android-sdk-7.1.2.jar')
+    compile files('libs/universal-image-loader-1.8.4-with-sources.jar')
+    compile 'com.michaelpardo:activeandroid:3.1.0-SNAPSHOT'
+    compile project(':RoundedImageView')
+    compile project(':CordovaLib')
+    compile 'com.android.support:recyclerview-v7:23.0.0'
+    compile 'com.android.support:cardview-v7:23+'
+    compile project(':banner')
+    compile project(':Pushlib')
+    compile 'org.greenrobot:eventbus:3.0.0'
+
+}

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CropView">
+        <!-- 边框宽度  比例-->
+        <attr name="clip_view_width" format="integer" />
+        <!-- 边框高度  比例-->
+        <attr name="clip_view_height" format="integer" />
+        <!-- 边框颜色 -->
+        <attr name="clip_view_color" format="color" />
+        <!-- 是否是圆形 -->
+        <attr name="clip_view_round" format="boolean" />
+    </declare-styleable>
+</resources>

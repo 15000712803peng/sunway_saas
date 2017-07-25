@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_bg"
+    android:id="@+id/ll_address"
+    android:orientation="vertical">
+
+    <include layout="@layout/back_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                >
+
+                <com.cnsunway.wash.swipelist.SwipeMenuListView
+                    android:id="@+id/list_addr"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:divider="@null"
+                    android:dividerHeight="10dip"
+                    android:listSelector="@android:color/transparent"
+                    android:scrollbars="none"></com.cnsunway.wash.swipelist.SwipeMenuListView>
+
+
+                <RelativeLayout
+                    android:layout_alignParentBottom="true"
+                    android:layout_width="match_parent"
+                    android:background="@mipmap/search_bg"
+                    android:layout_margin="13dp"
+                    android:padding="16dp"
+                    android:visibility="visible"
+                    android:id="@+id/add_addr_parent"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_centerHorizontal="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/icon_add"
+                            />
+                        <TextView
+                            android:layout_gravity="center"
+                            android:paddingLeft="8dp"
+                            android:textColor="#20B1D9"
+                            android:text="@string/add_new_addr"
+                            android:textSize="15dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+
+
+        <include layout="@layout/no_data_view" />
+
+        <include layout="@layout/network_fail_view" />
+
+        <include layout="@layout/center_loading_view" />
+    </RelativeLayout>
+
+</LinearLayout>

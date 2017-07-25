@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/home_bg">
+
+    <ImageView
+        android:id="@+id/iv_coupon_name"
+        android:src="@mipmap/coupon_orange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+
+       android:background="@mipmap/coupon_right"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+
+            android:paddingTop="12dp"
+            android:paddingLeft="20dp"
+            android:paddingRight="5dp"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tv_coupon_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18dp"
+                    android:text="¥"/>
+                <TextView
+
+                    android:paddingLeft="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="36dp"
+                    android:text="9.9"/>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/tv_coupon_description"
+                android:paddingTop="4dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="12dp"
+                android:textColor="#A0B1B7"
+                android:text="订单满50元以内支付9.9元免取送费"/>
+
+        </LinearLayout>
+        <View
+            android:layout_marginTop="23dp"
+            android:layout_marginBottom="14dp"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#A0B1B7"/>
+        <LinearLayout
+            android:paddingLeft="20dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:id="@+id/ll_use"
+                    android:visibility="visible"
+                    android:paddingTop="27dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#111D2D"
+                        android:textSize="14dp"
+                        android:text="立即使用"
+                        android:id="@+id/textView7" />
+
+                    <ImageView
+
+                        android:paddingLeft="5dp"
+                        android:layout_gravity="center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@mipmap/right_black"/>
+                </LinearLayout>
+                <ImageView
+                    android:id="@+id/img_coupon_state"
+                    android:layout_centerInParent="true"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_coupon_validity"
+                    android:layout_below="@id/ll_use"
+                    android:paddingTop="12dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#A0B1B7"
+                    android:textSize="12dp"
+                    android:text="有效期至\n2017.12.31"/>
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="channel_open_qq">应用宝</string>
+    <string name="channel_dev_360">360</string>
+    <string name="channel_dev_mi">小米</string>
+    <string name="channel_app_baidu">百度</string>
+    <string name="channel_leshi">乐视</string>
+    <string name="channel_wandoujia">豌豆荚</string>
+    <string name="channel_oppo">oppo</string>
+    <string name="channel_jinli">jinli</string>
+    <string name="channel_coolpad">coolpad</string>
+    <string name="channel_vivo">vivo</string>
+    <string name="channel_meizu">meizu</string>
+    <string name="channel_sogou">sogou</string>
+    <string name="channel_gdt_1">gdt_1</string>
+    <string name="channel_MP_1">MP_1</string>
+    <string name="channel_huawai">huawei</string>
+    <string name="channel_MP_2">MP_2</string>
+    <string name="channel_wostore">wostore</string>
+    <string name="channel_chinamobile">chinamobile</string>
+    <string name="channel_tianyi">tianyi</string>
+    <string name="channel_bdfeeds_1">bdfeeds_1</string>
+</resources>

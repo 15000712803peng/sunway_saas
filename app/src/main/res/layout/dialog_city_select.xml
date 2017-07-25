@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_3dp_white"
+    android:id="@+id/rl_dialog_container">
+
+    <LinearLayout
+    android:id="@+id/ll_title"
+    android:paddingRight="20dp"
+    android:paddingTop="20dp"
+    android:paddingBottom="20dp"
+    android:paddingLeft="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="当前定位城市:"
+        android:textSize="16dp"
+        android:textColor="#111D2D"/>
+    <TextView
+        android:paddingLeft="5dp"
+        android:id="@+id/tv_current_city"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="16dp"
+        android:textColor="#111D2D"/>
+    <View
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="取消"
+            android:textSize="16dp"
+            android:textColor="#A0B1B7"
+            android:id="@+id/tv_cancel" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_select"
+    android:layout_below="@id/ll_title"
+    android:paddingRight="20dp"
+    android:paddingTop="13dp"
+    android:paddingBottom="13dp"
+    android:paddingLeft="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:background="#EFF3F4">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="选择切换城市"
+        android:textSize="16dp"
+        android:textColor="#A0B1B7"/>
+</LinearLayout>
+
+    <com.cnsunway.wash.view.MyList
+        android:layout_below="@id/ll_select"
+        android:id="@+id/lv_optional_city"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:cacheColorHint="@android:color/transparent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.cnsunway.wash.view.MyList>
+
+</RelativeLayout>

@@ -1,0 +1,4 @@
+include ':app', ':framework', ':SlidingMenuLib', ':RoundedImageView', ':banner', ':library'
+include ":CordovaLib"
+include ':Pushlib'
+include 'library'

@@ -1,0 +1,309 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#a0b1b7"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:paddingLeft="2dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:background="@android:color/transparent"
+            android:onClick="back"
+            android:layout_gravity="left"
+            android:scaleType="fitStart"
+            android:id="@+id/img_title_left"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="16dp"
+            android:src="@mipmap/icon_title_back"
+            />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="6dp"
+            android:text="登录"
+            android:textColor="#404a57"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_weight="1"
+        android:layout_margin="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp">
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/white_shape"
+            android:orientation="vertical"
+            android:paddingLeft="36dp"
+            android:paddingRight="36dp">
+
+            <TextView
+                android:textColor="#111D2D"
+                android:text="赛维欢迎你！"
+                android:textSize="28sp"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+
+                android:gravity="center_vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+                <LinearLayout
+                    android:gravity="center_vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+
+                            android:paddingBottom="16dp"
+                            android:paddingTop="10dp"
+                            android:id="@+id/et_input_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@null"
+                            android:hint="手机号"
+                            android:inputType="phone"
+                            android:maxLength="11"
+
+                            android:textColor="#6a6f7b"
+                            android:textColorHint="#b5b7bd"
+                            android:textCursorDrawable="@null"
+                            android:textSize="14sp" />
+
+                        <RelativeLayout
+                            android:layout_gravity="center_vertical"
+                            android:padding="6dp"
+                            android:id="@+id/rl_security_code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/frame_get_codes"
+                            android:gravity="center">
+
+                            <TextView
+                                android:id="@+id/tv_get_code"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="发送验证码"
+                                android:padding="2dp"
+                                android:textColor="#111D2D"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tv_count"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="60s"
+                                android:textColor="#b5b7bd"
+                                android:textSize="13sp"
+                                android:visibility="invisible" />
+                        </RelativeLayout>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+
+                android:background="#f2f2f2" />
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:layout_marginTop="16dp"
+
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:id="@+id/et_input_codes"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="验证码"
+                        android:inputType="number"
+                        android:maxLength="6"
+                        android:textColor="#6a6f7b"
+                        android:textColorHint="#b5b7bd"
+                        android:textCursorDrawable="@null"
+                        android:textSize="14sp" />
+
+
+                </RelativeLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/et_input_codes"
+                android:background="#f2f2f2" />
+
+            <LinearLayout
+                android:visibility="gone"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="邀请码"
+                    android:textColor="#b5b7bd"
+                    android:textSize="14sp" />
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="34dp"
+                    android:layout_weight="1">
+
+                    <EditText
+                        android:id="@+id/et_input_invite_code"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:hint="（选填）"
+                        android:paddingBottom="15dp"
+                        android:singleLine="true"
+                        android:textColor="#6a6f7b"
+                        android:textColorHint="#b5b7bd"
+                        android:textCursorDrawable="@null"
+                        android:textSize="14sp" />
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/et_input_invite_code"
+                        android:background="#f2f2f2" />
+                </RelativeLayout>
+            </LinearLayout>
+
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:layout_marginTop="16dp"
+                android:text="继续使用代表您已阅读并同意赛维集团"
+                android:textColor="#8f939c" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="11sp"
+                    android:text="相关"
+                    android:textColor="#8f939c" />
+
+                <TextView
+                    android:id="@+id/tv_login_permission"
+                    android:textColor="#73cee7"
+                    android:text="《用户相关条款》"
+                    android:textSize="11sp"
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/login_parent"
+                android:layout_marginTop="32dp"
+                android:background="@mipmap/icon_login_default"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <Button
+                    android:layout_centerInParent="true"
+                    android:id="@+id/btn_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:text="开始"
+                    android:paddingTop="15dp"
+                    android:paddingBottom="25dp"
+                    android:paddingRight="50dp"
+                    android:paddingLeft="50dp"
+                    android:gravity="center"
+                    android:textColor="#ffffff"
+                    android:textSize="17sp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_weight="1"
+               android:orientation="horizontal"
+                android:gravity="bottom|center_horizontal"
+                android:paddingBottom="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+                <ImageView
+                    android:src="@mipmap/sunwaylogo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+
+
+</LinearLayout>
+
+
+
+

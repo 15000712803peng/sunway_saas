@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/common_title"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/home_title"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include
+            android:id="@+id/ll_noorder"
+            layout="@layout/no_order_view"/>
+
+        <include
+            android:id="@+id/ll_hasorder"
+            layout="@layout/home_hasorder"/>
+
+        <include layout="@layout/do_order_view"/>
+    </RelativeLayout>
+
+</LinearLayout>

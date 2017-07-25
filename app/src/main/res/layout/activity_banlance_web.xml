@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/back_title"/>
+        <FrameLayout
+            android:paddingTop="1dp"
+            android:layerType="hardware"
+            android:id="@+id/ll_webview_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </FrameLayout>
+    </LinearLayout>
+
+
+
+    <include layout="@layout/center_loading_view"/>
+    <include layout="@layout/network_fail_view"/>
+    <include layout="@layout/no_data_view"/>
+
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+     >
+
+    <RelativeLayout
+        android:id="@+id/xlistview_footer_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp" >
+
+        
+        <ProgressBar
+            android:id="@+id/xlistview_footer_progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_centerInParent="true"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/xlistview_footer_hint_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="16sp"
+            android:text="" 
+            android:textColor="#808080"
+            />
+        
+
+        
+        
+    </RelativeLayout>
+
+    <TextView
+        android:visibility="gone"
+        android:gravity="center"
+        android:id="@+id/text_order_history"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textColor="#878D94"
+        android:textSize="11sp"
+        android:text="没有更多进行中订单，去查看历史订单 >>"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <include layout="@layout/home_tab"
+         android:visibility="invisible"
+        />
+
+</LinearLayout>

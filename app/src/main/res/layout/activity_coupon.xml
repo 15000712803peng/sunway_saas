@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_bg"
+    android:orientation="vertical">
+
+    <include layout="@layout/back_title" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="12dp">
+
+        <LinearLayout
+            android:id="@+id/ll_exchange"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <EditText
+                android:id="@+id/et_exchange_code"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/coupon_shape"
+                android:gravity="center"
+                android:hint="请输入您的兑换码"
+                android:singleLine="true"
+                android:textColor="@color/text_gray"
+                android:textColorHint="@color/text_gray"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/btn_exchange"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="12dp"
+                android:background="@drawable/exchange_red"
+                android:gravity="center"
+                android:text="兑换"
+                android:textColor="@color/white"
+                android:textSize="13sp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="4dp"
+            android:layout_below="@+id/ll_exchange"
+            android:id="@+id/ll_coupon_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="可用优惠券 "
+                android:textSize="14dp"
+                android:textColor="#111d2d"/>
+            <TextView
+                android:id="@+id/tv_coupon_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="14dp"
+                android:textColor="#111d2d"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" 张"
+                android:textSize="14dp"
+                android:textColor="#111d2d"/>
+
+        </LinearLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ll_coupon_number"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            >
+
+            <com.cnsunway.wash.view.XListView
+                android:id="@+id/lv_coupon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="12dp"
+                android:cacheColorHint="@android:color/transparent"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="12dp"
+                android:listSelector="@android:color/transparent"
+                android:scrollbars="none">
+
+            </com.cnsunway.wash.view.XListView>
+
+            <include layout="@layout/no_coupon3" />
+        </RelativeLayout>
+
+        <include layout="@layout/center_loading_view" />
+
+        <include layout="@layout/network_fail_view" />
+    </RelativeLayout>
+
+
+
+</LinearLayout>

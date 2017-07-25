@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/ll_noorder"
+    android:descendantFocusability="blocksDescendants"
+    android:visibility="invisible"
+    android:clickable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/icon_no_order" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="12sp"
+                android:singleLine="true"
+                android:text="您目前还没有订单，你可以尝试"
+                android:textColor="#B3C4CA" />
+
+            <LinearLayout
+                android:layout_marginTop="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:clickable="true"
+                    android:id="@+id/text_price"
+                    android:textColor="@color/order_wash"
+                    android:textSize="12sp"
+                    android:text="查看价目表"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <View
+                    android:layout_marginLeft="9dp"
+                    android:layout_marginRight="9dp"
+                    android:layout_width="1dp"
+                    android:background="@color/order_wash"
+                    android:layout_height="16dp"/>
+
+                <TextView
+                    android:id="@+id/text_do_order"
+                    android:textColor="@color/order_wash"
+                    android:textSize="12sp"
+                    android:text="一键下单"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/tv_history_order"
+        android:textSize="11dp"
+        android:textColor="#878D94"
+        android:gravity="center"
+        android:paddingBottom="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="没有更多进行中订单，去查看历史订单"/>
+
+</RelativeLayout>
