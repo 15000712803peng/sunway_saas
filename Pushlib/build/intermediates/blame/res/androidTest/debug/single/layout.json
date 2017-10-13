@@ -6,5 +6,9 @@
     {
         "merged": "E:\\saas-user-cu\\Pushlib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\upush_notification.xml",
         "source": "E:\\saas-user-cu\\Pushlib\\build\\intermediates\\bundles\\debug\\res\\layout\\upush_notification.xml"
+    },
+    {
+        "merged": "E:\\saas-user-last\\sunway_saas\\Pushlib\\build\\intermediates\\res\\merged\\androidTest\\debug\\layout\\upush_notification.xml",
+        "source": "E:\\saas-user-last\\sunway_saas\\Pushlib\\build\\intermediates\\bundles\\debug\\res\\layout\\upush_notification.xml"
     }
 ]

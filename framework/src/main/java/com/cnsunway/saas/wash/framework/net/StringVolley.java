@@ -37,8 +37,8 @@ public class StringVolley implements Response.ErrorListener, Response.Listener<S
     private int requestSucc = -1;
     private int requestFail = -1;
     Map<String, String> params = new HashMap<String, String>();
-    private static final String REQUEST_TYPE = "10";
-    private static final String CHANNEL = "22";
+    private static final String REQUEST_TYPE = "1";
+    private static final String CHANNEL = "3";
     LoadingDialogInterface dialog;
     WeakReference<Handler> handler;
     List<Object> orderedParams = new ArrayList<>();
@@ -136,14 +136,14 @@ public class StringVolley implements Response.ErrorListener, Response.Listener<S
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<String, String>();
-                headers.put("x-ldj-ctype", REQUEST_TYPE);
-                headers.put("x-ldj-channel", CHANNEL);
-                headers.put("x-ldj-token", token);
+                headers.put("x-sw-ctype", REQUEST_TYPE);
+                headers.put("x-sw-channel", CHANNEL);
+                headers.put("x-sw-token", token);
 
-                headers.put("x-ldj-city",cityCode);
-                headers.put("x-ldj-adcode",adcode);
-                headers.put("x-ldj-district",district);
-                headers.put("x-ldj-province",province);
+                headers.put("x-sw-city",cityCode);
+                headers.put("x-sw-adcode",adcode);
+                headers.put("x-sw-district",district);
+                headers.put("x-sw-province",province);
 
                 return headers;
             }
@@ -219,16 +219,16 @@ public class StringVolley implements Response.ErrorListener, Response.Listener<S
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<String, String>();
-                headers.put("x-ldj-ctype", REQUEST_TYPE);
-                headers.put("x-ldj-channel", CHANNEL);
+                headers.put("x-sw-ctype", REQUEST_TYPE);
+                headers.put("x-sw-channel", CHANNEL);
                 if (!TextUtils.isEmpty(token)) {
-                    headers.put("x-ldj-token", token);
+                    headers.put("x-sw-token", token);
                 }
 
-                headers.put("x-ldj-city",cityCode);
-                headers.put("x-ldj-adcode",adcode);
-                headers.put("x-ldj-district",district);
-                headers.put("x-ldj-province",province);
+                headers.put("x-sw-city",cityCode);
+                headers.put("x-sw-adcode",adcode);
+                headers.put("x-sw-district",district);
+                headers.put("x-sw-province",province);
 
                 return headers;
             }
@@ -256,16 +256,16 @@ public class StringVolley implements Response.ErrorListener, Response.Listener<S
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<String, String>();
-                headers.put("x-ldj-ctype", REQUEST_TYPE);
-                headers.put("x-ldj-channel", CHANNEL);
+                headers.put("x-sw-ctype", REQUEST_TYPE);
+                headers.put("x-sw-channel", CHANNEL);
                 if (!TextUtils.isEmpty(token)) {
-                    headers.put("x-ldj-token", token);
+                    headers.put("x-sw-token", token);
                 }
 
-                headers.put("x-ldj-city",cityCode);
-                headers.put("x-ldj-adcode",adcode);
-                headers.put("x-ldj-district",district);
-                headers.put("x-ldj-province",province);
+                headers.put("x-sw-city",cityCode);
+                headers.put("x-sw-adcode",adcode);
+                headers.put("x-sw-district",district);
+                headers.put("x-sw-province",province);
 
                 return headers;
             }
@@ -293,12 +293,12 @@ public class StringVolley implements Response.ErrorListener, Response.Listener<S
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<String, String>();
-                headers.put("x-ldj-ctype", REQUEST_TYPE);
-                headers.put("x-ldj-channel", CHANNEL);
-                headers.put("x-ldj-city",cityCode);
-                headers.put("x-ldj-adcode",adcode);
-                headers.put("x-ldj-district",district);
-                headers.put("x-ldj-province",province);
+                headers.put("x-sw-ctype", REQUEST_TYPE);
+                headers.put("x-sw-channel", CHANNEL);
+                headers.put("x-sw-city",cityCode);
+                headers.put("x-sw-adcode",adcode);
+                headers.put("x-sw-district",district);
+                headers.put("x-sw-province",province);
 
                 return headers;
             }
@@ -325,14 +325,14 @@ public class StringVolley implements Response.ErrorListener, Response.Listener<S
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<String, String>();
-                headers.put("x-ldj-ctype", REQUEST_TYPE);
-                headers.put("x-ldj-channel", CHANNEL);
-                headers.put("x-ldj-city",cityCode);
-                headers.put("x-ldj-adcode",adcode);
-                headers.put("x-ldj-district",district);
-                headers.put("x-ldj-province",province);
+                headers.put("x-sw-ctype", REQUEST_TYPE);
+                headers.put("x-sw-channel", CHANNEL);
+                headers.put("x-sw-city",cityCode);
+                headers.put("x-sw-adcode",adcode);
+                headers.put("x-sw-district",district);
+                headers.put("x-sw-province",province);
                 if (!TextUtils.isEmpty(token)) {
-                    headers.put("x-ldj-token", token);
+                    headers.put("x-sw-token", token);
                 }
 
                 return headers;
@@ -364,12 +364,12 @@ public class StringVolley implements Response.ErrorListener, Response.Listener<S
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<String, String>();
-                headers.put("x-ldj-ctype", REQUEST_TYPE);
-                headers.put("x-ldj-channel", CHANNEL);
-                headers.put("x-ldj-city",cityCode);
-                headers.put("x-ldj-adcode",adcode);
-                headers.put("x-ldj-district",district);
-                headers.put("x-ldj-province",province);
+                headers.put("x-sw-ctype", REQUEST_TYPE);
+                headers.put("x-sw-channel", CHANNEL);
+                headers.put("x-sw-city",cityCode);
+                headers.put("x-sw-adcode",adcode);
+                headers.put("x-sw-district",district);
+                headers.put("x-sw-province",province);
                 return headers;
             }
         };
@@ -395,12 +395,12 @@ public class StringVolley implements Response.ErrorListener, Response.Listener<S
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> headers = new HashMap<String, String>();
-                headers.put("x-ldj-ctype", REQUEST_TYPE);
-                headers.put("x-ldj-channel", CHANNEL);
-                headers.put("x-ldj-city",cityCode);
-                headers.put("x-ldj-adcode",adcode);
-                headers.put("x-ldj-district",district);
-                headers.put("x-ldj-province",province);
+                headers.put("x-sw-ctype", REQUEST_TYPE);
+                headers.put("x-sw-channel", CHANNEL);
+                headers.put("x-sw-city",cityCode);
+                headers.put("x-sw-adcode",adcode);
+                headers.put("x-sw-district",district);
+                headers.put("x-sw-province",province);
                 return headers;
             }
 

@@ -15,7 +15,8 @@ public class Const {
         public static final int REQUEST_SUCC = 0;
         public static final int REQUEST_FAIL = 1;
         //        public static final String WX_SERVER = "http://wx.landaojia.com/ldj-app";
-        public static final String WX_SERVER = "http://wx.sunwayxiyi.com/ldj-app";
+//        public static final String WX_SERVER = "http://wx.sunwayxiyi.com/ldj-app";
+        public static final String WX_SERVER = "https://saas-app.sunwayxiyi.com/saas-app";
         public static final String WXTEST_SERVER = "http://wxtest.landaojia.com/ldj-app";
         public static final String WXDEV_SERVER = "http://wxdev.landaojia.com/ldj-app";
         public static final String TEMP_SERVER = "http://10.0.11.143:9090/ldj-app";
@@ -88,7 +89,7 @@ public class Const {
         public static String hxAccount;
         public static void setServer(String baseUrl) {
             SERVER = baseUrl;
-            code = SERVER + "/sms/code";
+            code = SERVER + "/user/login/send_verify_code";
             login = SERVER + "/users/login";
             ordersearch = SERVER + "/orders/search";
             homeinservice = SERVER + "/orders/searchOrdersInService";

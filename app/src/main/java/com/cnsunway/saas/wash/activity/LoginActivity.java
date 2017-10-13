@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.cnst.Const;
 import com.cnsunway.saas.wash.dialog.OperationToast;
+import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.net.StringVolley;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
 import com.cnsunway.saas.wash.framework.utils.PhoneCheck;
@@ -47,7 +48,7 @@ public class LoginActivity extends InitActivity implements View.OnClickListener 
     EditText accountEdit, codesEdit, inviteEdit;
     RelativeLayout loginParent;
     Button btnLogin;
-    StringVolley codeVolley, loginVolley;
+    JsonVolley codeVolley, loginVolley;
     String deviceToken;
     UserInfosPref userInfos;
     private int timeCount = 60;
@@ -153,8 +154,8 @@ public class LoginActivity extends InitActivity implements View.OnClickListener 
     protected void initData() {
         userInfos = UserInfosPref.getInstance(this);
         userInfos.setFirstLogin(false);
-        codeVolley = new StringVolley(this, Const.Message.MSG_GET_CODE_SUCC, Const.Message.MSG_GET_CODE_FAIL);
-        loginVolley = new StringVolley(this, Const.Message.MSG_LOGIN_SUCC, Const.Message.MSG_LOGIN_FAIL);
+        codeVolley = new JsonVolley(this, Const.Message.MSG_GET_CODE_SUCC, Const.Message.MSG_GET_CODE_FAIL);
+        loginVolley = new JsonVolley(this, Const.Message.MSG_LOGIN_SUCC, Const.Message.MSG_LOGIN_FAIL);
     }
 
     @Override
@@ -280,7 +281,7 @@ public class LoginActivity extends InitActivity implements View.OnClickListener 
                 codeVolley.addParams("mobile", phoneNum);
                 setOperationMsg(getString(R.string.get_check_code));
                     LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
-                codeVolley.requestPost(Const.Request.code, getHandler(), this, "",locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+                codeVolley.requestPost(Const.Request.code,this,getHandler(),  "",locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
                 );
             }
 
@@ -333,7 +334,7 @@ public class LoginActivity extends InitActivity implements View.OnClickListener 
         LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
 
         setOperationMsg(getResources().getString(R.string.loading));
-        loginVolley.requestPost(Const.Request.login, getHandler(), this, "",locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+        loginVolley.requestPost(Const.Request.login, this,getHandler(), "",locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 
     }
 
