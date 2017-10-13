@@ -286,12 +286,16 @@
             <RelativeLayout
                 android:layout_alignParentBottom="true"
                 android:id="@+id/bottom_operation"
-                android:background="@color/white"
-                android:layout_margin="13dp"
+
+                android:layout_marginTop="16dp"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:visibility="invisible"
                     android:id="@+id/one_btn_operation_parent"
                     android:orientation="horizontal"
@@ -302,8 +306,9 @@
                         android:textSize="15sp"
                         android:textColor="@color/white"
                         android:id="@+id/text_one_operation"
-                        android:padding="13dp"
-                        android:gravity="center"
+                        android:paddingTop="15.5dp"
+                        android:paddingBottom="15dp"
+                        android:gravity="center_horizontal"
                         android:layout_weight="1"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content" />
@@ -343,6 +348,16 @@
                 </LinearLayout>
 
             </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/image_contact_me"
+                android:layout_marginBottom="75dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:src="@mipmap/icon_contact_me"
+                android:layout_marginRight="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
         </RelativeLayout>
 
 
@@ -355,6 +370,8 @@
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
+
 
 
 

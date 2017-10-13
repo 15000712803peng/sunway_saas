@@ -298,11 +298,12 @@
         <LinearLayout
             android:id="@+id/pay"
             android:layout_alignParentBottom="true"
-            android:orientation="horizontal"
             android:layout_margin="16dp"
+            android:background="@mipmap/red_button_shadow"
             android:gravity="center"
-            android:padding="12dp"
-            android:background="@drawable/red_corner"
+            android:orientation="horizontal"
+            android:paddingBottom="18.5dp"
+            android:paddingTop="7.5dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

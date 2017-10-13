@@ -10,16 +10,16 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.cnsunway.wash.view.AdImagesPlayViewV2
+            <com.cnsunway.saas.wash.view.AdImagesPlayViewV2
                 android:id="@+id/ad_play_view"
                 android:layout_width="match_parent"
                 android:layout_height="168dp"/>
 
-            <com.cnsunway.wash.view.WrapContentHeightViewPager
+            <com.cnsunway.saas.wash.view.WrapContentHeightViewPager
                 android:id="@+id/order_items_pager"
                 android:layout_width="match_parent"
                 android:layout_marginTop="150dp"
-                android:layout_height="wrap_content"></com.cnsunway.wash.view.WrapContentHeightViewPager>
+                android:layout_height="wrap_content"></com.cnsunway.saas.wash.view.WrapContentHeightViewPager>
         </RelativeLayout>
 
 

@@ -9,7 +9,6 @@ import android.view.MotionEvent;
 public class BannerViewPager extends ViewPager {
     private boolean scrollable = true;
 
-
     public BannerViewPager(Context context) {
         super(context);
     }

@@ -10,7 +10,7 @@
         android:id="@+id/title"
         layout="@layout/back_title" />
 
-    <com.cnsunway.wash.view.CropImage.CropImageView
+    <com.cnsunway.saas.wash.view.CropImage.CropImageView
         android:id="@+id/image"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -18,7 +18,7 @@
         android:layout_below="@id/title"
         android:layout_above="@+id/bottom"/>
 
-    <com.cnsunway.wash.view.CropImage.CropView
+    <com.cnsunway.saas.wash.view.CropImage.CropView
         android:id="@+id/image_background"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"

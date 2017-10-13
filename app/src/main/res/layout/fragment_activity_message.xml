@@ -3,7 +3,7 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/home_bg">
-    <com.cnsunway.wash.view.XListView
+    <com.cnsunway.saas.wash.view.XListView
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
         android:id="@+id/lv_activity_message"
@@ -14,6 +14,6 @@
         android:dividerHeight="12dp"
         android:listSelector="@android:color/transparent"
         android:scrollbars="none">
-    </com.cnsunway.wash.view.XListView>
+    </com.cnsunway.saas.wash.view.XListView>
     <include layout="@layout/no_data_view"/>
 </RelativeLayout>

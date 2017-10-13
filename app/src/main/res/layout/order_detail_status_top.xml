@@ -35,26 +35,26 @@
             android:gravity="center"/>
 
         <TextView
-            android:gravity="center_vertical"
+
             android:layout_marginLeft="8dp"
             android:textColor="#A0B1B7"
             android:text="已用时"
             android:textSize="13sp"
-            android:layout_gravity="center_vertical"
+            android:paddingBottom="3dp"
+            android:layout_gravity="bottom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
-        android:paddingBottom="16dp"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:paddingBottom="2dp"
-            android:paddingLeft="38dp"
-            android:paddingRight="38dp"
+            android:paddingLeft="44dp"
+            android:paddingRight="44dp"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -129,7 +129,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <com.cnsunway.wash.view.MySeekBar
+            <com.cnsunway.saas.wash.view.MySeekBar
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
@@ -149,6 +149,7 @@
                 android:paddingRight="38dp"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content">
 
                 <RelativeLayout
@@ -172,6 +173,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
                     <TextView
+                        android:layout_centerInParent="true"
                         android:visibility="invisible"
                         android:gravity="center"
                         android:text="取件"

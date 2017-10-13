@@ -27,4 +27,10 @@
     <color name="line_bg">#F0F4F5</color>
     <color name="shadow">#22000000</color>
     <color name="text">#111D2D</color>
+    <color name="trans">#00000000</color>
+    <color name="black">#000000</color>
+    <color name="alertdialog_line">#c6c6c6</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="actionsheet_red">#FD4A2E</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
 </resources>

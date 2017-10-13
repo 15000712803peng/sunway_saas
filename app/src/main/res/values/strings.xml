@@ -160,7 +160,6 @@
     <string name="title_banlance">当前账户余额</string>
     <string name="recharge_fail">充值失败</string>
     <string name="balance_detail">余额明细</string>
-
     <string name="version_update"><u>版本更新</u></string>
     <string name="balance_tips">余额：</string>
     <string name="no_banlance_detail">没有充值明细</string>

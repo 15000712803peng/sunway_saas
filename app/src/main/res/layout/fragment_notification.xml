@@ -68,7 +68,41 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
+        <View
+            android:layout_gravity="center"
+            android:layout_width="1dp"
+            android:layout_height="20dp"
+            android:background="#EFF3F4"/>
+        <LinearLayout
+            android:gravity="center_horizontal"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/text_custom_tab"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:textSize="14sp"
+                android:text="客服消息"
+                android:textColor="#A0B1B7"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:visibility="invisible"
+                android:id="@+id/iv_has_chat"
+                android:layout_marginTop="11dp"
+                android:src="@mipmap/red_bdge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
     </LinearLayout>
+    <ImageView
+        android:scaleType="fitXY"
+        android:src="@mipmap/tab_shdow"
+        android:layout_width="match_parent"
+        android:layout_height="2dp" />
 
     <FrameLayout
         android:background="@color/common_bg"

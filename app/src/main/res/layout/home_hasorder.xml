@@ -7,7 +7,7 @@
     android:paddingRight="10dp"
     >
 
-    <com.cnsunway.wash.view.XListView
+    <com.cnsunway.saas.wash.view.XListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,7 +17,7 @@
         android:footerDividersEnabled="false"
         android:headerDividersEnabled="false">
 
-    </com.cnsunway.wash.view.XListView>
+    </com.cnsunway.saas.wash.view.XListView>
 
 
 

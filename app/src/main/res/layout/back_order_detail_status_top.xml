@@ -20,13 +20,13 @@
         android:textSize="14sp"
         android:gravity="center"
         android:layout_below="@id/tv_time"/>
-    <com.cnsunway.wash.view.OrderStatusView
+    <com.cnsunway.saas.wash.view.OrderStatusView
         android:id="@+id/order_status"
         android:layout_width="115dp"
         android:layout_height="115dp"
         android:layout_marginTop="44dp"
         android:layout_alignParentRight="true">
-    </com.cnsunway.wash.view.OrderStatusView>
+    </com.cnsunway.saas.wash.view.OrderStatusView>
     <TextView
         android:id="@+id/tv_substatus"
         android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
         android:layout_marginBottom="16dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"/>
-    <com.cnsunway.wash.view.OrderStatusView
+    <com.cnsunway.saas.wash.view.OrderStatusView
         android:id="@+id/order_substatus"
         android:layout_width="30dp"
         android:layout_height="30dp"

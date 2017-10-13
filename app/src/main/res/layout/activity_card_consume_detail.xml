@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.cnsunway.wash.view.XListView
+            <com.cnsunway.saas.wash.view.XListView
                 android:visibility="invisible"
                 android:id="@+id/list_balance"
                 android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                 android:background="@android:color/transparent"
                 android:dividerHeight="0px"
                 android:divider="@android:color/transparent">
-            </com.cnsunway.wash.view.XListView>
+            </com.cnsunway.saas.wash.view.XListView>
 
 
             <include layout="@layout/no_data_view" />

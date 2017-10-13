@@ -192,7 +192,6 @@
                 android:layout_alignParentBottom="true"
                 android:id="@+id/bottom_operation"
                 android:background="@color/white"
-                android:layout_margin="13dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 

@@ -116,7 +116,7 @@
                     android:layout_weight="1"
                     android:text="优惠券" />
 
-                <com.cnsunway.wash.view.BadgeView
+                <com.cnsunway.saas.wash.view.BadgeView
                     android:id="@+id/tv_user_coupon_num"
                     style="@style/left_text_style"
                     android:layout_width="22dp"

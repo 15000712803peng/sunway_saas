@@ -2,22 +2,32 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    buildToolsVersion '25.0.0'
     useLibrary('org.apache.http.legacy')
     defaultConfig {
-        applicationId 'com.cnsunway.wash'
+        applicationId 'com.cnsunway.saas.wash'
         minSdkVersion 11
         targetSdkVersion 22
-        versionCode 19
-        versionName '2.0.8'
+        versionCode 24
+        versionName '2.1.3'
+        multiDexEnabled true
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
-    } 
+    }
     productFlavors {
+
+
     }
 }
 
@@ -28,9 +38,6 @@ dependencies {
     compile files('libs/alipaysdk.jar')
     compile files('libs/alipaysecsdk.jar')
     provided files('libs/alipayutdid.jar')
-    compile files('libs/AMap_3DMap_v2.6.0_20150914.jar')
-    compile files('libs/AMap_Location_v2.0.0_20151117.jar')
-    compile files('libs/AMap_Services_V2.7.0_20151125.jar' )
     compile files('libs/libammsdk.jar')
     compile 'com.qiniu:happy-dns:0.2.5'
     compile 'com.squareup.okhttp:okhttp:2.7.2'
@@ -44,5 +51,9 @@ dependencies {
     compile project(':banner')
     compile project(':Pushlib')
     compile 'org.greenrobot:eventbus:3.0.0'
-
+    compile files('libs/AMap_Location_V3.4.0_20170427.jar')
+    compile files('libs/AMap_Search_V5.1.0_20170517.jar')
+    compile files('libs/Android_Map3D_SDK_V5.2.0_20170602.jar')
+    compile project(':kefu-easeui')
+    compile 'com.android.support:multidex:1.0.1'
 }

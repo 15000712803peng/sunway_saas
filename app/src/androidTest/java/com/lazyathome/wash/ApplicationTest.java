@@ -1,4 +1,4 @@
-package com.cnsunway.wash;
+package com.cnsunway.saas.wash;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

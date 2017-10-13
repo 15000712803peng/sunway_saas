@@ -62,7 +62,7 @@
                         android:layout_height="wrap_content">
 
 
-                        <com.cnsunway.wash.view.MyList
+                        <com.cnsunway.saas.wash.view.MyList
                             android:dividerHeight="16sp"
                             android:divider="@android:color/transparent"
                             android:id="@+id/card_list"
@@ -70,7 +70,7 @@
                             android:listSelector="@android:color/transparent"
                             android:cacheColorHint="@android:color/transparent"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"></com.cnsunway.wash.view.MyList>
+                            android:layout_height="match_parent"></com.cnsunway.saas.wash.view.MyList>
                         <View
                             android:layout_width="match_parent"
                             android:layout_height="22dp"/>

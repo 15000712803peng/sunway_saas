@@ -80,13 +80,13 @@
                     android:textColor="#444A59"
                     android:id="@+id/textView3" />
 
-                <com.cnsunway.wash.view.StarBarView
+                <com.cnsunway.saas.wash.view.StarBarView
                     android:id="@+id/view_star_sender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="10dp"
                     android:paddingLeft="10.5dp"
-                    android:layout_marginTop="10dp"></com.cnsunway.wash.view.StarBarView>
+                    android:layout_marginTop="10dp"></com.cnsunway.saas.wash.view.StarBarView>
             </LinearLayout>
             <!--<View
                 android:layout_width="match_parent"
@@ -142,13 +142,13 @@
                 android:text="服务质量评分"
                 android:textSize="15dp"
                 android:textColor="#444A59"/>
-            <com.cnsunway.wash.view.StarBarView
+            <com.cnsunway.saas.wash.view.StarBarView
                 android:paddingLeft="10.5dp"
                 android:id="@+id/view_star_store"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
-                android:layout_marginTop="10dp"></com.cnsunway.wash.view.StarBarView>
+                android:layout_marginTop="10dp"></com.cnsunway.saas.wash.view.StarBarView>
         </LinearLayout>
             <!--<View
                 android:layout_width="match_parent"

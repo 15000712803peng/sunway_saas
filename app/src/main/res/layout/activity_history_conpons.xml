@@ -11,7 +11,7 @@
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp">
 
-    <com.cnsunway.wash.view.XListView
+    <com.cnsunway.saas.wash.view.XListView
         android:id="@+id/lv_coupon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,7 +21,7 @@
         android:listSelector="@android:color/transparent"
         android:scrollbars="none">
 
-    </com.cnsunway.wash.view.XListView>
+    </com.cnsunway.saas.wash.view.XListView>
 
     <include layout="@layout/no_history_coupon"/>
 </RelativeLayout>

@@ -116,7 +116,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="4dp"
         android:id="@+id/tv_bind"
-        android:paddingTop="17dp"
+        android:paddingTop="6.5dp"
         android:paddingBottom="17dp"
         android:gravity="center"
         android:textSize="15dp"
@@ -127,5 +127,6 @@
         android:background="@mipmap/button_bind_coupon"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
 
 </RelativeLayout>

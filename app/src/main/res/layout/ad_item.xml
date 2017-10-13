@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <com.cnsunway.wash.view.MyImage
+    <com.cnsunway.saas.wash.view.MyImage
         android:src="@mipmap/bannder_loading"
         android:id="@+id/image_item"
         android:scaleType="fitXY"

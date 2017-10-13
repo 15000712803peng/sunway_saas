@@ -17,41 +17,42 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="10dp"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
 
                 <LinearLayout
 
-                    android:background="#FFFFFF"
-                    android:paddingLeft="25dp"
-                    android:paddingRight="42dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:paddingLeft="40dp"
+                    android:paddingRight="15dp">
 
                     <LinearLayout
-                        android:layout_marginTop="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
+
                         <ImageView
-                            android:paddingRight="12.3dp"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
+                            android:paddingRight="12.3dp"
                             android:src="@mipmap/success"/>
+
                         <TextView
+                            android:id="@+id/textView4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="订单已完成"
-                            android:textSize="18dp"
                             android:textColor="#444A59"
-                            android:id="@+id/textView4" />
+                            android:textSize="18dp"/>
+
                         <View
                             android:layout_width="0dp"
                             android:layout_height="0dp"
@@ -61,47 +62,49 @@
                     </LinearLayout>
 
                     <TextView
-                        android:layout_marginBottom="15dp"
-                        android:paddingTop="8dp"
+                        android:id="@+id/textView5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="15dp"
+                        android:paddingTop="8dp"
                         android:text="感谢使用我们的服务，请为我们的服务评价打分。谢谢！"
-                        android:textSize="15dp"
-                        android:textColor="#444A59"
-                        android:id="@+id/textView5" />
+                        android:textColor="#111D2D"
+                        android:textSize="14dp"/>
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_marginTop="12.5dp"
-                    android:layout_marginRight="8.5dp"
-                    android:layout_marginLeft="8.5dp"
-
-                    android:background="#FFFFFF"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="8.5dp"
+
+                    android:layout_marginRight="8.5dp"
+                    android:layout_marginTop="12.5dp"
+                    android:background="#FFFFFF"
 
                     android:gravity="center_horizontal"
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:paddingBottom="12dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingBottom="12dp">
 
                         <LinearLayout
-                            android:layout_marginTop="24dp"
-                            android:paddingLeft="25dp"
-                            android:gravity="center_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:layout_marginTop="24dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="25dp">
+
                             <ImageView
+                                android:id="@+id/imageView4"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@mipmap/icon_sender"
-                                android:id="@+id/imageView4" />
+                                android:src="@mipmap/icon_sender"/>
+
                             <TextView
                                 android:id="@+id/tv_evaluate_sender"
                                 android:layout_width="wrap_content"
@@ -109,85 +112,91 @@
                                 android:paddingLeft="10dp"
                                 android:text="收发员："
                                 android:textColor="#444a59"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"/>
                         </LinearLayout>
+
                         <LinearLayout
-                            android:gravity="center_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal">
 
                             <TextView
-                                android:paddingLeft="67dp"
+                                android:id="@+id/textView3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:paddingLeft="67dp"
                                 android:text="服务质量评分"
-                                android:textSize="15dp"
                                 android:textColor="#444A59"
-                                android:id="@+id/textView3" />
+                                android:textSize="15dp"/>
 
-                            <com.cnsunway.wash.view.StarBarView
+                            <com.cnsunway.saas.wash.view.StarBarView
                                 android:id="@+id/view_star_sender"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="10dp"
-                                android:paddingLeft="10.5dp"
-                                android:layout_marginTop="10dp"></com.cnsunway.wash.view.StarBarView>
+                                android:layout_marginTop="10dp"
+                                android:paddingLeft="10.5dp"></com.cnsunway.saas.wash.view.StarBarView>
                         </LinearLayout>
                     </LinearLayout>
+
                     <View
-                        android:layout_marginLeft="45dp"
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
+                        android:layout_marginLeft="45dp"
                         android:background="#EFF3F4"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="23dp"
-                        android:paddingBottom="12dp"
                         android:gravity="center"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingBottom="12dp">
 
                         <LinearLayout
-                            android:paddingLeft="24dp"
-                            android:gravity="center_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingLeft="24dp">
+
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@mipmap/icon_store" />
+                                android:src="@mipmap/icon_store"/>
 
                             <TextView
                                 android:id="@+id/text_site"
-                                android:paddingLeft="10dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:paddingLeft="10dp"
                                 android:text="门店:"
                                 android:textColor="#444a59"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"/>
                         </LinearLayout>
+
                         <LinearLayout
-                            android:gravity="center_vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal">
+
                             <TextView
-                                android:paddingLeft="67dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:paddingLeft="67dp"
                                 android:text="服务质量评分"
-                                android:textSize="15dp"
-                                android:textColor="#444A59"/>
-                            <com.cnsunway.wash.view.StarBarView
-                                android:paddingLeft="10.5dp"
+                                android:textColor="#444A59"
+                                android:textSize="15dp"/>
+
+                            <com.cnsunway.saas.wash.view.StarBarView
                                 android:id="@+id/view_star_store"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="10dp"
-                                android:layout_marginTop="10dp"></com.cnsunway.wash.view.StarBarView>
+                                android:layout_marginTop="10dp"
+                                android:paddingLeft="10.5dp"></com.cnsunway.saas.wash.view.StarBarView>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -195,53 +204,52 @@
                 </LinearLayout>
 
                 <EditText
-                    android:maxHeight="81.5dp"
                     android:id="@+id/et_evaluate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12.5dp"
-                    android:layout_marginRight="8.5dp"
                     android:layout_marginLeft="8.5dp"
+                    android:layout_marginRight="8.5dp"
+                    android:layout_marginTop="12.5dp"
                     android:background="#ffff"
                     android:gravity="top"
+                    android:hint="来说说此次服务的优点和美中不足吧"
+                    android:maxHeight="81.5dp"
                     android:maxLength="150"
+                    android:paddingBottom="10dp"
                     android:paddingLeft="5dp"
                     android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:hint="来说说此次服务的优点和美中不足吧"
                     android:textColor="#444A59"
                     android:textColorHint="@color/text_gray"
-                    android:textSize="16sp" />
+                    android:textCursorDrawable="@drawable/eidt_cursor"
+                    android:textSize="16sp"/>
 
                 <TextView
-                    android:clickable="true"
                     android:id="@+id/rl_evaluate_complete"
-                    android:layout_marginRight="8.5dp"
-                    android:layout_marginLeft="8.5dp"
-                    android:layout_marginTop="12.5dp"
-                    android:paddingTop="16.35dp"
-                    android:paddingBottom="16.35dp"
-                    android:background="@drawable/bg_add_addr3"
-                    android:textColor="#ffff"
-
-
-                    android:text="提交评价"
-                    android:textSize="16dp"
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="8.5dp"
+                    android:layout_marginRight="8.5dp"
+                    android:layout_marginTop="12.5dp"
+                    android:background="@mipmap/orange_button_shadow"
+                    android:clickable="true"
+                    android:gravity="center"
 
 
+                    android:paddingBottom="17.35dp"
+                    android:paddingTop="5.35dp"
+                    android:text="提交评价"
+                    android:textColor="#ffff"
+                    android:textSize="16dp"/>
 
 
             </LinearLayout>
+
             <View
-                android:layout_alignParentBottom="true"
                 android:layout_width="match_parent"
-                android:layout_height="2dp"/>
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"/>
         </RelativeLayout>
-
-
 
 
     </ScrollView>

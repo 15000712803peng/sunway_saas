@@ -41,13 +41,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <com.cnsunway.wash.view.wheelview.WheelView
+        <com.cnsunway.saas.wash.view.wheelview.WheelView
             android:id="@+id/date_wheel"
             android:layout_width="0dip"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
 
-        <com.cnsunway.wash.view.wheelview.WheelView
+        <com.cnsunway.saas.wash.view.wheelview.WheelView
             android:id="@+id/time_wheel"
             android:layout_width="0dip"
             android:layout_height="wrap_content"

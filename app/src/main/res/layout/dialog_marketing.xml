@@ -19,7 +19,7 @@
             android:layout_weight="1"
             android:layout_height="0dp">
 
-            <com.cnsunway.wash.view.AdImagesPlayView
+            <com.cnsunway.saas.wash.view.AdImagesPlayView
                 android:id="@+id/marketing_play_view"
                 android:background="@drawable/white_shape"
                 android:layout_marginLeft="50dp"
@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-            </com.cnsunway.wash.view.AdImagesPlayView>
+            </com.cnsunway.saas.wash.view.AdImagesPlayView>
         </LinearLayout>
 
         <LinearLayout

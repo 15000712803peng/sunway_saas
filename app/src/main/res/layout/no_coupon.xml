@@ -13,9 +13,10 @@
         android:src="@mipmap/coupon_bank" />
 
     <TextView
+        android:id="@+id/text_no_coupon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="9dp"
         android:text="一张优惠券都没有，快\n去参与活动吧～"

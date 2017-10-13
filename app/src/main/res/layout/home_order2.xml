@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content">
 
 
-                    <com.cnsunway.wash.view.OrderStatusView
+                    <com.cnsunway.saas.wash.view.OrderStatusView
                         android:id="@+id/order_status"
                         android:layout_width="70dp"
                         android:layout_height="70dp"

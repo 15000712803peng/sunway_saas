@@ -23,7 +23,7 @@
                 android:orientation="vertical"
                 >
 
-                <com.cnsunway.wash.swipelist.SwipeMenuListView
+                <com.cnsunway.saas.wash.swipelist.SwipeMenuListView
                     android:id="@+id/list_addr"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
@@ -34,13 +34,13 @@
                     android:divider="@null"
                     android:dividerHeight="10dip"
                     android:listSelector="@android:color/transparent"
-                    android:scrollbars="none"></com.cnsunway.wash.swipelist.SwipeMenuListView>
+                    android:scrollbars="none"></com.cnsunway.saas.wash.swipelist.SwipeMenuListView>
 
 
                 <RelativeLayout
                     android:layout_alignParentBottom="true"
                     android:layout_width="match_parent"
-                    android:background="@mipmap/search_bg"
+                    android:background="@drawable/bg_3dp_white"
                     android:layout_margin="13dp"
                     android:padding="16dp"
                     android:visibility="visible"

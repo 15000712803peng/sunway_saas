@@ -63,14 +63,14 @@
                             android:layout_height="wrap_content"
                             android:src="@mipmap/city_arrow"/>
                     </LinearLayout>
-                    <com.cnsunway.wash.view.WrapContentHeightViewPager
+                    <com.cnsunway.saas.wash.view.WrapContentHeightViewPager
                         android:clipChildren="false"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:id="@+id/order_items_pager"
                         android:layout_width="match_parent"
                         android:layout_marginTop="@dimen/banner_margin"
-                        android:layout_height="wrap_content"></com.cnsunway.wash.view.WrapContentHeightViewPager>
+                        android:layout_height="wrap_content"></com.cnsunway.saas.wash.view.WrapContentHeightViewPager>
                 </RelativeLayout>
 
                 <LinearLayout
@@ -94,11 +94,11 @@
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
-                        <com.cnsunway.wash.view.MyList
+                        <com.cnsunway.saas.wash.view.MyList
                             android:id="@+id/list_store"
                             android:cacheColorHint="@android:color/transparent"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"></com.cnsunway.wash.view.MyList>
+                            android:layout_height="wrap_content"></com.cnsunway.saas.wash.view.MyList>
                     </LinearLayout>
 
 
@@ -109,8 +109,8 @@
 
 
                 <include layout="@layout/home_tab"
-                            android:visibility="invisible"
-                     />
+                    android:visibility="invisible"
+                    />
 
 
             </LinearLayout>
