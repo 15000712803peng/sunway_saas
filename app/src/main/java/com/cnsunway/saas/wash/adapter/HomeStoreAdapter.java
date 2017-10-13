@@ -5,9 +5,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.model.Store;
+import com.cnsunway.saas.wash.util.GlideCircleTransform;
 
 import java.util.List;
 
@@ -25,12 +30,12 @@ public class HomeStoreAdapter extends BaseAdapter{
 
     @Override
     public int getCount() {
-        return 6;
+        return stores.size();
     }
 
     @Override
     public Object getItem(int i) {
-        return i;
+        return stores.get(i);
     }
 
     @Override
@@ -40,16 +45,28 @@ public class HomeStoreAdapter extends BaseAdapter{
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+        Store store = (Store) getItem(i);
+        Holder holder = null;
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.home_store2,null); //推荐门店
-//            view = LayoutInflater.from(context).inflate(R.layout.activity_select_stores_item,null); //选择门店
-//            view = LayoutInflater.from(context).inflate(R.layout.activity_user_review_item,null);   //用户评价
-
-//           ViewGroup.LayoutParams lp =  view.getLayoutParams();
-//            lp.height = (int) context.getResources().getDimension(R.dimen.banner_height);
-//            view.setLayoutParams(lp);
-
+            holder = new Holder();
+            holder.distance = (TextView) view.findViewById(R.id.txt_distance);
+            holder.storeName = (TextView) view.findViewById(R.id.txt_store_name);
+            holder.storeImage = (ImageView) view.findViewById(R.id.image_store);
+            view.setTag(holder);
+        }else {
+            holder = (Holder) view.getTag();
         }
+
+        holder.storeName.setText(store.getStoreName());
+        Glide.with(context).load(store.getHeadPortraitUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.mipmap.store).into(holder.storeImage);
+
         return view;
+    }
+
+    class Holder{
+       public ImageView storeImage;
+        public TextView storeName;
+        public  TextView distance;
     }
 }
