@@ -4,7 +4,8 @@ package com.cnsunway.saas.wash.model;
  * Created by LL on 2015/12/4.
  */
 public class User {
-    String headPortraitUrl;
+
+    String headPortraitUrl="";
     String token;
     String wxNickName;
     String mobile;
