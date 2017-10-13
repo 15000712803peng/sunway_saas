@@ -54,11 +54,16 @@ import com.cnsunway.saas.wash.helper.ApkUpgradeHelper;
 import com.cnsunway.saas.wash.model.LocationForService;
 import com.cnsunway.saas.wash.model.Marketing;
 import com.cnsunway.saas.wash.model.Order;
+import com.cnsunway.saas.wash.model.RowsOrder;
+import com.cnsunway.saas.wash.model.RowsStore;
 import com.cnsunway.saas.wash.model.ServiceCity;
+import com.cnsunway.saas.wash.model.Store;
 import com.cnsunway.saas.wash.model.User;
 import com.cnsunway.saas.wash.resp.AllCityResp;
 import com.cnsunway.saas.wash.resp.GetImagesResp;
 import com.cnsunway.saas.wash.resp.OrderDetailResp;
+import com.cnsunway.saas.wash.resp.RowsOrderResp;
+import com.cnsunway.saas.wash.resp.RowsStoreResp;
 import com.cnsunway.saas.wash.sharef.UserInfosPref;
 import com.cnsunway.saas.wash.util.FontUtil;
 import com.cnsunway.saas.wash.util.LocationManager;
@@ -98,6 +103,8 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
     JsonVolley catogoriesVolley;
     LinearLayout citySelect;
 
+    JsonVolley recommendStoresVolley;
+
 
     ApkUpgradeHelper updateHelper;
 
@@ -110,6 +117,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
     ServiceCity locateCity;
     LocationForService locationForService;
     ListView storeList;
+    TextView loadStoreText;
     BroadcastReceiver locationReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -155,25 +163,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                 if (msg.arg1 == Const.Request.REQUEST_SUCC) {
                     OrderDetailResp detailResp = (OrderDetailResp) JsonParser.jsonToObject(msg.obj + "", OrderDetailResp.class);
                     final Order order = detailResp.getData();
-                    String action = order.getAction();
-//                    if(action.equals("share") || action.equals("direct")){
-////                        ShareGiftDialog2 shareGiftDialog  =  new ShareGiftDialog2(getActivity(),order).builder();
-////                        shareGiftDialog.setShareBtnClickedLinstener(new ShareGiftDialog2.OnShareBtnClickedLinstener() {
-////                            @Override
-////                            public void shareBtnClicked() {
-////                                WayOfShareDialog wayOfShareDialog = new WayOfShareDialog(getActivity()).builder();
-////                                new ShareUtil(wayOfShareDialog).share(getActivity(),order);
-////                            }
-////                        });
-////
-////                        shareGiftDialog.show();
-//
-//                        Intent intent = new Intent(getActivity(),WebActivity.class);
-//                        intent.putExtra("url",Const.Request.paySuccess + detailResp.getData().getTotalPrice());
-//                        intent.putExtra("title","支付成功");
-//                        intent.putExtra("order",JsonParser.objectToJsonStr(order));
-//                        startActivity(intent);
-//                    }
+
                 }
                 break;
 
@@ -234,6 +224,35 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
             case Const.Message.MSG_GET_CITIES_FAIL:
                 break;
 
+            case Const.Message.MSG_GET_RECC_STORES_SUCC:
+                loadStoreText.setVisibility(View.GONE);
+
+                if (msg.arg1 == Const.Request.REQUEST_SUCC) {
+                    RowsStoreResp initResp = (RowsStoreResp) JsonParser.jsonToObject(msg.obj + "", RowsStoreResp.class);
+
+//                    RowsStore rowsStore = initResp.getData();
+                    if(initResp != null) {
+                        List<Store> stores = initResp.getData();
+                        storeList.setVisibility(View.VISIBLE);
+                        storeList.setAdapter(new HomeStoreAdapter(getActivity(),stores));
+
+                    }else{
+
+                    }
+
+                } else if (msg.arg1 == Const.Request.REQUEST_FAIL) {
+
+                    Bundle bundle = msg.getData();
+                    if(bundle != null && bundle.getString("data") != null){
+                        BaseResp resp = (BaseResp) JsonParser.jsonToObject(bundle.getString("data"), BaseResp.class);
+
+                    }
+                }
+                break;
+            case Const.Message.MSG_GET_RECC_STORES_FAIL:
+
+                break;
+
         }
 
 
@@ -282,7 +301,9 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
         banner.setFocusableInTouchMode(true);
         banner.requestFocus();
         storeList = (ListView) view.findViewById(R.id.list_store);
-        storeList.setAdapter(new HomeStoreAdapter(getActivity(),null));
+        loadStoreText = (TextView) view.findViewById(R.id.txt_load_store);
+        storeList.setVisibility(View.INVISIBLE);
+//        storeList.setAdapter(new HomeStoreAdapter(getActivity(),null));
 
         cityText.setText(selectedCity.getCityName());
         UserInfosPref.getInstance(getActivity()).setServiceCityCode(selectedCity.getCityCode());
@@ -324,6 +345,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 
         requestAds();
         requestArea();
+        requestRecommendStores();
         User user = UserInfosPref.getInstance(getActivity()).getUser();
         locationForService = UserInfosPref.getInstance(getActivity()).getLocationServer();
         if(user == null){
@@ -472,6 +494,14 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 
     }
 
+    private void requestRecommendStores(){
+        recommendStoresVolley = new JsonVolley(getActivity(),Const.Message.MSG_GET_RECC_STORES_SUCC,Const.Message.MSG_GET_RECC_STORES_FAIL);
+        recommendStoresVolley.addParams("lat","31.088448");
+        recommendStoresVolley.addParams("lng","121.432977");
+        recommendStoresVolley._requestPost(Const.Request.recommendStores,getHandler(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+
+    }
+
     private void requestArea(){
         catogoriesVolley = new JsonVolley(getActivity(), Const.Message.MSG_CATEGORIS_SUCC,Const.Message.MSG_CATEGORIS_FAIL);
         catogoriesVolley.requestGet(Const.Request.categoris,getHandler(), "",locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
@@ -501,6 +531,8 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
         }
 
     }
+
+
 
     private PropertyChangeListener volleyStatusListener = new PropertyChangeListener() {
         @Override

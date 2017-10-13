@@ -87,6 +87,7 @@ public class Const {
         public static String allCityStores;
         public static String recharge;
         public static String hxAccount;
+        public static String recommendStores;
         public static void setServer(String baseUrl) {
             SERVER = baseUrl;
             code = SERVER + "/user/login/send_verify_code";
@@ -131,6 +132,7 @@ public class Const {
             log = SERVER + "/promotion/share/log";
             shareKey = SERVER + "/promotion/share/key";
             categoris = SERVER + "/categoris";
+            recommendStores = SERVER + "/stores/recommend";
             priceList = SERVER.replace("/ldj-app", "/") + "#/priceList";
             storeShow = SERVER.replace("/ldj-app", "/") + "#/storeShow";
             agreement = SERVER.replace("/ldj-app", "/") + "#/agreements";
@@ -342,6 +344,9 @@ public class Const {
         public static final int MSG_GET_ALL_STORIES_FAIL = 139;
         public static final int MSG_GET_HX_ACCOUNT_SUCC = 140;
         public static final int MSG_GET_HX_ACCOUNT_FAIL = 141;
+
+        public static final int MSG_GET_RECC_STORES_SUCC = 142;
+        public static final int MSG_GET_RECC_STORES_FAIL = 143;
 
 
 
