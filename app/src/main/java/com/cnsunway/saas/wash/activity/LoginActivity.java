@@ -17,7 +17,6 @@ import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.cnst.Const;
 import com.cnsunway.saas.wash.dialog.OperationToast;
 import com.cnsunway.saas.wash.framework.net.JsonVolley;
-import com.cnsunway.saas.wash.framework.net.StringVolley;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
 import com.cnsunway.saas.wash.framework.utils.PhoneCheck;
 import com.cnsunway.saas.wash.helper.ApkUpgradeHelper2;
@@ -299,10 +298,10 @@ public class LoginActivity extends InitActivity implements View.OnClickListener 
     private void login() {
         Log.e("--------------", "deviceToken: " + deviceToken);
 
-        if (TextUtils.isEmpty(deviceToken)) {
+        /*if (TextUtils.isEmpty(deviceToken)) {
             showMessageToast(getResources().getString(R.string.wait_data));
             return;
-        }
+        }*/
 
         userName = accountEdit.getText().toString().trim();
         codes = codesEdit.getText().toString().trim();
@@ -327,7 +326,8 @@ public class LoginActivity extends InitActivity implements View.OnClickListener 
 
         inviteCode = inviteEdit.getText().toString().trim();
         loginVolley.addParams("mobile", userName);
-        loginVolley.addParams("checkCode", codes);
+        loginVolley.addParams("verifyCode", codes);
+        loginVolley.addParams("channel",3);
         loginVolley.addParams("deviceToken", deviceToken);
         if (!TextUtils.isEmpty(inviteCode)) {
             loginVolley.addParams("promoterCode", inviteCode);
