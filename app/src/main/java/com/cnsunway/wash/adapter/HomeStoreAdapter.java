@@ -43,7 +43,7 @@ public class HomeStoreAdapter extends BaseAdapter{
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         if(view == null){
-            view = LayoutInflater.from(context).inflate(R.layout.home_store1,null);
+            view = LayoutInflater.from(context).inflate(R.layout.home_store2,null);
 //           ViewGroup.LayoutParams lp =  view.getLayoutParams();
 //            lp.height = (int) context.getResources().getDimension(R.dimen.banner_height);
 //            view.setLayoutParams(lp);
