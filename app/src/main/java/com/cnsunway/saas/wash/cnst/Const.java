@@ -90,7 +90,7 @@ public class Const {
         public static void setServer(String baseUrl) {
             SERVER = baseUrl;
             code = SERVER + "/user/login/send_verify_code";
-            login = SERVER + "/users/login";
+            login = SERVER + "/user/login";
             ordersearch = SERVER + "/orders/search";
             homeinservice = SERVER + "/orders/searchOrdersInService";
             inservice = SERVER + "/orders/inservicePage";
