@@ -12,6 +12,8 @@ import com.cnsunway.saas.wash.framework.utils.JsonParser;
 import com.cnsunway.saas.wash.model.LocationForService;
 import com.cnsunway.saas.wash.model.Order;
 import com.cnsunway.saas.wash.model.OrderSearchData;
+import com.cnsunway.saas.wash.model.RowsOrder;
+import com.cnsunway.saas.wash.resp.RowsOrderResp;
 import com.cnsunway.saas.wash.resp.SearchResp;
 import com.cnsunway.saas.wash.sharef.UserInfosPref;
 
@@ -80,13 +82,13 @@ public class HomeOrderModel extends ViewModel{
         switch (msg.what) {
             case Const.Message.MSG_ORDER_DONE_SUCC:
                 if (msg.arg1 == Const.Request.REQUEST_SUCC) {
-                    SearchResp initResp = (SearchResp) JsonParser.jsonToObject(msg.obj + "", SearchResp.class);
+                    RowsOrderResp initResp = (RowsOrderResp) JsonParser.jsonToObject(msg.obj + "", RowsOrderResp.class);
                     setServerNow(initResp.getNow());
-                    OrderSearchData searchData = initResp.getData();
+                    RowsOrder searchData = initResp.getData();
                     if(searchData != null) {
-                        List<Order> initOrders = searchData.getResults();
-                        total = searchData.getTotalCount();
-                        if (searchData.getPageNo() == 1 || getHomeLists() == null || initOrders == null) {
+                        List<Order> initOrders = searchData.getList();
+                        total = searchData.getTotal();
+                        if (searchData.getPageNum() == 1 || getHomeLists() == null || initOrders == null) {
                             setHomeLists(initOrders);
                         } else {
                             getHomeLists().addAll(initOrders);
@@ -134,9 +136,9 @@ public class HomeOrderModel extends ViewModel{
         LocationForService locationForService = UserInfosPref.getInstance(activity).getLocationServer();
 
         JsonVolley orderVolley = new JsonVolley(activity, Const.Message.MSG_ORDER_DONE_SUCC, Const.Message.MSG_ORDER_DONE_FAIL);
-        orderVolley.addParams("pageSize",5);
-        orderVolley.addParams("pageNo",1);
-        orderVolley.requestGet(Const.Request.inservice,
+        orderVolley.addParams("rows",5);
+        orderVolley.addParams("page",1);
+        orderVolley.requestPost(Const.Request.inservice,
                 getHandler(), userInfos.getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
         );
     }
@@ -629,7 +631,7 @@ public class HomeOrderModel extends ViewModel{
         LocationForService locationForService = UserInfosPref.getInstance(activity).getLocationServer();
 
         JsonVolley orderDoneVolley = new JsonVolley(activity, Const.Message.MSG_ORDER_DONE_SUCC, Const.Message.MSG_ORDER_DONE_FAIL);
-        orderDoneVolley.requestGet(Const.Request.inservice,
+        orderDoneVolley.requestPost(Const.Request.inservice,
                 getHandler(), userInfos.getUser() == null ? "" : userInfos.getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
         );
     }

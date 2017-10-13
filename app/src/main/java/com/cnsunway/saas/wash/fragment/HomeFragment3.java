@@ -156,24 +156,24 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     OrderDetailResp detailResp = (OrderDetailResp) JsonParser.jsonToObject(msg.obj + "", OrderDetailResp.class);
                     final Order order = detailResp.getData();
                     String action = order.getAction();
-                    if(action.equals("share") || action.equals("direct")){
-//                        ShareGiftDialog2 shareGiftDialog  =  new ShareGiftDialog2(getActivity(),order).builder();
-//                        shareGiftDialog.setShareBtnClickedLinstener(new ShareGiftDialog2.OnShareBtnClickedLinstener() {
-//                            @Override
-//                            public void shareBtnClicked() {
-//                                WayOfShareDialog wayOfShareDialog = new WayOfShareDialog(getActivity()).builder();
-//                                new ShareUtil(wayOfShareDialog).share(getActivity(),order);
-//                            }
-//                        });
+//                    if(action.equals("share") || action.equals("direct")){
+////                        ShareGiftDialog2 shareGiftDialog  =  new ShareGiftDialog2(getActivity(),order).builder();
+////                        shareGiftDialog.setShareBtnClickedLinstener(new ShareGiftDialog2.OnShareBtnClickedLinstener() {
+////                            @Override
+////                            public void shareBtnClicked() {
+////                                WayOfShareDialog wayOfShareDialog = new WayOfShareDialog(getActivity()).builder();
+////                                new ShareUtil(wayOfShareDialog).share(getActivity(),order);
+////                            }
+////                        });
+////
+////                        shareGiftDialog.show();
 //
-//                        shareGiftDialog.show();
-
-                        Intent intent = new Intent(getActivity(),WebActivity.class);
-                        intent.putExtra("url",Const.Request.paySuccess + detailResp.getData().getTotalPrice());
-                        intent.putExtra("title","支付成功");
-                        intent.putExtra("order",JsonParser.objectToJsonStr(order));
-                        startActivity(intent);
-                    }
+//                        Intent intent = new Intent(getActivity(),WebActivity.class);
+//                        intent.putExtra("url",Const.Request.paySuccess + detailResp.getData().getTotalPrice());
+//                        intent.putExtra("title","支付成功");
+//                        intent.putExtra("order",JsonParser.objectToJsonStr(order));
+//                        startActivity(intent);
+//                    }
                 }
                 break;
 
@@ -607,7 +607,6 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
         }
 
 
-
         public OrderAdapter(List<Order> orders){
             this.orders = orders;
             inflater =  LayoutInflater.from(getActivity());
@@ -623,7 +622,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                             intent.putExtra("order_no", o.getOrderNo());
                             startActivityForResult(intent, 1);
                         }else if(o.getType() == 2){
-                            Intent intent = new Intent(getActivity(), BackWashOrderDetailActivity.class);
+                            Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
                             intent.putExtra("order_no", o.getOrderNo());
                             startActivityForResult(intent, 1);
                         }
@@ -966,7 +965,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                             intent.putExtra("order_no", o.getOrderNo());
                             startActivityForResult(intent, 1);
                         }else if(o.getType() == 2){
-                            Intent intent = new Intent(getActivity(), BackWashOrderDetailActivity.class);
+                            Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
                             intent.putExtra("order_no", o.getOrderNo());
                             startActivityForResult(intent, 1);
                         }
