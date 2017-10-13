@@ -278,6 +278,7 @@ public class LoginActivity extends InitActivity implements View.OnClickListener 
             } else {
                 securityCodeRl.setBackgroundResource(R.drawable.frame_get_codes2);
                 userInfos.saveUserName(phoneNum);
+
                 codeVolley.addParams("mobile", phoneNum);
                 setOperationMsg(getString(R.string.get_check_code));
                     LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();

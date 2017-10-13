@@ -41,8 +41,8 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 	int requestFail = -1;
 	LoadingDialogInterface dialog;
 	List<Object> orderedParams = new ArrayList<>();
-	private static final String REQUEST_TYPE = "10";
-	private static  final String CHANNEL= "22";
+	private static final String REQUEST_TYPE = "1";
+	private static  final String CHANNEL= "3";
 	public JsonVolley(Context context, int requestSucc, int requestFail) {
 		this.context = new WeakReference<Context>(context);
 		if(myQueue == null) {
@@ -78,14 +78,14 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 			public Map<String, String> getHeaders() throws AuthFailureError {
 				Map<String, String> headers = new HashMap<String, String>();
 				headers.put("Accept", "application/json");
-				headers.put("x-ldj-ctype",REQUEST_TYPE);
-				headers.put("x-ldj-channel",CHANNEL);
+				headers.put("x-sw-ctype",REQUEST_TYPE);
+				headers.put("x-sw-channel",CHANNEL);
 				headers.put("Content-Type", "application/json; charset=utf-8");
 
-				headers.put("x-ldj-city",cityCode);
-				headers.put("x-ldj-adcode",adcode);
-				headers.put("x-ldj-district",district);
-				headers.put("x-ldj-province",province);
+				headers.put("x-sw-city",cityCode);
+				headers.put("x-sw-adcode",adcode);
+				headers.put("x-sw-district",district);
+				headers.put("x-sw-province",province);
 				return headers;
 			}
 
@@ -110,14 +110,14 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 			public Map<String, String> getHeaders() throws AuthFailureError {
 				Map<String, String> headers = new HashMap<String, String>();
 				headers.put("Accept", "application/json");
-				headers.put("x-ldj-ctype",REQUEST_TYPE);
-				headers.put("x-ldj-channel",CHANNEL);
+				headers.put("x-sw-ctype",REQUEST_TYPE);
+				headers.put("x-sw-channel",CHANNEL);
 				headers.put("Content-Type", "application/json; charset=utf-8");
 
-				headers.put("x-ldj-city",cityCode);
-				headers.put("x-ldj-adcode",adcode);
-				headers.put("x-ldj-district",district);
-				headers.put("x-ldj-province",province);
+				headers.put("x-sw-city",cityCode);
+				headers.put("x-sw-adcode",adcode);
+				headers.put("x-sw-district",district);
+				headers.put("x-sw-province",province);
 				return headers;
 			}
 
@@ -264,14 +264,14 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 			public Map<String, String> getHeaders() throws AuthFailureError {
 				Map<String, String> headers = new HashMap<String, String>();
 				headers.put("Accept", "application/json");
-				headers.put("x-ldj-ctype",REQUEST_TYPE);
-				headers.put("x-ldj-channel",CHANNEL);
+				headers.put("x-sw-ctype",REQUEST_TYPE);
+				headers.put("x-sw-channel",CHANNEL);
 				headers.put("Content-Type", "application/json; charset=utf-8");
 
-				headers.put("x-ldj-city",cityCode);
-				headers.put("x-ldj-adcode",adcode);
-				headers.put("x-ldj-district",district);
-				headers.put("x-ldj-province",province);
+				headers.put("x-sw-city",cityCode);
+				headers.put("x-sw-adcode",adcode);
+				headers.put("x-sw-district",district);
+				headers.put("x-sw-province",province);
 				return headers;
 			}
 		};
@@ -290,8 +290,8 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 			public Map<String, String> getHeaders() throws AuthFailureError {
 				Map<String, String> headers = new HashMap<String, String>();
 				headers.put("Accept", "application/json");
-				headers.put("x-ldj-ctype",REQUEST_TYPE);
-				headers.put("x-ldj-channel",CHANNEL);
+				headers.put("x-sw-ctype",REQUEST_TYPE);
+				headers.put("x-sw-channel",CHANNEL);
 				headers.put("Content-Type", "application/json; charset=utf-8");
 				return headers;
 			}
@@ -333,15 +333,15 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 							final String adcode,
 							final String district){
 		headers.put("Accept", "application/json");
-		headers.put("x-ldj-ctype",REQUEST_TYPE);
-		headers.put("x-ldj-channel",CHANNEL);
+		headers.put("x-sw-ctype",REQUEST_TYPE);
+		headers.put("x-sw-channel",CHANNEL);
 		headers.put("Content-Type", "application/json; charset=utf-8");
-		headers.put("x-ldj-token", accessToken);
+		headers.put("x-sw-token", accessToken);
 
-		headers.put("x-ldj-city",cityCode);
-		headers.put("x-ldj-adcode",adcode);
-		headers.put("x-ldj-district",district);
-		headers.put("x-ldj-province",province);
+		headers.put("x-sw-city",cityCode);
+		headers.put("x-sw-adcode",adcode);
+		headers.put("x-sw-district",district);
+		headers.put("x-sw-province",province);
 
 	}
 
