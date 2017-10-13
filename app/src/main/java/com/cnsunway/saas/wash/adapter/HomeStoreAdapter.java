@@ -48,6 +48,7 @@ public class HomeStoreAdapter extends BaseAdapter{
 //           ViewGroup.LayoutParams lp =  view.getLayoutParams();
 //            lp.height = (int) context.getResources().getDimension(R.dimen.banner_height);
 //            view.setLayoutParams(lp);
+
         }
         return view;
     }
