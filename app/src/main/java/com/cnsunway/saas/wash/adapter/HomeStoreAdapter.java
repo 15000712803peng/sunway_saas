@@ -5,12 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.model.Store;
 
 import java.util.List;
-
 
 
 public class HomeStoreAdapter extends BaseAdapter{
