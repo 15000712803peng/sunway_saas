@@ -155,11 +155,11 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
         statusText4 = (TextView) findViewById(R.id.text_status4);
         noMemoText = (TextView) findViewById(R.id.text_no_memo);
         rightText = (TextView) findViewById(R.id.text_title_right);
-        if(isShowContanct){
-            contactUsImage.setVisibility(View.VISIBLE);
-        }else {
-            contactUsImage.setVisibility(View.GONE);
-        }
+//        if(isShowContanct){
+//            contactUsImage.setVisibility(View.VISIBLE);
+//        }else {
+//            contactUsImage.setVisibility(View.GONE);
+//        }
 
         priceParentTop = (LinearLayout) findViewById(R.id.price_parent_top);
         priceParentCenter = (LinearLayout) findViewById(R.id.price_parent_center);
@@ -374,9 +374,9 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
             TextView clothesNameText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_name);
             TextView clothesPriceText = (TextView) clothesItemView.findViewById(R.id.clothes_item_price);
             TextView clothtesSubpriceText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_subprice);
-            clothesNameText.setText(item.getName() + "x" + item.getCount());
-            clothesPriceText.setText(getString(R.string.price) +"￥" + item.getPrice());
-            clothtesSubpriceText.setText("￥" + NumberUtil.format2Dicimal(item.getTotalPrice() + ""));
+            clothesNameText.setText(item.getProductName() + "x" + item.getSqmCount());
+            clothesPriceText.setText(getString(R.string.price) +"￥" + item.getBasePrice());
+            clothtesSubpriceText.setText("￥" + NumberUtil.format2Dicimal(item.getRealPrice() + ""));
             clothesDetailParentTop.addView(clothesItemView);
         }
 //        View orderFeeView = getLayoutInflater().inflate(R.layout.order_fee_item,null);
@@ -436,9 +436,9 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
             TextView clothesNameText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_name);
             TextView clothesPriceText = (TextView) clothesItemView.findViewById(R.id.clothes_item_price);
             TextView clothtesSubpriceText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_subprice);
-            clothesNameText.setText(item.getName() + "x" + item.getCount());
-            clothesPriceText.setText(getString(R.string.price) +"￥" + item.getPrice());
-            clothtesSubpriceText.setText("￥" + NumberUtil.format2Dicimal(item.getTotalPrice() + ""));
+            clothesNameText.setText(item.getProductName() + "x" + item.getSqmCount());
+            clothesPriceText.setText(getString(R.string.price) +"￥" + item.getBasePrice());
+            clothtesSubpriceText.setText("￥" + NumberUtil.format2Dicimal(item.getRealPrice() + ""));
             clothesDetailParentCener.addView(clothesItemView);
         }
 
@@ -648,25 +648,26 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                 }
                 bottomOperationParent.setVisibility(View.GONE);
                 bottomDividerParent.setVisibility(View.GONE);
-                if (action.equals("share")){
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    ShareInfo shareInfo = order.getShareInfo();
-//                    oneOperationText.setText(shareInfo.getShareBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                    shareBtn.setVisibility(View.VISIBLE);
-
-                }else if(action.equals("direct")){
-                    shareBtn.setVisibility(View.VISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    DirectInfo directInfo = order.getDirectInfo();
-//                    oneOperationText.setText(directInfo.getBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                }else {
-                    shareBtn.setVisibility(View.INVISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
-                }
+                shareBtn.setVisibility(View.INVISIBLE);
+//                if (action.equals("share")){
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    ShareInfo shareInfo = order.getShareInfo();
+////                    oneOperationText.setText(shareInfo.getShareBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                    shareBtn.setVisibility(View.VISIBLE);
+//
+//                }else if(action.equals("direct")){
+//                    shareBtn.setVisibility(View.VISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    DirectInfo directInfo = order.getDirectInfo();
+////                    oneOperationText.setText(directInfo.getBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                }else {
+//                    shareBtn.setVisibility(View.INVISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
+//                }
 //                twoBtnOperationParent.setVisibility(View.INVISIBLE);
 
 
@@ -689,25 +690,26 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                 }
                 bottomOperationParent.setVisibility(View.GONE);
                 bottomDividerParent.setVisibility(View.GONE);
-                if (action.equals("share")){
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    ShareInfo shareInfo = order.getShareInfo();
-//                    oneOperationText.setText(shareInfo.getShareBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                    shareBtn.setVisibility(View.VISIBLE);
-
-                }else if(action.equals("direct")){
-                    shareBtn.setVisibility(View.VISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    DirectInfo directInfo = order.getDirectInfo();
-//                    oneOperationText.setText(directInfo.getBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                }else {
-                    shareBtn.setVisibility(View.INVISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
-                }
+//                if (action.equals("share")){
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    ShareInfo shareInfo = order.getShareInfo();
+////                    oneOperationText.setText(shareInfo.getShareBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                    shareBtn.setVisibility(View.VISIBLE);
+//
+//                }else if(action.equals("direct")){
+//                    shareBtn.setVisibility(View.VISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    DirectInfo directInfo = order.getDirectInfo();
+////                    oneOperationText.setText(directInfo.getBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                }else {
+//                    shareBtn.setVisibility(View.INVISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
+//                }
+                shareBtn.setVisibility(View.INVISIBLE);
 
                 break;
 
@@ -725,25 +727,26 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                 }
                 bottomOperationParent.setVisibility(View.GONE);
                 bottomDividerParent.setVisibility(View.GONE);
-                if (action.equals("share")){
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    ShareInfo shareInfo = order.getShareInfo();
-//                    oneOperationText.setText(shareInfo.getShareBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                    shareBtn.setVisibility(View.VISIBLE);
-
-                }else if(action.equals("direct")){
-                    shareBtn.setVisibility(View.VISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    DirectInfo directInfo = order.getDirectInfo();
-//                    oneOperationText.setText(directInfo.getBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                }else {
-                    shareBtn.setVisibility(View.INVISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
-                }
+//                if (action.equals("share")){
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    ShareInfo shareInfo = order.getShareInfo();
+////                    oneOperationText.setText(shareInfo.getShareBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                    shareBtn.setVisibility(View.VISIBLE);
+//
+//                }else if(action.equals("direct")){
+//                    shareBtn.setVisibility(View.VISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    DirectInfo directInfo = order.getDirectInfo();
+////                    oneOperationText.setText(directInfo.getBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                }else {
+//                    shareBtn.setVisibility(View.INVISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
+//                }
+                shareBtn.setVisibility(View.INVISIBLE);
 
                 break;
 
@@ -787,25 +790,26 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
 //                }
 
 
-                if (action.equals("share")){
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    ShareInfo shareInfo = order.getShareInfo();
-//                    oneOperationText.setText(shareInfo.getShareBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                    shareBtn.setVisibility(View.VISIBLE);
-
-                }else if(action.equals("direct")){
-                    shareBtn.setVisibility(View.VISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    DirectInfo directInfo = order.getDirectInfo();
-//                    oneOperationText.setText(directInfo.getBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                }else {
-                    shareBtn.setVisibility(View.INVISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
-                }
+//                if (action.equals("share")){
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    ShareInfo shareInfo = order.getShareInfo();
+////                    oneOperationText.setText(shareInfo.getShareBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                    shareBtn.setVisibility(View.VISIBLE);
+//
+//                }else if(action.equals("direct")){
+//                    shareBtn.setVisibility(View.VISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    DirectInfo directInfo = order.getDirectInfo();
+////                    oneOperationText.setText(directInfo.getBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                }else {
+//                    shareBtn.setVisibility(View.INVISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
+//                }
+                shareBtn.setVisibility(View.INVISIBLE);
 
                 oneBtnOperationParent.setVisibility(View.VISIBLE);
                 oneOperationText.setText(R.string.operation_order_confirm);
@@ -856,25 +860,26 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
 //                        oneOperationText.setTag(OPERATION_ORDER_REMARK);
 //                    }
 
-                    if (action.equals("share")){
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    ShareInfo shareInfo = order.getShareInfo();
-//                    oneOperationText.setText(shareInfo.getShareBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                        shareBtn.setVisibility(View.VISIBLE);
-
-                    }else if(action.equals("direct")){
-                        shareBtn.setVisibility(View.VISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    DirectInfo directInfo = order.getDirectInfo();
-//                    oneOperationText.setText(directInfo.getBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                    }else {
-                        shareBtn.setVisibility(View.INVISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
-                    }
+//                    if (action.equals("share")){
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    ShareInfo shareInfo = order.getShareInfo();
+////                    oneOperationText.setText(shareInfo.getShareBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                        shareBtn.setVisibility(View.VISIBLE);
+//
+//                    }else if(action.equals("direct")){
+//                        shareBtn.setVisibility(View.VISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    DirectInfo directInfo = order.getDirectInfo();
+////                    oneOperationText.setText(directInfo.getBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                    }else {
+//                        shareBtn.setVisibility(View.INVISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
+//                    }
+                    shareBtn.setVisibility(View.INVISIBLE);
 
                     oneBtnOperationParent.setVisibility(View.VISIBLE);
                     twoBtnOperationParent.setVisibility(View.GONE);
@@ -885,25 +890,26 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
 
                 }else {
 
-                    if (action.equals("share")){
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    ShareInfo shareInfo = order.getShareInfo();
-//                    oneOperationText.setText(shareInfo.getShareBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                        shareBtn.setVisibility(View.VISIBLE);
-
-                    }else if(action.equals("direct")){
-                        shareBtn.setVisibility(View.VISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.VISIBLE);
-//                    DirectInfo directInfo = order.getDirectInfo();
-//                    oneOperationText.setText(directInfo.getBtnText());
-//                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
-//                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
-                    }else {
-                        shareBtn.setVisibility(View.INVISIBLE);
-//                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
-                    }
+//                    if (action.equals("share")){
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    ShareInfo shareInfo = order.getShareInfo();
+////                    oneOperationText.setText(shareInfo.getShareBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                        shareBtn.setVisibility(View.VISIBLE);
+//
+//                    }else if(action.equals("direct")){
+//                        shareBtn.setVisibility(View.VISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.VISIBLE);
+////                    DirectInfo directInfo = order.getDirectInfo();
+////                    oneOperationText.setText(directInfo.getBtnText());
+////                    oneOperationText.setBackgroundResource(R.drawable.blue_corner);
+////                    oneOperationText.setTag(OPERATION_ORDER_SHARE);
+//                    }else {
+//                        shareBtn.setVisibility(View.INVISIBLE);
+////                    oneBtnOperationParent.setVisibility(View.INVISIBLE);
+//                    }
+                    shareBtn.setVisibility(View.INVISIBLE);
                     oneBtnOperationParent.setVisibility(View.VISIBLE);
                     twoBtnOperationParent.setVisibility(View.GONE);
                     oneOperationText.setText(R.string.more_order);
@@ -1583,8 +1589,8 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
     }
     @Bind(R.id.button_share)
     ImageButton shareBtn;
-    @Bind(R.id.image_contact_me)
-    ImageView contactUsImage;
+//    @Bind(R.id.image_contact_me)
+//    ImageView contactUsImage;
     boolean isShowContanct = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -1596,37 +1602,7 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                 orderShare();
             }
         });
-        contactUsImage.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new ActionSheetDialog(OrderDetailActivity.this)
-                        .builder()
-                        .setCancelable(true)
-                        .setCanceledOnTouchOutside(true).setTitle("我们将为您提供满意的咨询服务").
-                        addSheetItem("在线客服", ActionSheetDialog.SheetItemColor.Blue,
-                                new ActionSheetDialog.OnSheetItemClickListener() {
-                                    @Override
-                                    public void onClick(int which) {
 
-                                        if (ChatClient.getInstance().isLoggedInBefore()) {
-                                            HxHelper.getInstance(OrderDetailActivity.this).toChat(Const.MESSAGE_TO_DEFAULT,OrderDetailActivity.this,orderNo);
-                                        }else {
-//                                                   createRandomAccountThenLoginChatServer();
-                                            HxHelper.getInstance(OrderDetailActivity.this).login(UserInfosPref.getInstance(OrderDetailActivity.this).getUser().getMobile(),UserInfosPref.getInstance(OrderDetailActivity.this).getUser().getHxPwd());
-                                        }
-                                    }
-                                })
-                        .addSheetItem("客服电话：4009-210-682", ActionSheetDialog.SheetItemColor.Blue,
-                                new ActionSheetDialog.OnSheetItemClickListener() {
-                                    @Override
-                                    public void onClick(int which) {
-                                        Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:4009-210-682"));
-                                        startActivity(intent);
-                                    }
-                                })
-                        .show();
-            }
-        });
         super.onCreate(savedInstanceState);
         coupons.setCoupons(new ArrayList<Coupon>());
         ununsedCoupons.setCoupons(new ArrayList<Coupon>());

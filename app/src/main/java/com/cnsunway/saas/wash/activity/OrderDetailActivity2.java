@@ -312,9 +312,9 @@ public class OrderDetailActivity2 extends LoadingActivity implements OnClickList
             TextView clothesNameText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_name);
             TextView clothesPriceText = (TextView) clothesItemView.findViewById(R.id.clothes_item_price);
             TextView clothtesSubpriceText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_subprice);
-            clothesNameText.setText(item.getName() + "x" + item.getCount());
-            clothesPriceText.setText(getString(R.string.price) +"￥" + item.getPrice());
-            clothtesSubpriceText.setText("￥" + NumberUtil.format2Dicimal(item.getTotalPrice() + ""));
+            clothesNameText.setText(item.getProductName() + "x" + item.getSqmCount());
+            clothesPriceText.setText(getString(R.string.price) +"￥" + item.getBasePrice());
+            clothtesSubpriceText.setText("￥" + NumberUtil.format2Dicimal(item.getRealPrice() + ""));
             clothesDetailParent.addView(clothesItemView);
         }
         View orderFeeView = getLayoutInflater().inflate(R.layout.order_fee_item,null);

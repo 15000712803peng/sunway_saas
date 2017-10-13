@@ -198,8 +198,8 @@ public class BackWashOrderDetailActivity extends LoadingActivity implements OnCl
             TextView clothesNameText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_name);
             TextView clothesPriceText = (TextView) clothesItemView.findViewById(R.id.clothes_item_price);
             TextView clothtesSubpriceText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_subprice);
-            clothesNameText.setText(item.getName() + "x" + item.getCount());
-            clothesPriceText.setText(getString(R.string.price) + "￥" + item.getPrice());
+            clothesNameText.setText(item.getProductName() + "x" + item.getSqmCount());
+            clothesPriceText.setText(getString(R.string.price) + "￥" + item.getBasePrice());
             clothtesSubpriceText.setText("￥0.00");
             clothesDetailParent.addView(clothesItemView);
         }

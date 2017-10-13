@@ -328,7 +328,7 @@ public class LoginActivity extends InitActivity implements View.OnClickListener 
         loginVolley.addParams("mobile", userName);
         loginVolley.addParams("verifyCode", codes);
         loginVolley.addParams("channel",3);
-        loginVolley.addParams("deviceToken", deviceToken);
+//        loginVolley.addParams("deviceToken", deviceToken);
         if (!TextUtils.isEmpty(inviteCode)) {
             loginVolley.addParams("promoterCode", inviteCode);
         }

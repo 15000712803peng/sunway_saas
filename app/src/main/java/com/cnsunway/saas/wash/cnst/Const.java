@@ -93,13 +93,13 @@ public class Const {
             login = SERVER + "/user/login";
             ordersearch = SERVER + "/orders/search";
             homeinservice = SERVER + "/orders/searchOrdersInService";
-            inservice = SERVER + "/orders/inservicePage";
+            inservice = SERVER + "/orders";
             donePage = SERVER + "/orders/donePage";
             shippingFee = SERVER + "/orders/getShippingInfo";
             create = SERVER + "/orders/create";
             done = SERVER + "/orders/done";
             cancel = SERVER + "/orders/cancel";
-            detail = SERVER + "/orders/search";
+            detail = SERVER + "/orders";
             search = SERVER + "/useraddresses/search";
             coupon = SERVER + "/accounts/coupons";
             markDefault = SERVER + "/useraddresses/mark_default";
@@ -119,7 +119,7 @@ public class Const {
             notifyPaySuccess = SERVER +"/pay/notifyPaySuccess";
             checkUpdate = SERVER + "/version/check";
             cityList = SERVER + "/cities/all";
-            showImages = SERVER + "/marketing/banners";
+            showImages = SERVER + "/banners";
             uploadPic = SERVER + "/pic/upload_info";
             operatoresSave = SERVER + "/users/save";
             profile = SERVER + "/users/profile";
