@@ -4,10 +4,10 @@ package com.cnsunway.saas.wash.model;
  * Created by LL on 2015/12/4.
  */
 public class User {
-    String headPortraitUrl = null;
-    String wxNickName = null;
+    String headPortraitUrl = "";
+    String wxNickName = "";
     boolean hasNapaCard = true;
-    String hxPwd = null;
+    String hxPwd = "";
 
     String id;
     boolean isTester;
