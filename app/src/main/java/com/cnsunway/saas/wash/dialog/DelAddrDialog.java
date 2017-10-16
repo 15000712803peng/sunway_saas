@@ -11,14 +11,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.cnst.Const;
 import com.cnsunway.saas.wash.framework.inter.LoadingDialogInterface;
-import com.cnsunway.saas.wash.framework.net.StringVolley;
+import com.cnsunway.saas.wash.framework.net.JsonVolley;
+import com.cnsunway.saas.wash.framework.net.NetParams;
 import com.cnsunway.saas.wash.model.LocationForService;
 import com.cnsunway.saas.wash.sharef.UserInfosPref;
 
@@ -33,7 +33,7 @@ public class DelAddrDialog implements View.OnClickListener {
     TextView okBtn, content;
     TextView cancelBtn;
     String addrId;
-    StringVolley delAddrVolley;
+    JsonVolley delAddrVolley;
     Handler handler;
 
     public interface OnDelOkLinstener {
@@ -82,9 +82,9 @@ public class DelAddrDialog implements View.OnClickListener {
     public void onClick(View view) {
         LocationForService locationForService = UserInfosPref.getInstance(context).getLocationServer();
         if (view == okBtn) {
-            delAddrVolley.addParams("addressId", addrId);
-            delAddrVolley.requestPost(Const.Request.deleteAddr, handler, new LoadingDialogInterface() {
-                @Override
+//            delAddrVolley.addParams("addressId", addrId);
+            delAddrVolley.requestGet(Const.Request.deleteAddr+"/"+addrId, new LoadingDialogInterface() {
+                    @Override
                 public void showLoading() {
                     getLoadingDialog(context.getString(R.string.operating)).show();
                 }
@@ -93,7 +93,7 @@ public class DelAddrDialog implements View.OnClickListener {
                 public void hideLoading() {
                     hideLoadingDialog();
                 }
-            }, UserInfosPref.getInstance(context).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+            }, handler,UserInfosPref.getInstance(context).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 
         } else if (view == cancelBtn) {
             cancel();
@@ -113,9 +113,16 @@ public class DelAddrDialog implements View.OnClickListener {
                 switch (msg.what) {
                     case Const.Message.MSG_DEL_ADDR_SUCC:
                         cancel();
-                        if (delOkLinstener != null) {
-                            delOkLinstener.delOk();
+                        if(msg.arg1 == NetParams.RESPONCE_NORMAL)  {
+                            if (delOkLinstener != null) {
+                                delOkLinstener.delOk();
+                            }
+                        } else {
+//                            BaseResp resp = (BaseResp) JsonParser.jsonToObject(msg.arg1.getString("responseMsg"), BaseResp.class);
+                           //解析baseResp
                         }
+
+
                         break;
 
                     case Const.Message.MSG_DEL_ADDR_FAIL:
@@ -126,7 +133,7 @@ public class DelAddrDialog implements View.OnClickListener {
             }
         };
 
-        delAddrVolley = new StringVolley(context, Const.Message.MSG_DEL_ADDR_SUCC, Const.Message.MSG_ORDER_CANCEL_SUCC);
+        delAddrVolley = new JsonVolley(context, Const.Message.MSG_DEL_ADDR_SUCC, Const.Message.MSG_ORDER_CANCEL_SUCC);
     }
 
     public void show() {

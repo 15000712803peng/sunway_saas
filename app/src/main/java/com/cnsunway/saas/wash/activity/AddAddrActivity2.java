@@ -17,7 +17,7 @@ import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.cnst.Const;
 import com.cnsunway.saas.wash.dialog.DelAddrDialog;
 import com.cnsunway.saas.wash.dialog.OperationToast;
-import com.cnsunway.saas.wash.framework.net.StringVolley;
+import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
 import com.cnsunway.saas.wash.model.Addr;
 import com.cnsunway.saas.wash.model.LocationForService;
@@ -34,7 +34,7 @@ public class AddAddrActivity2 extends InitActivity implements View.OnClickListen
     boolean showMobile;
     EditText addrUserEdit, addrMobileEdit, addrEndfixEdit;
     TextView titleText;
-    StringVolley createAddrVolley;
+    JsonVolley createAddrVolley;
     Addr addr;
     int defaultFlag = 0;
     UserInfosPref userInfosPref;
@@ -57,7 +57,7 @@ public class AddAddrActivity2 extends InitActivity implements View.OnClickListen
     protected void initData() {
         operation = getIntent().getIntExtra("operation", 0);
         showMobile = getIntent().getBooleanExtra("showMobile", false);
-        createAddrVolley = new StringVolley(this, Const.Message.MSG_CREATE_ADDR_SUCC, Const.Message.MSG_CREATE_ADDR_FAIL);
+        createAddrVolley = new JsonVolley(this, Const.Message.MSG_CREATE_ADDR_SUCC, Const.Message.MSG_CREATE_ADDR_FAIL);
         userInfosPref = UserInfosPref.getInstance(this);
         delAddrDialog = new DelAddrDialog(this).builder();
         delAddrDialog.setDelOkLinstener(this);
@@ -328,17 +328,24 @@ public class AddAddrActivity2 extends InitActivity implements View.OnClickListen
         createAddrVolley.addParams("longtitude", longtitule);
         createAddrVolley.addParams("latitude", latitude);
         createAddrVolley.addParams("defaultFlag", defaultFlag + "");
+
+
         LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
         if (operation == OPERATION_EDIT) {
             createAddrVolley.addParams("id", addr.getId());
             Log.e("------","default flag:" + defaultFlag);
+            createAddrVolley.addParams("cityCode", addr.getCityCode());
+            createAddrVolley.addParams("cityName", addr.getCityName());
+            createAddrVolley.addParams("districtCode",addr.getDistrictCode());
+            createAddrVolley.addParams("districtName", addr.getDistrictName());
+
             setOperationMsg(getString(R.string.operating));
-            createAddrVolley.requestPost(Const.Request.updateAddr, getHandler(), this, UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+            createAddrVolley.requestPost(Const.Request.updateAddr, this,getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
             );
 
         } else {
             setOperationMsg(getString(R.string.operating));
-            createAddrVolley.requestPost(Const.Request.creaetAddr, getHandler(), this, UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+            createAddrVolley.requestPost(Const.Request.creaetAddr,this, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 
         }
 

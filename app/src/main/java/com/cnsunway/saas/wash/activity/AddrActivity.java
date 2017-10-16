@@ -85,7 +85,7 @@ public class AddrActivity extends LoadingActivity implements  AdapterView.OnItem
 
         LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
 
-        searchAddrVolley.requestGet(Const.Request.search, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+        searchAddrVolley.requestPost(Const.Request.search, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
         );
         showCenterLoading();
     }
@@ -123,7 +123,7 @@ public class AddrActivity extends LoadingActivity implements  AdapterView.OnItem
             case Const.Message.MSG_MARK_DEFAULT_SUCC:
                 if (msg.arg1 == Const.Request.REQUEST_SUCC) {
                     LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
-                    searchAddrVolley.requestGet(Const.Request.search, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+                    searchAddrVolley.requestPost(Const.Request.search, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
                     OperationToast.showOperationResult(this, R.string.setting_succ);
                 } else if (msg.arg1 == Const.Request.REQUEST_FAIL) {
                     OperationToast.showOperationResult(this, R.string.setting_fail);
@@ -193,7 +193,7 @@ public class AddrActivity extends LoadingActivity implements  AdapterView.OnItem
 
     public void delOk() {
         LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
-        searchAddrVolley.requestGet(Const.Request.search, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+        searchAddrVolley.requestPost(Const.Request.search, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 
     }
 
@@ -338,7 +338,7 @@ public class AddrActivity extends LoadingActivity implements  AdapterView.OnItem
         if (requestCode == REQUEST_ADD_ADDR) {
             if (resultCode == RESULT_OK) {
                 LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
-                searchAddrVolley.requestGet(Const.Request.search, getHandler(), UserInfosPref.getInstance(this).getUser().getToken()
+                searchAddrVolley.requestPost(Const.Request.search, getHandler(), UserInfosPref.getInstance(this).getUser().getToken()
                         ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
                 );
             }
