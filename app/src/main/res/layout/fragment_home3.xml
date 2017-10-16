@@ -81,6 +81,7 @@
 
 
                     <TextView
+                        android:paddingBottom="12dp"
                         android:textStyle="bold"
                         android:paddingLeft="8dp"
                         android:textSize="12sp"

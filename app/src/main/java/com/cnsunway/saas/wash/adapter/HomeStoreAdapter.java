@@ -60,7 +60,6 @@ public class HomeStoreAdapter extends BaseAdapter{
 
         holder.storeName.setText(store.getStoreName());
         Glide.with(context).load(store.getHeadPortraitUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.mipmap.store).into(holder.storeImage);
-
         return view;
     }
 

@@ -21,6 +21,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -32,6 +33,12 @@ import com.cnsunway.saas.wash.activity.DoOrderActivity;
 import com.cnsunway.saas.wash.activity.EvaluateActivity;
 import com.cnsunway.saas.wash.activity.LoginActivity;
 import com.cnsunway.saas.wash.activity.OrderDetailActivity;
+<<<<<<< HEAD
+=======
+import com.cnsunway.saas.wash.activity.OrderDetailActivity2;
+import com.cnsunway.saas.wash.activity.ServiceAreaActivity;
+import com.cnsunway.saas.wash.activity.StoreDetailActivity;
+>>>>>>> fcff3e8e6923086943cf0074edb2a393ccd3b03b
 import com.cnsunway.saas.wash.activity.WebActivity;
 import com.cnsunway.saas.wash.adapter.HomeStoreAdapter;
 import com.cnsunway.saas.wash.cnst.Const;
@@ -78,7 +85,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 
-public class HomeFragment3 extends BaseFragment implements View.OnClickListener,OnBannerListener,LoadingDialogInterface,ServiceCityDialog.OnCitySelectedLinstenr {
+public class HomeFragment3 extends BaseFragment implements View.OnClickListener,OnBannerListener,LoadingDialogInterface,ServiceCityDialog.OnCitySelectedLinstenr,AdapterView.OnItemClickListener{
     Banner banner;
     List<String> imageUrls = new ArrayList<String>();
     JsonVolley getAdsVolley;
@@ -218,12 +225,12 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 
                 if (msg.arg1 == Const.Request.REQUEST_SUCC) {
                     RowsStoreResp initResp = (RowsStoreResp) JsonParser.jsonToObject(msg.obj + "", RowsStoreResp.class);
-
 //                    RowsStore rowsStore = initResp.getData();
                     if(initResp != null) {
                         List<Store> stores = initResp.getData();
                         storeList.setVisibility(View.VISIBLE);
                         storeList.setAdapter(new HomeStoreAdapter(getActivity(),stores));
+                        storeList.setOnItemClickListener(this);
 
                     }else{
 
@@ -445,6 +452,14 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
             UserInfosPref.getInstance(getActivity()).setServiceCityCode(selectedCity.getCityCode());
         }
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent storeIntent = new Intent(getActivity(), StoreDetailActivity.class);
+        Store store = (Store) adapterView.getAdapter().getItem(i);
+        storeIntent.putExtra("store_id",store.getId());
+        startActivity(storeIntent);
     }
 
     public class SpaceItemDecoration extends RecyclerView.ItemDecoration {

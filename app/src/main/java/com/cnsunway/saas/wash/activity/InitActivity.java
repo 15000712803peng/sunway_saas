@@ -40,7 +40,7 @@ public abstract class InitActivity extends BaseActivity implements LoadingDialog
 
     protected Handler handler = new Handler() {
         public void handleMessage(Message msg) {
-            if (isFinishing()) {
+            if (InitActivity.this == null || isFinishing()) {
                 return;
             }
             handlerMessage(msg);
