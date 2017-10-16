@@ -180,7 +180,7 @@
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="f0c90ba248f10e8d4e56018c4330d384" />
+            android:value="a6aa39b410b6edb382c6ac41aa04100e" />
 
         <service
             android:name="com.cnsunway.saas.wash.services.MyPushIntentService"

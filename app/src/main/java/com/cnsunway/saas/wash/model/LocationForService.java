@@ -10,6 +10,24 @@ public class LocationForService {
     String province = "";
     String adcode = "";
     String district = "";
+    String cityName;
+
+    public String getCityName() {
+        return cityName;
+    }
+    /*"address": "string",
+  "addressDetail": "string",
+  "cityCode": "string",
+  "cityName": "string",
+  "contact": "string",
+  "cityCode": "string",
+  "districtName": "string",
+  "gender": 0,
+  "id": 0,
+  "latitude": 0,
+  "longtitude": 0,
+  "mobile": "string",
+  "provinceName": "string"*/
 
     public String getCityCode() {
         return cityCode;

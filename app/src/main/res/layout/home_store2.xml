@@ -11,7 +11,7 @@
         android:paddingBottom="13dp"
         android:orientation="horizontal">
         <ImageView
-            android:scaleType="fitXY"
+            android:scaleType="fitCenter"
             android:id="@+id/image_store"
             android:layout_width="100dp"
             android:layout_height="86dp"

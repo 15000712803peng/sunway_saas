@@ -11,10 +11,8 @@ import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
 import com.cnsunway.saas.wash.model.LocationForService;
 import com.cnsunway.saas.wash.model.Order;
-import com.cnsunway.saas.wash.model.OrderSearchData;
 import com.cnsunway.saas.wash.model.RowsOrder;
 import com.cnsunway.saas.wash.resp.RowsOrderResp;
-import com.cnsunway.saas.wash.resp.SearchResp;
 import com.cnsunway.saas.wash.sharef.UserInfosPref;
 
 import java.text.SimpleDateFormat;

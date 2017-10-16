@@ -282,7 +282,7 @@ public class DoOrderActivity extends InitActivity implements View.OnClickListene
         genderManText.setOnClickListener(this);
         genderWomanText.setOnClickListener(this);
         //-----------------------
-        showDefaultAddrVolley.requestGet(Const.Request.showDefaultAddr, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+        showDefaultAddrVolley.requestPost(Const.Request.showDefaultAddr, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
         );
     }
 

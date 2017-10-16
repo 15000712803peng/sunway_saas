@@ -23,7 +23,6 @@ import android.widget.TextView;
 
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.cnst.Const;
-import com.cnsunway.saas.wash.dialog.ActionSheetDialog;
 import com.cnsunway.saas.wash.dialog.CancelOrderDialog2;
 import com.cnsunway.saas.wash.dialog.OperationToast;
 import com.cnsunway.saas.wash.dialog.ShareGiftDialog;
@@ -32,7 +31,6 @@ import com.cnsunway.saas.wash.dialog.WayOfShareDialog;
 import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.utils.DateUtil;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
-import com.cnsunway.saas.wash.helper.HxHelper;
 import com.cnsunway.saas.wash.model.Cloth;
 import com.cnsunway.saas.wash.model.Coupon;
 import com.cnsunway.saas.wash.model.Coupons;
@@ -51,7 +49,6 @@ import com.cnsunway.saas.wash.util.ShareUtil;
 import com.cnsunway.saas.wash.util.TextTool;
 import com.cnsunway.saas.wash.view.MySeekBar;
 import com.cnsunway.saas.wash.viewmodel.HomeViewModel;
-import com.hyphenate.chat.ChatClient;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
