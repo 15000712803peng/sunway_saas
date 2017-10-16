@@ -305,7 +305,6 @@ public class AddrActivity extends LoadingActivity implements  AdapterView.OnItem
                     startActivityForResult(intent, REQUEST_ADD_ADDR);
                 }
             });
-
             holder.editAddrParent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
