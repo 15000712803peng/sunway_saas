@@ -12,13 +12,11 @@ import java.util.List;
  */
 
 public class RowsStoreResp extends BaseResp{
-
     List<Store> data;
 
     public List<Store> getData() {
         return data;
     }
-
     public void setData(List<Store> data) {
         this.data = data;
     }

@@ -31,11 +31,10 @@ public class MyApp extends MultiDexApplication{
 
             @Override
             public void onFailure(String s, String s1) {
-
             }
         });
-        Preferences.init(this);
-        HxInitHelper.getInstance().init(this);
+//        Preferences.init(this);
+//        HxInitHelper.getInstance().init(this);
         mPushAgent.setPushIntentServiceClass(MyPushIntentService.class);
         ActiveAndroid.initialize(this);
 

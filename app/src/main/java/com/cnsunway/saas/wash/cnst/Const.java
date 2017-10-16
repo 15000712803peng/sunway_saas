@@ -88,6 +88,7 @@ public class Const {
         public static String recharge;
         public static String hxAccount;
         public static String recommendStores;
+        public static String storeDetail;
         public static void setServer(String baseUrl) {
             SERVER = baseUrl;
             code = SERVER + "/user/login/send_verify_code";
@@ -157,6 +158,7 @@ public class Const {
             allCityStores = SERVER +"/cities/service_range";
             recharge = SERVER + "#/recharge";
             hxAccount = SERVER + "/users/ocs/account";
+            storeDetail =SERVER + "/stores";
         }
 
         static {
@@ -347,6 +349,9 @@ public class Const {
 
         public static final int MSG_GET_RECC_STORES_SUCC = 142;
         public static final int MSG_GET_RECC_STORES_FAIL = 143;
+
+        public static final int MSG_GET_STORE_DETAIL_SUCC = 144;
+        public static final int MSG_GET_STORE_DETAIL_FAIL = 145;
 
 
 
