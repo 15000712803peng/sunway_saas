@@ -47,7 +47,7 @@
                         android:textColor="#111D2D"
                         android:textSize="13sp"/>
 
-                    <View
+                    <!--<View
                         android:layout_width="match_parent"
                         android:layout_height="12dp"
                         android:background="@color/home_bg"/>
@@ -149,7 +149,7 @@
 
                         </LinearLayout>
 
-                    </RelativeLayout>
+                    </RelativeLayout>-->
 
 
                 </LinearLayout>
@@ -227,7 +227,64 @@
                         android:layout_height="12dp"
                         android:background="@color/home_bg"/>
 
+                    <LinearLayout
+                        android:id="@+id/ll_banlance"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:clickable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingBottom="20dp"
+                        android:paddingRight="31dp"
+                        android:paddingTop="20dp">
 
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="35dp"
+                                android:layout_marginRight="12dp"
+                                android:src="@mipmap/icon_banlance"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="账户余额"
+                                android:textColor="#444A59"
+                                android:textSize="14sp"/>
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"/>
+
+                            <TextView
+                                android:id="@+id/text_user_balance"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="15dp"
+                                android:text="6630.00元"
+                                android:textColor="#8F939C"
+                                android:textSize="13dp"
+                                android:textStyle="bold"/>
+                        </LinearLayout>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/mine_arrow"/>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="#F0F4F5"/>
                     <LinearLayout
                         android:id="@+id/ll_addr_manage"
                         android:layout_width="match_parent"
@@ -274,7 +331,7 @@
                         android:background="#F0F4F5"/>
 
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:id="@+id/ll_recharge"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -363,7 +420,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="12dp"
-                        android:background="@color/home_bg"/>
+                        android:background="@color/home_bg"/>-->
 
 
                     <LinearLayout
@@ -529,7 +586,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="联系客服"
+                                android:text="我要投诉"
                                 android:textColor="#444A59"
                                 android:textSize="14sp"/>
                         </LinearLayout>
@@ -541,7 +598,7 @@
 
                     </LinearLayout>
 
-                    <View
+                    <!--<View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
                         android:background="#F0F4F5"/>
@@ -629,13 +686,10 @@
                             android:layout_height="wrap_content"
                             android:src="@mipmap/mine_arrow"/>
 
-                    </LinearLayout>
-
+                    </LinearLayout>-->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#F0F4F5"/>
-
+                        android:layout_height="12dp"/>
                     <LinearLayout
                         android:id="@+id/ll_version"
                         android:layout_width="match_parent"
@@ -670,12 +724,10 @@
                         </LinearLayout>
 
                     </LinearLayout>
-
-
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="12dp"/>
-
+                        android:layout_height="1dp"
+                        android:background="#F0F4F5"/>
                     <LinearLayout
                         android:id="@+id/ll_logout"
                         android:layout_width="match_parent"
