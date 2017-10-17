@@ -204,6 +204,11 @@ public class AddressSelectAMapActivity extends Activity {
                         intent.putExtra("cityName", centerRegeoAddress.getCity());
                         intent.putExtra("provinceName", centerRegeoAddress.getProvince());
                         intent.putExtra("countyName", centerRegeoAddress.getDistrict());
+
+//                        intent.putExtra("districtCode", centerRegeoAddress.getDistrict());
+//                        intent.putExtra("districtName", centerRegeoAddress.getDistrict());
+
+
                     }else{
                         intent.putExtra("cityCode", item.getCityCode());
                         intent.putExtra("cityName", item.getCityName());

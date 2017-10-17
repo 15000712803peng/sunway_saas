@@ -21,8 +21,6 @@ import android.widget.Toast;
 
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.activity.AddrActivity;
-import com.cnsunway.saas.wash.activity.BindCouponActivity;
-import com.cnsunway.saas.wash.activity.CouponActivity;
 import com.cnsunway.saas.wash.activity.HomeActivity2;
 import com.cnsunway.saas.wash.activity.LoginActivity;
 import com.cnsunway.saas.wash.activity.NapaCardActivity;
@@ -68,8 +66,8 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
     public static final int HEAD_FROM_SERVERSWITCH = 2105;
     @Bind(R.id.img_head_portrait)
     RoundedImageView imgHeadPortrait;
-    @Bind(R.id.text_user_coupon_num)
-    TextView tvUserCouponNum;
+    /*@Bind(R.id.text_user_coupon_num)
+    TextView tvUserCouponNum;*/
     @Bind(R.id.text_user_balance)
     TextView tvUserBalance;
     ImageLoader imageLoader;
@@ -78,16 +76,16 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
     StringVolley accountVolley;
     @Bind(R.id.ll_banlance)
     LinearLayout llBanlance;
-    @Bind(R.id.ll_user_coupon)
-    LinearLayout llUserCoupon;
-    @Bind(R.id.ll_recharge)
-    LinearLayout rechargeImage;
+    /*@Bind(R.id.ll_user_coupon)
+    LinearLayout llUserCoupon;*/
+    /*@Bind(R.id.ll_recharge)
+    LinearLayout rechargeImage;*/
     @Bind(R.id.ll_call_hotline)
     LinearLayout llCallHotline;
     @Bind(R.id.ll_logout)
     LinearLayout llLogout;
-    @Bind(R.id.ll_about_us)
-    LinearLayout llAboutUs;
+   /* @Bind(R.id.ll_about_us)
+    LinearLayout llAboutUs;*/
     @Bind(R.id.ll_addr_manage)
     LinearLayout llAddrManage;
 
@@ -95,24 +93,24 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
     LinearLayout llUserAgreement;
     @Bind(R.id.ll_question)
      LinearLayout llQuestion;
-    @Bind(R.id. ll_apply_invoice)
-    LinearLayout llApplyInvoice;
+    /*@Bind(R.id. ll_apply_invoice)
+    LinearLayout llApplyInvoice;*/
     @Bind(R.id.text_user)
     TextView userText;
     @Bind(R.id.rl_no_login)
     RelativeLayout noLoginParent;
     @Bind(R.id.ll_info)
     LinearLayout infoParent;
-    @Bind(R.id.ll_version)
-    LinearLayout versionParent;
+    /*@Bind(R.id.ll_version)
+    LinearLayout versionParent;*/
     ApkUpgradeHelper updateHelper;
     TextView versionText;
     @Bind(R.id.ll_developer)
     LinearLayout developerParent;
     @Bind(R.id.text_channel)
     TextView channelText;
-    @Bind(R.id.ll_bind_coupon)
-    LinearLayout bindCouponParent;
+    /*@Bind(R.id.ll_bind_coupon)
+    LinearLayout bindCouponParent;*/
     @Bind(R.id.napa_card_parent)
     LinearLayout napaCardParent;
     JsonVolley cardVolley;
@@ -154,7 +152,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                             .jsonToObject(msg.obj + "", AccountResp.class);
                     int couponNum = initResp.getData().getCouponCount();
                     String balanceNum = initResp.getData().getBalance();
-                        tvUserCouponNum.setText(couponNum + "");
+//                        tvUserCouponNum.setText(couponNum + "");
                         tvUserBalance.setText(NumberUtil.formatNumber(balanceNum));
                 } else if (msg.arg1 == Const.Request.REQUEST_FAIL) {
                     Toast.makeText(getActivity(), "获取账户信息失败", Toast.LENGTH_SHORT).show();
@@ -269,7 +267,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
 
     CallHotlineDialog callHotlineDialog;
     LogoutDialog logoutDialog;
-    @OnClick({R.id.img_head_portrait,R.id.ll_user_coupon,R.id.ll_banlance,R.id.ll_recharge,R.id.ll_call_hotline,R.id.ll_addr_manage,R.id.ll_user_agreement,R.id.ll_logout,R.id.ll_question, R.id.ll_apply_invoice,R.id.ll_about_us,R.id.ll_version,R.id.ll_developer,R.id.ll_bind_coupon/*,R.id.ll_online_custom*/})
+    @OnClick({R.id.img_head_portrait,/*R.id.ll_user_coupon,*/R.id.ll_banlance,/*R.id.ll_recharge,*/R.id.ll_call_hotline,R.id.ll_addr_manage,R.id.ll_user_agreement,R.id.ll_logout,R.id.ll_question/*, R.id.ll_apply_invoice,R.id.ll_about_us,R.id.ll_version*/,R.id.ll_developer/*,R.id.ll_bind_coupon,R.id.ll_online_custom*/})
     public void onClick(View view) {
         User user = UserInfosPref.getInstance(getActivity()).getUser();
         switch (view.getId()){
@@ -282,7 +280,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                     startActivity(intent);
                 }
                 break;
-            case R.id.ll_user_coupon:
+            /*case R.id.ll_user_coupon:
                 if (user != null) {
                     startActivity(new Intent(getActivity(), CouponActivity.class));
                 }else {
@@ -290,7 +288,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }
-                break;
+                break;*/
             case R.id.ll_banlance:
                 if (user != null) {
                     Intent intent = new Intent(getActivity(), WebActivity.class);
@@ -304,7 +302,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                     startActivity(intent);
                 }
                 break;
-            case R.id.ll_recharge:
+            /*case R.id.ll_recharge:
                 if (user != null) {
                     Intent intent = new Intent(getActivity(), WebActivity.class);
                     intent.putExtra("title","充值有礼");
@@ -315,7 +313,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     startActivity(intent);
                 }
-                break;
+                break;*/
 
             case R.id.ll_call_hotline:
                 callHotlineDialog = new CallHotlineDialog(getActivity()).builder();
@@ -354,13 +352,13 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                 logoutDialog.setOkLinstener(this);
                 logoutDialog.show();
                 break;
-            case R.id.ll_about_us: {
+            /*case R.id.ll_about_us: {
                 Intent intent = new Intent(getActivity(), WebActivity.class);
                 intent.putExtra("url", Const.Request.about);
                 intent.putExtra("title", "关于赛维");
                 startActivity(intent);
             }
-            break;
+            break;*/
 
             case R.id.ll_addr_manage:
                 if (user != null) {
@@ -386,7 +384,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                 startActivity(intent);
             }
             break;
-            case R.id.ll_apply_invoice: {
+           /* case R.id.ll_apply_invoice: {
                 Intent intent = new Intent(getActivity(), WebActivity.class);
                 intent.putExtra("url", Const.Request.invoices);
                 intent.putExtra("title", "发票申请");
@@ -397,14 +395,14 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
             case  R.id.ll_version:
                 updateHelper = new ApkUpgradeHelper(getActivity());
                 updateHelper.check(true);
-                break;
+                break; */
 
             case R.id.ll_developer:
                 startActivityForResult(new Intent(getActivity(), ServerSwitchActivity.class), HEAD_FROM_SERVERSWITCH);
                 break;
-            case R.id.ll_bind_coupon:
+            /*case R.id.ll_bind_coupon:
                 startActivity(new Intent(getActivity(),BindCouponActivity.class));
-                break;
+                break;*/
            /* case R.id.ll_online_custom:
 
 
@@ -522,7 +520,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(getView() == null){
             setView(inflater.inflate(R.layout.fragment_mine2,container,false));
-            initMyViews(getView());
+//            initMyViews(getView());
         }
         ButterKnife.bind(this, getView());
         load();

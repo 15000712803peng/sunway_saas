@@ -353,15 +353,31 @@ public class AddAddrActivity2 extends InitActivity implements View.OnClickListen
 
     String latitude = "";
     String longtitule = "";
-
+    String cityCode = "";
+    String cityName = "";
+    String provinceName ="";
+    String districtCode = "";
+    String districtName = "";
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 0 && resultCode == RESULT_OK) {
             longtitule = data.getStringExtra("longtitule");
             latitude = data.getStringExtra("latitude");
+            cityCode = data.getStringExtra("cityCode");;
+            cityName = data.getStringExtra("cityName");
+            provinceName = data.getStringExtra("provinceName");
+//            districtCode = data.getStringExtra("districtCode");
+//            provinceName = data.getStringExtra("districtName");
+
             createAddrVolley.addParams("longtitude", longtitule);
             createAddrVolley.addParams("latitude", latitude);
+            createAddrVolley.addParams("cityCode", cityCode);
+            createAddrVolley.addParams("cityName", cityName);
+            createAddrVolley.addParams("provinceName", provinceName);
+            createAddrVolley.addParams("districtCode", cityCode);
+            createAddrVolley.addParams("districtName", cityName);
+
             addrPrefixText.setText(data.getStringExtra("address"));
             addrEndfixEdit.setText(data.getStringExtra("addressDetail"));
         }
