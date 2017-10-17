@@ -686,13 +686,10 @@
                             android:layout_height="wrap_content"
                             android:src="@mipmap/mine_arrow"/>
 
-                    </LinearLayout>
-
+                    </LinearLayout>-->
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#F0F4F5"/>
-
+                        android:layout_height="12dp"/>
                     <LinearLayout
                         android:id="@+id/ll_version"
                         android:layout_width="match_parent"
@@ -726,13 +723,11 @@
                                 android:textSize="14sp"/>
                         </LinearLayout>
 
-                    </LinearLayout>-->
-
-
+                    </LinearLayout>
                     <View
                         android:layout_width="match_parent"
-                        android:layout_height="12dp"/>
-
+                        android:layout_height="1dp"
+                        android:background="#F0F4F5"/>
                     <LinearLayout
                         android:id="@+id/ll_logout"
                         android:layout_width="match_parent"

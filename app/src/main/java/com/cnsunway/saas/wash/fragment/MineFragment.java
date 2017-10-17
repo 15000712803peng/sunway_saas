@@ -101,8 +101,8 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
     RelativeLayout noLoginParent;
     @Bind(R.id.ll_info)
     LinearLayout infoParent;
-    /*@Bind(R.id.ll_version)
-    LinearLayout versionParent;*/
+    @Bind(R.id.ll_version)
+    LinearLayout versionParent;
     ApkUpgradeHelper updateHelper;
     TextView versionText;
     @Bind(R.id.ll_developer)
@@ -267,7 +267,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
 
     CallHotlineDialog callHotlineDialog;
     LogoutDialog logoutDialog;
-    @OnClick({R.id.img_head_portrait,/*R.id.ll_user_coupon,*/R.id.ll_banlance,/*R.id.ll_recharge,*/R.id.ll_call_hotline,R.id.ll_addr_manage,R.id.ll_user_agreement,R.id.ll_logout,R.id.ll_question/*, R.id.ll_apply_invoice,R.id.ll_about_us,R.id.ll_version*/,R.id.ll_developer/*,R.id.ll_bind_coupon,R.id.ll_online_custom*/})
+    @OnClick({R.id.img_head_portrait,/*R.id.ll_user_coupon,*/R.id.ll_banlance,/*R.id.ll_recharge,*/R.id.ll_call_hotline,R.id.ll_addr_manage,R.id.ll_user_agreement,R.id.ll_logout,R.id.ll_question/*, R.id.ll_apply_invoice,R.id.ll_about_us*/,R.id.ll_version,R.id.ll_developer/*,R.id.ll_bind_coupon,R.id.ll_online_custom*/})
     public void onClick(View view) {
         User user = UserInfosPref.getInstance(getActivity()).getUser();
         switch (view.getId()){
@@ -390,12 +390,12 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                 intent.putExtra("title", "发票申请");
                 startActivity(intent);
             }
-            break;
+            break; */
 
             case  R.id.ll_version:
                 updateHelper = new ApkUpgradeHelper(getActivity());
                 updateHelper.check(true);
-                break; */
+                break;
 
             case R.id.ll_developer:
                 startActivityForResult(new Intent(getActivity(), ServerSwitchActivity.class), HEAD_FROM_SERVERSWITCH);
@@ -520,7 +520,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if(getView() == null){
             setView(inflater.inflate(R.layout.fragment_mine2,container,false));
-//            initMyViews(getView());
+            initMyViews(getView());
         }
         ButterKnife.bind(this, getView());
         load();
