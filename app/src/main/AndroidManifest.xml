@@ -50,6 +50,15 @@
 
         </activity>
 
+        <activity android:name="com.cnsunway.saas.wash.activity.MorePriceActivity"
+            android:launchMode="singleTop"
+            >
+
+        </activity>
+
+
+
+
         <activity android:name="com.cnsunway.saas.wash.activity.StoreDetailActivity"
             android:launchMode="singleTop"
             >

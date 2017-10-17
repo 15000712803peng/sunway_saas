@@ -9,12 +9,14 @@ import android.os.Message;
 import android.os.PersistableBundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -54,6 +56,19 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
     LocationForService locationForService;
     String storeId;
     RecyclerView productsView;
+    TextView storeNameText;
+    ImageView oneScoreImage;
+    ImageView twoScoreImage;
+    ImageView threeScoreImage;
+    ImageView fourScoreImage;
+    ImageView fiveScoreImage;
+    TextView  scoreText;
+    TextView serviceCountText;
+    TextView feeText;
+    TextView addrText;
+    TextView openTimeText;
+    RelativeLayout morePrice;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_store_detail);
@@ -79,6 +94,26 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
     protected void initViews() {
         storeBanner = (Banner) findViewById(R.id.banner_store);
         productsView = (RecyclerView) findViewById(R.id.products_view);
+        storeNameText = (TextView) findViewById(R.id.store_name);
+        oneScoreImage = (ImageView) findViewById(R.id.score_one);
+        twoScoreImage = (ImageView) findViewById(R.id.score_two);
+        threeScoreImage = (ImageView) findViewById(R.id.score_three);
+        fourScoreImage = (ImageView) findViewById(R.id.score_four);
+        fiveScoreImage = (ImageView) findViewById(R.id.score_five);
+        scoreText = (TextView) findViewById(R.id.text_score);
+        serviceCountText = (TextView) findViewById(R.id.text_service_count);
+        feeText = (TextView) findViewById(R.id.text_fee);
+        addrText = (TextView) findViewById(R.id.text_addr);
+        openTimeText = (TextView) findViewById(R.id.text_open_time);
+        morePrice = (RelativeLayout) findViewById(R.id.more_price);
+        morePrice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StoreDetailActivity.this,MorePriceActivity.class);
+                intent.putExtra("store_id",storeId);
+                startActivity(intent);
+            }
+        });
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         productsView.setLayoutManager(layoutManager);
         ViewGroup.LayoutParams layoutParams = productsView.getLayoutParams();
@@ -128,10 +163,69 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
 
     }
 
+    private void fillStoreInfo(StoreDetail store){
+        if(!TextUtils.isEmpty(store.getStoreName())){
+            storeNameText.setText(store.getStoreName());
+        }
+        scoreText.setText(store.getScore() + "");
+        switch (store.getScore()){
+            case 0:
+                oneScoreImage.setImageResource(R.mipmap.star_gray);
+                twoScoreImage.setImageResource(R.mipmap.star_gray);
+                threeScoreImage.setImageResource(R.mipmap.star_gray);
+                fourScoreImage.setImageResource(R.mipmap.star_gray);
+                fiveScoreImage.setImageResource(R.mipmap.star_gray);
+                break;
+            case 1:
+                oneScoreImage.setImageResource(R.mipmap.star_orange);
+                twoScoreImage.setImageResource(R.mipmap.star_gray);
+                threeScoreImage.setImageResource(R.mipmap.star_gray);
+                fourScoreImage.setImageResource(R.mipmap.star_gray);
+                fiveScoreImage.setImageResource(R.mipmap.star_gray);
+                break;
+            case 2:
+                oneScoreImage.setImageResource(R.mipmap.star_orange);
+                twoScoreImage.setImageResource(R.mipmap.star_orange);
+                threeScoreImage.setImageResource(R.mipmap.star_gray);
+                fourScoreImage.setImageResource(R.mipmap.star_gray);
+                fiveScoreImage.setImageResource(R.mipmap.star_gray);
+                break;
+            case 3:
+                oneScoreImage.setImageResource(R.mipmap.star_orange);
+                twoScoreImage.setImageResource(R.mipmap.star_orange);
+                threeScoreImage.setImageResource(R.mipmap.star_orange);
+                fourScoreImage.setImageResource(R.mipmap.star_gray);
+                fiveScoreImage.setImageResource(R.mipmap.star_gray);
+                break;
+            case 4:
+                oneScoreImage.setImageResource(R.mipmap.star_orange);
+                twoScoreImage.setImageResource(R.mipmap.star_orange);
+                threeScoreImage.setImageResource(R.mipmap.star_orange);
+                fourScoreImage.setImageResource(R.mipmap.star_orange);
+                fiveScoreImage.setImageResource(R.mipmap.star_gray);
+                break;
+            case 5:
+                oneScoreImage.setImageResource(R.mipmap.star_orange);
+                twoScoreImage.setImageResource(R.mipmap.star_orange);
+                threeScoreImage.setImageResource(R.mipmap.star_orange);
+                fourScoreImage.setImageResource(R.mipmap.star_orange);
+                fiveScoreImage.setImageResource(R.mipmap.star_orange);
+                break;
+
+
+        }
+        serviceCountText.setText("已服务 " +store.getServiceCount() + " 次");
+        String fee = "订单满 " + store.getFreightRemitAmount() + " 元免 " + store.getFreightAmount() + " 元取送费"   + ",满 " + store.getStartAmount()+" 元上门";
+        feeText.setText(fee);
+        addrText.setText(store.getAddress()+"");
+        openTimeText.setText(store.getBeginService()+"-" + store.getEndService());
+
+    }
+
     private void fillDetail(StoreDetail store){
         loadStoreImages(store);
+        fillStoreInfo(store);
         if(store.getHotProducts() != null){
-            Log.e("-------------","size:" + store.getHotProducts().size());
             productsView.setAdapter(new HotProductsAdapter(store.getHotProducts()));
 //            productsView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         }

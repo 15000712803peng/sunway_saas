@@ -58,8 +58,8 @@
 
 
     <View
-        android:background="@color/text_gray"
+        android:background="@mipmap/tab_shadow"
         android:layout_width="match_parent"
-        android:layout_height="1px"/>
+        android:layout_height="1dp"/>
 
 </LinearLayout>

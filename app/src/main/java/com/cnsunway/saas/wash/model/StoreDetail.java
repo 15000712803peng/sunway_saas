@@ -32,6 +32,33 @@ public class StoreDetail {
     String withdrawerBank; // 中国银行",
     String withdrawerBankAccount; //13242353466867987",
     String withdrawerName; //
+    String freightRemitAmount;
+    String freightAmount;
+    String startAmount = "0";
+
+    public String getStartAmount() {
+        return startAmount;
+    }
+
+    public void setStartAmount(String startAmount) {
+        this.startAmount = startAmount;
+    }
+
+    public String getFreightAmount() {
+        return freightAmount;
+    }
+
+    public void setFreightAmount(String freightAmount) {
+        this.freightAmount = freightAmount;
+    }
+
+    public String getFreightRemitAmount() {
+        return freightRemitAmount;
+    }
+
+    public void setFreightRemitAmount(String freightRemitAmount) {
+        this.freightRemitAmount = freightRemitAmount;
+    }
 
     public String getAddress() {
         return address;

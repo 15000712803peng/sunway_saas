@@ -89,6 +89,8 @@ public class Const {
         public static String hxAccount;
         public static String recommendStores;
         public static String storeDetail;
+        public static String storeCategories;
+        public static String products;
         public static void setServer(String baseUrl) {
             SERVER = baseUrl;
             code = SERVER + "/user/login/send_verify_code";
@@ -159,6 +161,8 @@ public class Const {
             recharge = SERVER + "#/recharge";
             hxAccount = SERVER + "/users/ocs/account";
             storeDetail =SERVER + "/stores";
+            storeCategories = SERVER +"/stores";
+            products = SERVER +"/stores";
         }
 
         static {
@@ -353,7 +357,11 @@ public class Const {
         public static final int MSG_GET_STORE_DETAIL_SUCC = 144;
         public static final int MSG_GET_STORE_DETAIL_FAIL = 145;
 
+        public static final int MSG_GET_STORE_CATEGORIES_SUCC = 146;
+        public static final int MSG_GET_STORE_CATEGORIES_FAIL = 147;
 
+        public static final int MSG_GET_PRODUCTS_SUCC = 148;
+        public static final int MSG_GET_PRODUCTS_FAIL = 149;
 
     }
 
