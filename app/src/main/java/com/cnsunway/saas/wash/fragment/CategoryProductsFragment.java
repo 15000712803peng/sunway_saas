@@ -1,68 +1,67 @@
-package com.cnsunway.saas.wash.activity;
+package com.cnsunway.saas.wash.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
-import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cnsunway.saas.wash.R;
+import com.cnsunway.saas.wash.activity.MorePriceActivity;
 import com.cnsunway.saas.wash.cnst.Const;
-import com.cnsunway.saas.wash.fragment.CategoryProductsFragment;
-import com.cnsunway.saas.wash.fragment.ProductsFragment;
 import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.net.NetParams;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
 import com.cnsunway.saas.wash.model.LocationForService;
+import com.cnsunway.saas.wash.model.Product;
 import com.cnsunway.saas.wash.model.ProductCatogery;
 import com.cnsunway.saas.wash.model.SecondCategories;
-import com.cnsunway.saas.wash.resp.ProductCatogeriesResp;
+import com.cnsunway.saas.wash.resp.ProductsResp;
 import com.cnsunway.saas.wash.sharef.UserInfosPref;
 import com.cnsunway.saas.wash.view.PagerSlidingTabStrip;
 
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
+/**
+ * Created by Administrator on 2017/6/22 0022.
+ */
 
+public class CategoryProductsFragment extends BaseFragment{
 
-public class MorePriceActivity extends InitActivity{
-
-    JsonVolley getStoreCatogeriesVolley;
     String storeId;
     LocationForService locationForService;
-    @Bind(R.id.tabs)
+    List<ProductCatogery> productCatogeries;
     PagerSlidingTabStrip tabs;
-    @Bind(R.id.pager)
     ViewPager pagers;
-    @Bind(R.id.text_title)
-    TextView title;
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        setContentView(R.layout.activity_more_price);
-        ButterKnife.bind(this);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        storeId = getIntent().getStringExtra("store_id");
-        locationForService = UserInfosPref.getInstance(this).getLocationServer();
-        getStoreCatogeriesVolley = new JsonVolley(this, Const.Message.MSG_GET_STORE_CATEGORIES_SUCC,Const.Message.MSG_GET_STORE_CATEGORIES_FAIL);
-        getStoreCatogeriesVolley.requestGet(Const.Request.storeCategories + "/" + storeId +"/categories",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
-
+         storeId = getArguments().getString("store_id");
+        productCatogeries = ((SecondCategories)JsonParser.jsonToObject(getArguments().getString("second_ategories"),SecondCategories.class)).getSecondCategories();
+        locationForService = UserInfosPref.getInstance(getActivity()).getLocationServer();
 
     }
 
     private void initTabs(List<ProductCatogery> products){
         DisplayMetrics dm = getResources().getDisplayMetrics();
-        pagers.setAdapter(new ProductAdapter(getSupportFragmentManager(),products));
+        pagers.setAdapter(new ProductAdapter(getChildFragmentManager(),products));
         tabs.setViewPager(pagers);
-
         // 设置Tab的分割线是透明的
         tabs.setDividerColor(Color.TRANSPARENT);
 
@@ -88,40 +87,43 @@ public class MorePriceActivity extends InitActivity{
         tabs.setTabBackground(0);
         tabs.setShouldExpand(false);
 
-
     }
 
+    @Nullable
     @Override
-    protected void initData() {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+     if(getView() == null){
+         setView(inflater.inflate(R.layout.fragment_category_products,container,false));
+         tabs = (PagerSlidingTabStrip) getView().findViewById(R.id.tabs);
+         pagers = (ViewPager) getView().findViewById(R.id.pager);
+         initTabs(productCatogeries);
+     }
 
-    }
-
-    @Override
-    protected void initViews() {
-        title.setText("价目表");
+        return getView();
     }
 
     @Override
     protected void handlerMessage(Message msg) {
-        switch (msg.what){
-            case Const.Message.MSG_GET_STORE_CATEGORIES_SUCC:
-                if(msg.arg1 == NetParams.RESPONCE_NORMAL){
-                    ProductCatogeriesResp resp = (ProductCatogeriesResp) JsonParser.jsonToObject(msg.obj +"",ProductCatogeriesResp.class);
-                    if(resp.getData() != null && resp.getData().size() > 0){
-                        initTabs(resp.getData());
-                    }
-                }else {
 
-                }
-                break;
-
-            case Const.Message.MSG_GET_STORE_CATEGORIES_FAIL:
-
-                break;
-
-        }
     }
 
+    @Override
+    protected void initFragmentDatas() {
+
+    }
+
+    @Override
+    protected void initMyViews(View view) {
+
+    }
+
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
 
 
     public class ProductAdapter extends FragmentPagerAdapter {
@@ -146,23 +148,14 @@ public class MorePriceActivity extends InitActivity{
         @Override
         public Fragment getItem(int position) {
             ProductCatogery productCategory = productCategories.get(position);
-            if(productCategory.getSecondCategories() != null && productCategory.getSecondCategories().size() > 0){
-                CategoryProductsFragment productsFragment =  new CategoryProductsFragment();
-                Bundle productsData = new Bundle();
-                productsData.putString("store_id", storeId);
-                SecondCategories secondCategories = new SecondCategories();
-                secondCategories.setSecondCategories(productCategory.getSecondCategories());
-                productsData.putString("second_ategories", JsonParser.objectToJsonStr(secondCategories));
-                productsFragment.setArguments(productsData);
-                return productsFragment;
-            }else {
+
                 ProductsFragment productsFragment =  new ProductsFragment();
                 Bundle productsData = new Bundle();
                 productsData.putString("store_id", storeId);
                 productsData.putString("category_id", productCategory.getId());
                 productsFragment.setArguments(productsData);
                 return productsFragment;
-            }
+
 
         }
 
@@ -170,9 +163,5 @@ public class MorePriceActivity extends InitActivity{
         public int getCount() {
             return productCategories.size();
         }
-    }
-
-    public void back(View view){
-        finish();
     }
 }
