@@ -20,7 +20,7 @@ import com.cnsunway.saas.wash.R;
  */
 
 public class NotificationFragment extends BaseFragment implements View.OnClickListener{
-    TextView orderTabText,activityTabText,title,customTabText;
+    TextView orderTabText,activityTabText,title/*,customTabText*/;
     FrameLayout messageParent;
     FragmentManager mFragmentManager;
     CustomMessageFragment customMessageFragment;
@@ -55,15 +55,15 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
         messageTab = (LinearLayout) view.findViewById(R.id.tab_message);
         orderTabText = (TextView) view.findViewById(R.id.text_order_tab);
         activityTabText = (TextView) view.findViewById(R.id.text_activity_tab);
-        customTabText = (TextView) view.findViewById(R.id.text_custom_tab);
+//        customTabText = (TextView) view.findViewById(R.id.text_custom_tab);
         messageParent = (FrameLayout) view.findViewById(R.id.parent_message);
         hasActivity = (ImageView) view.findViewById(R.id.iv_has_activity);
         orderTabText.setSelected(true);
-        customTabText.setSelected(true);
+//        customTabText.setSelected(true);
         activityTabText.setSelected(false);
         orderTabText.setOnClickListener(this);
         activityTabText.setOnClickListener(this);
-        customTabText.setOnClickListener(this);
+//        customTabText.setOnClickListener(this);
     }
 
     @Nullable
@@ -134,10 +134,10 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
             doTabChanged(orderMessageFragment);
             orderTabText.setSelected(true);
             activityTabText.setSelected(false);
-            customTabText.setSelected(false);
+//            customTabText.setSelected(false);
             orderTabText.setTextColor(this.getResources().getColor(R.color.text));
             activityTabText.setTextColor(this.getResources().getColor(R.color.text_gray2));
-            customTabText.setTextColor(this.getResources().getColor(R.color.text_gray2));
+//            customTabText.setTextColor(this.getResources().getColor(R.color.text_gray2));
             if(orderMessageFragment != null&& orderMessageFragment.isAdded()){
                 orderMessageFragment.onRefresh();
             }
@@ -148,13 +148,13 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
             }
             doTabChanged(activityMessageFragment);
             orderTabText.setSelected(false);
-            customTabText.setSelected(false);
+//            customTabText.setSelected(false);
             activityTabText.setSelected(true);
             orderTabText.setTextColor(this.getResources().getColor(R.color.text_gray2));
-            customTabText.setTextColor(this.getResources().getColor(R.color.text_gray2));
+//            customTabText.setTextColor(this.getResources().getColor(R.color.text_gray2));
             activityTabText.setTextColor(this.getResources().getColor(R.color.text));
             hasNewNofitication(false);
-        }else if(view == customTabText){
+        }/*else if(view == customTabText){
             doTabChanged(customMessageFragment);
             customTabText.setSelected(true);
             activityTabText.setSelected(false);
@@ -166,7 +166,7 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
                 customMessageFragment.onRefresh();
             }
 
-        }
+        }*/
     }
 
     public void hasNewNofitication(boolean isSet){

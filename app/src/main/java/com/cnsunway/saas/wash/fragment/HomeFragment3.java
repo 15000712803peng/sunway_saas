@@ -33,12 +33,7 @@ import com.cnsunway.saas.wash.activity.DoOrderActivity;
 import com.cnsunway.saas.wash.activity.EvaluateActivity;
 import com.cnsunway.saas.wash.activity.LoginActivity;
 import com.cnsunway.saas.wash.activity.OrderDetailActivity;
-<<<<<<< HEAD
-=======
-import com.cnsunway.saas.wash.activity.OrderDetailActivity2;
-import com.cnsunway.saas.wash.activity.ServiceAreaActivity;
 import com.cnsunway.saas.wash.activity.StoreDetailActivity;
->>>>>>> fcff3e8e6923086943cf0074edb2a393ccd3b03b
 import com.cnsunway.saas.wash.activity.WebActivity;
 import com.cnsunway.saas.wash.adapter.HomeStoreAdapter;
 import com.cnsunway.saas.wash.cnst.Const;

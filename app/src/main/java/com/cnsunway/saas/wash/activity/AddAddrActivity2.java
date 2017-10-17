@@ -338,7 +338,6 @@ public class AddAddrActivity2 extends InitActivity implements View.OnClickListen
             createAddrVolley.addParams("cityName", addr.getCityName());
             createAddrVolley.addParams("districtCode",addr.getDistrictCode());
             createAddrVolley.addParams("districtName", addr.getDistrictName());
-
             setOperationMsg(getString(R.string.operating));
             createAddrVolley.requestPost(Const.Request.updateAddr, this,getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
             );

@@ -2,7 +2,6 @@ package com.cnsunway.saas.wash.activity;
 
 import android.annotation.TargetApi;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
@@ -16,7 +15,6 @@ import android.widget.TextView;
 
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.cnst.Const;
-import com.cnsunway.saas.wash.dialog.ActionSheetDialog;
 import com.cnsunway.saas.wash.dialog.DoOrderFailDialog;
 import com.cnsunway.saas.wash.dialog.DoOrderSuccessDialog;
 import com.cnsunway.saas.wash.dialog.OperationToast;
@@ -25,7 +23,6 @@ import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.net.StringVolley;
 import com.cnsunway.saas.wash.framework.utils.DateUtil;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
-import com.cnsunway.saas.wash.helper.HxHelper;
 import com.cnsunway.saas.wash.model.Addr;
 import com.cnsunway.saas.wash.model.LocationForService;
 import com.cnsunway.saas.wash.model.ServiceCity;
@@ -36,7 +33,6 @@ import com.cnsunway.saas.wash.resp.OrderDetailResp;
 import com.cnsunway.saas.wash.resp.ShippingFeeResp;
 import com.cnsunway.saas.wash.sharef.UserInfosPref;
 import com.cnsunway.saas.wash.util.FontUtil;
-import com.hyphenate.chat.ChatClient;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -80,7 +76,7 @@ public class DoOrderActivity extends InitActivity implements View.OnClickListene
     LinearLayout hasAddrParent;
     LinearLayout noAddrParent;
     ServiceCity defaultCity;
-    ImageView conntactImage;
+//    ImageView conntactImage;
 
 
     private String getDefaultOrderTime() {
@@ -220,8 +216,8 @@ public class DoOrderActivity extends InitActivity implements View.OnClickListene
 
         hasAddrParent = (LinearLayout) findViewById(R.id.ll_has_addr);
         noAddrParent = (LinearLayout) findViewById(R.id.ll_no_addr);
-        conntactImage = (ImageView) findViewById(R.id.image_contact_me);
-        conntactImage.setOnClickListener(new View.OnClickListener() {
+//        conntactImage = (ImageView) findViewById(R.id.image_contact_me);
+        /*conntactImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new ActionSheetDialog(DoOrderActivity.this)
@@ -250,7 +246,7 @@ public class DoOrderActivity extends InitActivity implements View.OnClickListene
                                 })
                         .show();
             }
-        });
+        });*/
 //        needWashShoes = washShoesBox.isChecked() ? 1:0;
         if (washShoesImage.isShown()) {
             needWashShoes = 1;

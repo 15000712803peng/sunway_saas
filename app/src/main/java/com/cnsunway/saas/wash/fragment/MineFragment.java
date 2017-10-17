@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -30,7 +29,6 @@ import com.cnsunway.saas.wash.activity.NapaCardActivity;
 import com.cnsunway.saas.wash.activity.ServerSwitchActivity;
 import com.cnsunway.saas.wash.activity.WebActivity;
 import com.cnsunway.saas.wash.cnst.Const;
-import com.cnsunway.saas.wash.dialog.ActionSheetDialog;
 import com.cnsunway.saas.wash.dialog.CallHotlineDialog;
 import com.cnsunway.saas.wash.dialog.LogoutDialog;
 import com.cnsunway.saas.wash.framework.net.JsonVolley;
@@ -320,9 +318,9 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                 break;
 
             case R.id.ll_call_hotline:
-               /* callHotlineDialog = new CallHotlineDialog(getActivity()).builder();
-                callHotlineDialog.show();*/
-                        new ActionSheetDialog(getActivity())
+                callHotlineDialog = new CallHotlineDialog(getActivity()).builder();
+                callHotlineDialog.show();
+                        /*new ActionSheetDialog(getActivity())
                                 .builder()
                                 .setCancelable(true)
                                 .setCanceledOnTouchOutside(true).setTitle("我们将为您提供满意的咨询服务").
@@ -347,7 +345,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                                                 startActivity(intent);
                                             }
                                         })
-                                .show();
+                                .show();*/
 
                 break;
 
