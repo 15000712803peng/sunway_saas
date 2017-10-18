@@ -16,6 +16,25 @@ public class Comment {
     int storeScore;
     String updatedDate;
     String userId;
+    String nickName;
+
+    public String getHeadPortraitUrl() {
+        return headPortraitUrl;
+    }
+
+    public void setHeadPortraitUrl(String headPortraitUrl) {
+        this.headPortraitUrl = headPortraitUrl;
+    }
+
+    String headPortraitUrl  ;
+
+    public String getNickName() {
+        return nickName;
+    }
+
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
+    }
 
     public String getComment() {
         return comment;

@@ -25,14 +25,14 @@ public class AllMessage implements Serializable {
     String couponDescription;
     String rechargeAmount;
     /*String name;
-    String amount;
+    String couponCount;
 
-    public String getAmount() {
-        return amount;
+    public String getCouponCount() {
+        return couponCount;
     }
 
-    public void setAmount(String amount) {
-        this.amount = amount;
+    public void setCouponCount(String couponCount) {
+        this.couponCount = couponCount;
     }
 
     public String getName() {

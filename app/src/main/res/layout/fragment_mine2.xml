@@ -268,7 +268,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingRight="15dp"
-                                android:text="6630.00元"
+                                android:text=""
                                 android:textColor="#8F939C"
                                 android:textSize="13dp"
                                 android:textStyle="bold"/>
@@ -423,7 +423,7 @@
                         android:background="@color/home_bg"/>-->
 
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:id="@+id/ll_question"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -466,7 +466,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/line_bg"/>
+                        android:background="@color/line_bg"/>-->
 
                     <LinearLayout
                         android:id="@+id/ll_user_agreement"
@@ -508,10 +508,10 @@
 
                     </LinearLayout>
 
-                    <View
+                    <!--<View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="#F0F4F5"/>
+                        android:background="#F0F4F5"/>-->
 
                     <!--<LinearLayout
                         android:id="@+id/ll_online_custom"
@@ -558,7 +558,7 @@
                         android:layout_height="1dp"
                         android:background="#F0F4F5"/>-->
 
-                    <LinearLayout
+                   <!-- <LinearLayout
                         android:id="@+id/ll_call_hotline"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -596,7 +596,7 @@
                             android:layout_height="wrap_content"
                             android:src="@mipmap/mine_arrow"/>
 
-                    </LinearLayout>
+                    </LinearLayout>-->
 
                     <!--<View
                         android:layout_width="match_parent"

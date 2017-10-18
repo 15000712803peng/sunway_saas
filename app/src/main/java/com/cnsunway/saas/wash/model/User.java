@@ -78,16 +78,6 @@ public class User {
     }
 
 
-    /*  "id":22,
-        "isTester":false,
-        "lastLoginChannel":3,
-        "lastLoginDate":"2017-10-13 11:47:23",
-        "mobile":"13661449137",
-        "registerChannel":3,
-        "registerDate":"2017-10-13 11:47:23",
-        "token":"12d5a78c0f0b4ce0a00774c838a996f6",
-        "userOid":"98d548f99b424721a2840033c138e6b8"*/
-
     public String getHxPwd() {
         return hxPwd;
     }

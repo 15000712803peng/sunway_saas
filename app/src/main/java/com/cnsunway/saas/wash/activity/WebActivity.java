@@ -109,7 +109,8 @@ public class WebActivity extends CordovaActivity implements PayChoiceDialog.Sele
 				}else {
 					query = u.getQuery() +"&temp="+UserInfosPref.getInstance(this).getUser().getToken()+"&mobile=" + UserInfosPref.getInstance(this).getUserName();
 				}
-				url = u.getProtocol()+ "://" + u.getHost()+"/"+ u.getPath() +"?"+ query;
+//				url = u.getProtocol()+ "://" + u.getHost()+"/"+ u.getPath() +"?"+ query;
+				url = u.getProtocol()+ "://" + u.getHost() +"?"+ query;
 				if(!TextUtils.isEmpty(u.getRef())){
 					url += "#" + u.getRef();
 				}

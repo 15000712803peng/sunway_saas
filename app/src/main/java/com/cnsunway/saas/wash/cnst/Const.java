@@ -112,7 +112,7 @@ public class Const {
             creaetAddr = SERVER + "/user/address/create";            //创建地址
             updateAddr = SERVER + "/user/address/update";     //   修改地址
             showDefaultAddr = SERVER + "/user/address/default";   //展示默认地址
-            all = SERVER + "/accounts/all";
+            all = SERVER + "/user/account/balance";
             pay = SERVER + "/accounts/pay";
             confirmPay = SERVER + "/pay/confirmPay";
             confirmDone = SERVER + "/orders/confirmDone";

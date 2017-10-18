@@ -6,30 +6,29 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Message;
-import android.os.PersistableBundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cnsunway.saas.wash.R;
+import com.cnsunway.saas.wash.adapter.CommentsAdapter;
 import com.cnsunway.saas.wash.cnst.Const;
 import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.net.NetParams;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
 import com.cnsunway.saas.wash.model.LocationForService;
-import com.cnsunway.saas.wash.model.Marketing;
 import com.cnsunway.saas.wash.model.Product;
-import com.cnsunway.saas.wash.model.Store;
 import com.cnsunway.saas.wash.model.StoreDetail;
 import com.cnsunway.saas.wash.model.StoreImage;
 import com.cnsunway.saas.wash.resp.StoreDetailResp;
@@ -47,7 +46,7 @@ import java.util.List;
  * Created by Administrator on 2017/10/16 0016.
  */
 
-public class StoreDetailActivity extends InitActivity implements OnBannerListener {
+public class StoreDetailActivity extends InitActivity implements OnBannerListener,AdapterView.OnItemClickListener{
 
     Banner storeBanner;
     ImageLoader imageLoader;
@@ -68,6 +67,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
     TextView addrText;
     TextView openTimeText;
     RelativeLayout morePrice;
+    ListView commentView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -106,6 +106,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         addrText = (TextView) findViewById(R.id.text_addr);
         openTimeText = (TextView) findViewById(R.id.text_open_time);
         morePrice = (RelativeLayout) findViewById(R.id.more_price);
+        commentView = (ListView) findViewById(R.id.list_comment);
         morePrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -228,6 +229,9 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         if(store.getHotProducts() != null){
             productsView.setAdapter(new HotProductsAdapter(store.getHotProducts()));
 //            productsView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+            commentView.setAdapter( new CommentsAdapter(store.getComments(),getApplication()));
+            commentView.setOnItemClickListener(this);
+
         }
     }
 
@@ -250,6 +254,16 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
     public void OnBannerClick(int position) {
 
     }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+//        Intent commentIntent = new Intent(getApplication(),Comment.class);
+
+
+    }
+
+
 
     private class HotProductsAdapter extends RecyclerView.Adapter<HotProductsAdapter.CourseViewViewHolder> {
         List<Product> hotProducts;
@@ -334,4 +348,6 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
 //                }
         }
     }
+
+
 }

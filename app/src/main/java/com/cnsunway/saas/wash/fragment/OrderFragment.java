@@ -150,7 +150,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
                         }
 
 //                        if(!TextUtils.isEmpty(subPrice)){
-//                            subPrice = new BigDecimal(subPrice).subtract(new BigDecimal(priceResp.getData().getDftCoupon().getAmount())).floatValue() +"";
+//                            subPrice = new BigDecimal(subPrice).subtract(new BigDecimal(priceResp.getData().getDftCoupon().getCouponCount())).floatValue() +"";
 //                        }
 
                         startActivityForResult(intent, OPERATION_ORDER_PAY);
