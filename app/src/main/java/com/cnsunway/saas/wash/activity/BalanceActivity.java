@@ -125,8 +125,8 @@ public class BalanceActivity extends LoadingActivity implements PayChoiceDialog.
                 if (msg.arg1 == Const.Request.REQUEST_SUCC) {
                     AccountResp initResp = (AccountResp) JsonParser
                             .jsonToObject(msg.obj + "", AccountResp.class);
-                    balanceNum = initResp.getData().getBalance();
-                    refreshBanlance(balanceNum);
+//                    balanceNum = initResp.getData().getBalance();
+//                    refreshBanlance(balanceNum);
                 } else if (msg.arg1 == Const.Request.REQUEST_FAIL) {
                     showNetFail();
                 }

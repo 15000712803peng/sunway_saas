@@ -37,6 +37,7 @@ import com.cnsunway.saas.wash.framework.utils.VersionUtil;
 import com.cnsunway.saas.wash.helper.ApkUpgradeHelper;
 import com.cnsunway.saas.wash.helper.HxHelper;
 import com.cnsunway.saas.wash.model.LocationForService;
+import com.cnsunway.saas.wash.model.StoreBalance;
 import com.cnsunway.saas.wash.model.User;
 import com.cnsunway.saas.wash.resp.AccountResp;
 import com.cnsunway.saas.wash.resp.StoreCardResp;
@@ -53,9 +54,14 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 import com.umeng.analytics.MobclickAgent;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static com.cnsunway.saas.wash.cnst.Const.Request.balance;
 
 /**
  * Created by Administrator on 2017/3/30 0030.
@@ -91,8 +97,8 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
 
     @Bind(R.id.ll_user_agreement)
     LinearLayout llUserAgreement;
-    @Bind(R.id.ll_question)
-     LinearLayout llQuestion;
+    /*@Bind(R.id.ll_question)
+     LinearLayout llQuestion;*/
     /*@Bind(R.id. ll_apply_invoice)
     LinearLayout llApplyInvoice;*/
     @Bind(R.id.text_user)
@@ -121,6 +127,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
     LocationForService locationForService;
     private int messageToIndex = Const.MESSAGE_TO_DEFAULT;
     private int selectedIndex = Const.INTENT_CODE_IMG_SELECTED_DEFAULT;
+    String balanceNum ;
     @Override
     protected void handlerMessage(final Message msg) {
         switch (msg.what){
@@ -134,7 +141,8 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                         user.setHeadPortraitUrl(updateUser.getHeadPortraitUrl());
                         userInfos.saveUser(user);
                         if(!TextUtils.isEmpty(updateUser.getMobile())){
-                            userText.setText(updateUser.getMobile());
+//                            userText.setText(updateUser.getMobile());
+
                             initDeveloper();
                         }
                        if(!TextUtils.isEmpty(updateUser.getHeadPortraitUrl())){
@@ -148,16 +156,27 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
 
             case Const.Message.MSG_ACCOUNT_ALL_SUCC:
                 if (msg.arg1 == Const.Request.REQUEST_SUCC) {
-                    AccountResp initResp = (AccountResp) JsonParser
-                            .jsonToObject(msg.obj + "", AccountResp.class);
-                    int couponNum = initResp.getData().getCouponCount();
-                    String balanceNum = initResp.getData().getBalance();
-//                        tvUserCouponNum.setText(couponNum + "");
-                        tvUserBalance.setText(NumberUtil.formatNumber(balanceNum));
+                    AccountResp initResp = (AccountResp) JsonParser.jsonToObject(msg.obj + "", AccountResp.class);
+                    List<StoreBalance> storeBalances = initResp.getData();
+
+                    if (storeBalances == null || storeBalances.size() == 0) {
+                        balanceNum = "0.00";
+
+                    }else {
+                        BigDecimal proce = new BigDecimal(0);
+                        for (int i = 0;i<storeBalances.size();i++){
+
+                            proce = proce.add(new BigDecimal(storeBalances.get(i).getTotalAmount()));
+
+                        }
+                        balanceNum = NumberUtil.formatNumber(proce.floatValue()+"") ;
+
+                    }
+                        tvUserBalance.setText(balanceNum);
+
                 } else if (msg.arg1 == Const.Request.REQUEST_FAIL) {
                     Toast.makeText(getActivity(), "获取账户信息失败", Toast.LENGTH_SHORT).show();
                 }
-
                 break;
 
             case Const.Message.MSG_ACCOUNT_ALL_FAIL:
@@ -197,9 +216,10 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
     @Override
 
     protected void initFragmentDatas() {
+
         getActivity().registerReceiver(refreshReceiver,new IntentFilter(Const.MyFilter.FILTER_REFRESH_TABS));
         getActivity().registerReceiver(refreshMineReceiver,new IntentFilter(Const.MyFilter.FILTER_REFRESH_MINE_TABS));
-        headPortraitVolley = new StringVolley(getActivity(), Const.Message.MSG_PROFILE_SUCC, Const.Message.MSG_PROFILE_FAIL);
+//        headPortraitVolley = new StringVolley(getActivity(), Const.Message.MSG_PROFILE_SUCC, Const.Message.MSG_PROFILE_FAIL);
         accountVolley = new StringVolley(getActivity(), Const.Message.MSG_ACCOUNT_ALL_SUCC, Const.Message.MSG_ACCOUNT_ALL_FAIL);
         imageLoader = ImageLoader.getInstance();
         imageLoader.init(ImageLoaderConfiguration.createDefault(getActivity()));
@@ -207,6 +227,8 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
         accountVolley = new StringVolley(getActivity(), Const.Message.MSG_ACCOUNT_ALL_SUCC, Const.Message.MSG_ACCOUNT_ALL_FAIL);
         cardVolley = new JsonVolley(getActivity(),Const.Message.MSG_CARD_LIST_SUCC,Const.Message.MSG_CARD_LIST_FAIL);
         locationForService = UserInfosPref.getInstance(getActivity()).getLocationServer();
+
+
     }
 
     private void showNoLogin(){
@@ -232,6 +254,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
         channelText = (TextView) view.findViewById(R.id.text_channel);
         versionText.setText("当前版本：" + VersionUtil.getAppVersionName(getActivity()));
         channelText.setText("渠道：" + ChannelTool.getChannel(getActivity().getApplicationContext()));
+
     }
     private ImageLoadingListener headImageListener = new ImageLoadingListener() {
 
@@ -267,13 +290,13 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
 
     CallHotlineDialog callHotlineDialog;
     LogoutDialog logoutDialog;
-    @OnClick({R.id.img_head_portrait,/*R.id.ll_user_coupon,*/R.id.ll_banlance,/*R.id.ll_recharge,*/R.id.ll_call_hotline,R.id.ll_addr_manage,R.id.ll_user_agreement,R.id.ll_logout,R.id.ll_question/*, R.id.ll_apply_invoice,R.id.ll_about_us*/,R.id.ll_version,R.id.ll_developer/*,R.id.ll_bind_coupon,R.id.ll_online_custom*/})
+    @OnClick({R.id.img_head_portrait,/*R.id.ll_user_coupon,*/R.id.ll_banlance,/*R.id.ll_recharge,*/R.id.ll_call_hotline,R.id.ll_addr_manage,R.id.ll_user_agreement,R.id.ll_logout/*,R.id.ll_question, R.id.ll_apply_invoice,R.id.ll_about_us*/,R.id.ll_version,R.id.ll_developer/*,R.id.ll_bind_coupon,R.id.ll_online_custom*/})
     public void onClick(View view) {
         User user = UserInfosPref.getInstance(getActivity()).getUser();
         switch (view.getId()){
             case R.id.img_head_portrait:
                 if(user != null){
-                    cropHelper.showChooseDialog();
+//                    cropHelper.showChooseDialog();
                 }else {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -293,7 +316,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                 if (user != null) {
                     Intent intent = new Intent(getActivity(), WebActivity.class);
                     intent.putExtra("title","余额");
-                    intent.putExtra("url",Const.Request.balance);
+                    intent.putExtra("url", balance);
                     startActivity(intent);
 //                    startActivity(new Intent(getActivity(), WebActivity.class));
                 }else {
@@ -377,14 +400,14 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                 startActivity(intent);
             }
             break;
-            case R.id.ll_question: {
+            /* case R.id.ll_question: {
                 Intent intent = new Intent(getActivity(), WebActivity.class);
                 intent.putExtra("url", Const.Request.question);
                 intent.putExtra("title", "常见问题");
                 startActivity(intent);
             }
             break;
-           /* case R.id.ll_apply_invoice: {
+           case R.id.ll_apply_invoice: {
                 Intent intent = new Intent(getActivity(), WebActivity.class);
                 intent.putExtra("url", Const.Request.invoices);
                 intent.putExtra("title", "发票申请");
@@ -539,13 +562,15 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
         }
          showInfo();
         if (user != null && !TextUtils.isEmpty(user.getToken())) {
+            userText.setText(UserInfosPref.getInstance(getActivity()).getUserName());
             if(!TextUtils.isEmpty(user.getHeadPortraitUrl())){
                 imageLoader.loadImage(user.getHeadPortraitUrl(), headImageListener);
             }
-            headPortraitVolley.requestGet(Const.Request.profile, getHandler(), user.getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+//            headPortraitVolley.requestGet(Const.Request.profile, getHandler(), user.getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+
             accountVolley.requestGet(Const.Request.all, getHandler(), user.getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
             cardVolley.addParams("userMobile",UserInfosPref.getInstance(getActivity()).getUser().getMobile());
-            cardVolley.requestPost(Const.Request.cardList,getHandler(), UserInfosPref.getInstance(getActivity()).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+//            cardVolley.requestPost(Const.Request.cardList,getHandler(), UserInfosPref.getInstance(getActivity()).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 
         }else {
             imgHeadPortrait.setImageDrawable(getResources().getDrawable(R.mipmap.user_avatar));

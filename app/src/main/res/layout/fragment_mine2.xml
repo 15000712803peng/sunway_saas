@@ -423,7 +423,7 @@
                         android:background="@color/home_bg"/>-->
 
 
-                    <LinearLayout
+                    <!--<LinearLayout
                         android:id="@+id/ll_question"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -466,7 +466,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/line_bg"/>
+                        android:background="@color/line_bg"/>-->
 
                     <LinearLayout
                         android:id="@+id/ll_user_agreement"
