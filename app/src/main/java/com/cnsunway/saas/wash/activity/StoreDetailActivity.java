@@ -13,8 +13,8 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -46,7 +46,7 @@ import java.util.List;
  * Created by Administrator on 2017/10/16 0016.
  */
 
-public class StoreDetailActivity extends InitActivity implements OnBannerListener,AdapterView.OnItemClickListener{
+public class StoreDetailActivity extends InitActivity implements OnBannerListener,View.OnClickListener{
 
     Banner storeBanner;
     ImageLoader imageLoader;
@@ -68,6 +68,9 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
     TextView openTimeText;
     RelativeLayout morePrice;
     ListView commentView;
+    TextView commentNum;
+    LinearLayout llComment;
+    TextView textNoComment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,6 +110,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         openTimeText = (TextView) findViewById(R.id.text_open_time);
         morePrice = (RelativeLayout) findViewById(R.id.more_price);
         commentView = (ListView) findViewById(R.id.list_comment);
+        textNoComment = (TextView) findViewById(R.id.text_no_comment);
         morePrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,6 +132,9 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
 //        productsView.addItemDecoration(new SpaceItemDecoration(10));
         initStoreBanner();
         storeVolley.requestGet(Const.Request.storeDetail + "/" + storeId + "/detail",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+         commentNum = (TextView) findViewById(R.id.tv_comment_num);
+        llComment = (LinearLayout) findViewById(R.id.ll_comment);
+//        llComment.setOnClickListener(this);
 
     }
 
@@ -229,8 +236,24 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         if(store.getHotProducts() != null){
             productsView.setAdapter(new HotProductsAdapter(store.getHotProducts()));
 //            productsView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-            commentView.setAdapter( new CommentsAdapter(store.getComments(),getApplication()));
-            commentView.setOnItemClickListener(this);
+
+
+            if (store.getComments().size()>0){
+                textNoComment.setVisibility(View.INVISIBLE);
+                commentView.setAdapter( new CommentsAdapter(store.getComments(),getApplication()));
+                View view = LayoutInflater.from(StoreDetailActivity.this).inflate(R.layout.comment_foot_item, null);
+                commentView.addFooterView(view);
+                /*int num =  store.getCommentsCount();
+//                Log.e("num",num+"");
+                commentNum.setText("("+ num +""+")");
+//
+*/
+
+            }else {
+                textNoComment.setVisibility(View.VISIBLE);
+            }
+
+
 
         }
     }
@@ -255,14 +278,11 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
 
     }
 
+
     @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-//        Intent commentIntent = new Intent(getApplication(),Comment.class);
-
+    public void onClick(View v) {
 
     }
-
 
 
     private class HotProductsAdapter extends RecyclerView.Adapter<HotProductsAdapter.CourseViewViewHolder> {
@@ -293,7 +313,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         private View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(getApplication(), ShowCommentActivity.class));
             }
         };
 
