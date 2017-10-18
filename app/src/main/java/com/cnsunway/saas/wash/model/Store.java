@@ -47,6 +47,15 @@ public class Store {
    int version ;//(integer, optional),
     String  withdrawerBankAccount ;//(string, optional): 门店提现账户号 ,
     String  withdrawerName ;//(string, optional): 门店提现账户名
+    boolean isChecked = false;
+
+    public boolean isChecked() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
+    }
 
     public String getAddress() {
         return address;

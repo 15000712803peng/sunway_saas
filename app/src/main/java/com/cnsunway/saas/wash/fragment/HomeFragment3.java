@@ -30,6 +30,7 @@ import android.widget.TextView;
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.activity.BackWashOrderDetailActivity;
 import com.cnsunway.saas.wash.activity.DoOrderActivity;
+import com.cnsunway.saas.wash.activity.DoOrderActivity2;
 import com.cnsunway.saas.wash.activity.EvaluateActivity;
 import com.cnsunway.saas.wash.activity.LoginActivity;
 import com.cnsunway.saas.wash.activity.OrderDetailActivity;
@@ -909,7 +910,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                         holder.operationText.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                startActivity(new Intent(getActivity(), DoOrderActivity.class));
+                                startActivity(new Intent(getActivity(), DoOrderActivity2.class));
                             }
                         });
                     }

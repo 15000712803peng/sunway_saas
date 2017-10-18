@@ -227,4 +227,6 @@
     <string name="history_order">历史订单</string>
     <string name="no_coupons">没有更多优惠券\n\n\n去查看已过期的优惠券</string>
     <string name="history_coupons">历史优惠券</string>
+    <string name="next_step">下一步</string>
+
 </resources>

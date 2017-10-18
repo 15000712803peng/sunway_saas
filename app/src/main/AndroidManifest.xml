@@ -105,6 +105,21 @@
         </activity>
 
         <activity
+            android:name="com.cnsunway.saas.wash.activity.DoOrderActivity2"
+            android:launchMode="singleTop">
+
+        </activity>
+
+        <activity
+            android:name="com.cnsunway.saas.wash.activity.DoOrderNextActivity"
+            android:launchMode="singleTop">
+
+        </activity>
+
+
+
+
+        <activity
             android:name="com.cnsunway.saas.wash.activity.CouponActivity"
             android:windowSoftInputMode="stateHidden" />
 

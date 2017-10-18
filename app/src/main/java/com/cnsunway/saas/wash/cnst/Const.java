@@ -91,6 +91,7 @@ public class Const {
         public static String storeDetail;
         public static String storeCategories;
         public static String products;
+        public static String inServiceStores;
         public static void setServer(String baseUrl) {
             SERVER = baseUrl;
             code = SERVER + "/user/login/send_verify_code";
@@ -163,6 +164,7 @@ public class Const {
             storeDetail =SERVER + "/stores";
             storeCategories = SERVER +"/stores";
             products = SERVER +"/stores";
+            inServiceStores = SERVER +"/stores/in_service";
         }
 
         static {
