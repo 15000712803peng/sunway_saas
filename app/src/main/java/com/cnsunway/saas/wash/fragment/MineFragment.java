@@ -86,8 +86,8 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
     LinearLayout llUserCoupon;*/
     /*@Bind(R.id.ll_recharge)
     LinearLayout rechargeImage;*/
-    @Bind(R.id.ll_call_hotline)
-    LinearLayout llCallHotline;
+    /*@Bind(R.id.ll_call_hotline)
+    LinearLayout llCallHotline;*/
     @Bind(R.id.ll_logout)
     LinearLayout llLogout;
    /* @Bind(R.id.ll_about_us)
@@ -172,7 +172,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                         balanceNum = NumberUtil.formatNumber(proce.floatValue()+"") ;
 
                     }
-                        tvUserBalance.setText(balanceNum);
+                        tvUserBalance.setText(balanceNum + " 元");
 
                 } else if (msg.arg1 == Const.Request.REQUEST_FAIL) {
                     Toast.makeText(getActivity(), "获取账户信息失败", Toast.LENGTH_SHORT).show();
@@ -290,7 +290,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
 
     CallHotlineDialog callHotlineDialog;
     LogoutDialog logoutDialog;
-    @OnClick({R.id.img_head_portrait,/*R.id.ll_user_coupon,*/R.id.ll_banlance,/*R.id.ll_recharge,*/R.id.ll_call_hotline,R.id.ll_addr_manage,R.id.ll_user_agreement,R.id.ll_logout/*,R.id.ll_question, R.id.ll_apply_invoice,R.id.ll_about_us*/,R.id.ll_version,R.id.ll_developer/*,R.id.ll_bind_coupon,R.id.ll_online_custom*/})
+    @OnClick({R.id.img_head_portrait,/*R.id.ll_user_coupon,*/R.id.ll_banlance,/*R.id.ll_recharge,R.id.ll_call_hotline,*/R.id.ll_addr_manage,R.id.ll_user_agreement,R.id.ll_logout/*,R.id.ll_question, R.id.ll_apply_invoice,R.id.ll_about_us*/,R.id.ll_version,R.id.ll_developer/*,R.id.ll_bind_coupon,R.id.ll_online_custom*/})
     public void onClick(View view) {
         User user = UserInfosPref.getInstance(getActivity()).getUser();
         switch (view.getId()){
@@ -338,10 +338,10 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                 }
                 break;*/
 
-            case R.id.ll_call_hotline:
+            /*case R.id.ll_call_hotline:
                 callHotlineDialog = new CallHotlineDialog(getActivity()).builder();
                 callHotlineDialog.show();
-                        /*new ActionSheetDialog(getActivity())
+                        *//*new ActionSheetDialog(getActivity())
                                 .builder()
                                 .setCancelable(true)
                                 .setCanceledOnTouchOutside(true).setTitle("我们将为您提供满意的咨询服务").
@@ -366,9 +366,9 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                                                 startActivity(intent);
                                             }
                                         })
-                                .show();*/
+                                .show();*//*
 
-                break;
+                break;*/
 
             case R.id.ll_logout:
                 logoutDialog = new LogoutDialog(getActivity()).builder();
