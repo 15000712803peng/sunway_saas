@@ -10,7 +10,7 @@ public class StoreDetail {
     String address;
     String addressDetail;
     String beginService;
-    List<Object> comments;
+    List<Comment> comments;
     int commentsCount;
     String createdDate;
     int districtId;
@@ -84,11 +84,11 @@ public class StoreDetail {
         this.beginService = beginService;
     }
 
-    public List<Object> getComments() {
+    public List<Comment> getComments() {
         return comments;
     }
 
-    public void setComments(List<Object> comments) {
+    public void setComments(List<Comment> comments) {
         this.comments = comments;
     }
 

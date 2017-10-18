@@ -1,17 +1,28 @@
 package com.cnsunway.saas.wash.model;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2017/10/17 0017.
  */
 
 public class ProductCatogery {
 
-   String categoryName;
+    String categoryName;
     String createdDate;
     String id;
     String sortValue;
     String storeId;
     String updatedDate;
+    List<ProductCatogery> secondCategories;
+
+    public List<ProductCatogery> getSecondCategories() {
+        return secondCategories;
+    }
+
+    public void setSecondCategories(List<ProductCatogery> secondCategories) {
+        this.secondCategories = secondCategories;
+    }
 
     public String getCategoryName() {
         return categoryName;
