@@ -198,7 +198,7 @@ public class HomeActivity2 extends FragmentActivity implements HomeTabHost.OnTab
                 if(UserInfosPref.getInstance(this).getUser() == null){
                     startActivity(new Intent(this,LoginActivity.class));
                 }else {
-                    startActivity(new Intent(this,DoOrderActivity.class));
+                    startActivity(new Intent(this,DoOrderActivity2.class));
                 }
                 break;
         }

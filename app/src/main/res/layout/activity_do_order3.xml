@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/rl_do_order">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/common_bg"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <include layout="@layout/back_title" />
+
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="0dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/white_shape"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="23dp"
+                    android:paddingTop="18dp">
+
+
+                    <LinearLayout
+                       android:visibility="gone"
+                        android:id="@+id/ll_has_addr"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <RelativeLayout
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="联系信息"
+                                android:textColor="#111D2D"
+                                android:textSize="16dp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/fetch_time"
+                                android:textColor="@color/text_gray"
+                                android:textSize="16dp"
+                                android:visibility="invisible" />
+
+                        </RelativeLayout>
+
+
+                        <RelativeLayout
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="23dp"
+                            >
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+                                <LinearLayout
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+                                    <TextView
+                                        android:id="@+id/text_addr_name"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text=""
+                                        android:textColor="#111D2D"
+                                        android:textSize="16sp" />
+
+                                    <TextView
+                                        android:id="@+id/text_addr_gender"
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="4dp"
+                                        android:text=""
+                                        android:textColor="#111D2D"
+                                        android:textSize="16sp" />
+
+                                    <LinearLayout
+                                        android:id="@+id/select_addr_parent"
+                                        android:paddingRight="22dp"
+                                        android:layout_gravity="right|center_vertical"
+                                        android:gravity="right|center_vertical"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:textSize="16sp"
+                                            android:textColor="#A0B1B7"
+                                            android:text="更改"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+
+                                        <ImageView
+                                            android:layout_marginLeft="8dp"
+                                            android:src="@mipmap/gray_arrow_right"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
+
+                                <TextView
+
+                                    android:id="@+id/text_addr_phone"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:text=""
+                                    android:textColor="#111D2D"
+                                    android:textSize="16sp" />
+
+                                <TextView
+                                    android:paddingRight="48dp"
+                                    android:paddingBottom="20dp"
+                                    android:id="@+id/text_addr"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="3dp"
+                                    android:text=""
+                                    android:lineSpacingExtra="3dp"
+                                    android:textColor="@color/common_title"
+                                    android:textSize="16sp" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:visibility="visible"
+                        android:id="@+id/ll_no_addr"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <LinearLayout
+                            android:background="@color/white"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+
+
+                            android:layout_height="wrap_content">
+
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:text="联系人"
+                                    android:textSize="15dp"
+                                    android:textColor="#111D2D"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:visibility="invisible"
+                                    android:text="@string/fetch_time"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/text_gray"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_marginLeft="23dp"
+                                android:layout_weight="1"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_width="0dp">
+                                <LinearLayout
+
+                                    android:gravity="center_vertical"
+                                    android:layout_width="match_parent"
+                                    android:paddingBottom="18dp"
+                                    android:orientation="horizontal"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:hint="姓名"
+                                        android:textCursorDrawable="@null"
+                                        android:id="@+id/edit_add_addr_name"
+                                        android:layout_weight="1"
+                                        android:textSize="14dp"
+                                        android:background="@android:color/transparent"
+                                        android:text=""
+                                        android:textColor="@color/text_dark_black"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content" />
+
+
+                                    <LinearLayout
+                                        android:gravity="center"
+                                        android:id="@+id/gender_woman_parent"
+                                        android:orientation="horizontal"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+
+                                        <TextView
+                                            android:background="@drawable/bg_sex"
+                                            android:paddingLeft="18dp"
+                                            android:paddingRight="18dp"
+                                            android:paddingTop="3dp"
+                                            android:paddingBottom="3dp"
+                                            android:id="@+id/text_gender_woman"
+                                            android:textSize="14dp"
+                                            android:textColor="@color/sex_text_color"
+                                            android:layout_width="wrap_content"
+                                            android:text="@string/woman"
+                                            android:layout_height="wrap_content" />
+
+                                    </LinearLayout>
+
+                                    <LinearLayout
+                                        android:gravity="center"
+                                        android:layout_marginRight="20dp"
+                                        android:id="@+id/gender_man_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:orientation="horizontal"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+
+                                        <TextView
+                                            android:background="@drawable/bg_sex"
+                                            android:paddingLeft="18dp"
+                                            android:paddingRight="18dp"
+                                            android:paddingTop="3dp"
+                                            android:paddingBottom="3dp"
+                                            android:textSize="14dp"
+                                            android:textColor="@color/sex_text_color"
+                                            android:layout_width="wrap_content"
+                                            android:text="@string/man"
+                                            android:id="@+id/text_gender_man"
+                                            android:layout_height="wrap_content" />
+
+                                    </LinearLayout>
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <include layout="@layout/gray_divider"
+                            />
+
+
+                        <LinearLayout
+
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:paddingTop="18dp"
+
+                            android:layout_height="wrap_content">
+
+                            <RelativeLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:text="电话"
+                                    android:textSize="15dp"
+                                    android:textColor="#111D2D"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+
+                                <TextView
+                                    android:visibility="invisible"
+                                    android:text="@string/fetch_time"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/text_gray"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" />
+                            </RelativeLayout>
+
+                            <LinearLayout
+                                android:layout_marginLeft="23dp"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:orientation="vertical"
+                                android:layout_height="wrap_content">
+
+                                <EditText
+                                    android:hint="联系方式"
+                                    android:textCursorDrawable="@null"
+                                    android:id="@+id/edit_add_addr_mobile"
+                                    android:background="@android:color/transparent"
+                                    android:textSize="15dp"
+                                    android:textColor="@color/text_dark_black"
+                                    android:layout_width="match_parent"
+                                    android:paddingBottom="20dp"
+                                    android:text=""
+                                    android:inputType="number"
+                                    android:layout_height="wrap_content" />
+
+                            </LinearLayout>
+
+
+
+                        </LinearLayout>
+
+                        <include layout="@layout/gray_divider" />
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:paddingTop="18dp"
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:text="@string/addr_detail"
+                                android:textSize="15dp"
+                                android:textColor="#111D2D"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <LinearLayout
+                                android:layout_marginLeft="23dp"
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:orientation="vertical"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:paddingBottom="20dp"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <RelativeLayout
+                                        android:layout_width="0dp"
+                                        android:layout_weight="1"
+                                        android:layout_height="wrap_content">
+                                        <TextView
+                                            android:id="@+id/text_add_addr_prefix"
+                                            android:background="@android:color/transparent"
+                                            android:textSize="15dp"
+                                            android:textColorHint="@color/text_gray"
+                                            android:layout_width="match_parent"
+                                            android:hint="您当前所在区域"
+                                            android:textColor="@color/text_dark_black"
+                                            android:layout_height="wrap_content" />
+
+
+                                    </RelativeLayout>
+
+
+                                    <ImageView
+                                        android:layout_marginRight="16dp"
+                                        android:layout_marginLeft="10dp"
+                                        android:src="@mipmap/icon_sel_addr"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+                                <include layout="@layout/gray_divider"/>
+
+                            </LinearLayout>
+
+
+
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:paddingTop="18dp"
+                            android:paddingLeft="23dp"
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                android:visibility="invisible"
+                                android:text="@string/addr_detail"
+                                android:textSize="15dp"
+                                android:textColor="@color/text_gray"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+
+                            <LinearLayout
+
+                                android:layout_weight="1"
+                                android:layout_width="0dp"
+                                android:orientation="vertical"
+                                android:layout_height="wrap_content">
+
+                                <LinearLayout
+                                    android:orientation="horizontal"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:textCursorDrawable="@null"
+                                        android:id="@+id/edit_add_addr_endfix"
+                                        android:background="@android:color/transparent"
+                                        android:textSize="15dp"
+                                        android:textColorHint="@color/text_gray"
+                                        android:hint="@string/fill_detail_addr"
+                                        android:textColor="@color/text_dark_black"
+                                        android:layout_width="wrap_content"
+                                        android:paddingBottom="20dp"
+
+                                        android:layout_height="wrap_content" />
+                                </LinearLayout>
+
+
+
+
+
+                            </LinearLayout>
+
+
+
+
+
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+
+
+
+
+
+                <LinearLayout
+                    android:paddingLeft="23dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <include layout="@layout/gray_divider" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_marginTop="25dp"
+                        android:paddingRight="20dp"
+                        android:paddingLeft="20dp"
+                        android:id="@+id/text_do_order_tips"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingBottom="13dp"
+                        android:visibility="invisible"
+                        android:text=""
+                        android:textColor="@color/red"
+                        android:textSize="14dp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="23dp"
+                    android:paddingTop="32dp">
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/is_wash_shoes"
+                            android:textColor="@color/text_gray"
+                            android:textSize="15dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/fetch_time"
+                            android:textColor="@color/text_gray"
+                            android:textSize="15dp"
+                            android:visibility="invisible" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="23dp"
+
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingBottom="20dp">
+
+
+                            <LinearLayout
+                                android:id="@+id/wash_shoes_parent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:enabled="false"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/yes"
+                                    android:textColor="@color/sex_text_color"
+                                    android:id="@+id/text_wash_shoes"
+                                    android:textSize="14dp" />
+
+                                <ImageView
+                                    android:id="@+id/image_wash_shoes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:paddingTop="2dp"
+                                    android:src="@mipmap/icon_box_selected"
+                                    android:visibility="invisible" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/unwash_shoes_parent"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="22dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/no"
+                                    android:id="@+id/text_unwash_shoes"
+                                    android:textColor="@color/sex_text_color"
+                                    android:textSize="14dp" />
+
+                                <ImageView
+                                    android:id="@+id/image_unwash_shoes"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="3dp"
+                                    android:paddingTop="2dp"
+                                    android:src="@mipmap/icon_box_selected"
+                                    android:visibility="visible" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <include layout="@layout/gray_divider" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+
+                <RelativeLayout
+
+                    android:paddingBottom="6dp"
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+                    <!--<ImageView
+                        android:id="@+id/image_contact_me"
+                        android:layout_marginRight="12dp"
+                        android:layout_above="@+id/commit_order_parent"
+                        android:layout_alignParentRight="true"
+                        android:src="@mipmap/icon_contact_me"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />-->
+                    <LinearLayout
+                        android:id="@+id/commit_order_parent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:orientation="vertical"
+                        android:clickable="true"
+                       >
+
+
+
+                        <RelativeLayout
+                            android:layout_marginTop="12dp"
+                            android:background="@mipmap/bg_do_order"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <TextView
+                                android:gravity="center"
+                                android:paddingTop="18dp"
+                                 android:paddingBottom="30dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:text="@string/next_step"
+                                android:textColor="@color/white"
+                                android:textSize="16dp" />
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

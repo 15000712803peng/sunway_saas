@@ -86,7 +86,6 @@ public class CategoryProductsFragment extends BaseFragment{
         // 取消点击Tab时的背景色
         tabs.setTabBackground(0);
         tabs.setShouldExpand(false);
-
     }
 
     @Nullable
