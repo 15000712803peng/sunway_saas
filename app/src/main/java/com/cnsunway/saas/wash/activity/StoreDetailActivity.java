@@ -46,7 +46,7 @@ import java.util.List;
  * Created by Administrator on 2017/10/16 0016.
  */
 
-public class StoreDetailActivity extends InitActivity implements OnBannerListener,View.OnClickListener{
+public class StoreDetailActivity extends InitActivity implements OnBannerListener{
 
     Banner storeBanner;
     ImageLoader imageLoader;
@@ -134,8 +134,13 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         storeVolley.requestGet(Const.Request.storeDetail + "/" + storeId + "/detail",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
          commentNum = (TextView) findViewById(R.id.tv_comment_num);
         llComment = (LinearLayout) findViewById(R.id.ll_comment);
-//        llComment.setOnClickListener(this);
-
+        llComment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StoreDetailActivity.this,ShowCommentActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private int dip2px(float dip) {
@@ -279,10 +284,6 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
     }
 
 
-    @Override
-    public void onClick(View v) {
-
-    }
 
 
     private class HotProductsAdapter extends RecyclerView.Adapter<HotProductsAdapter.CourseViewViewHolder> {
