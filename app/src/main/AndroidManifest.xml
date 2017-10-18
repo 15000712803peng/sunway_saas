@@ -55,7 +55,11 @@
             >
 
         </activity>
+        <activity android:name="com.cnsunway.saas.wash.activity.ShowCommentActivity"
+           android:launchMode="singleTop"
+            >
 
+        </activity>
 
 
 

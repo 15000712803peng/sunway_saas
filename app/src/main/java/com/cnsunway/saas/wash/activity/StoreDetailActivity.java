@@ -132,15 +132,8 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
 //        productsView.addItemDecoration(new SpaceItemDecoration(10));
         initStoreBanner();
         storeVolley.requestGet(Const.Request.storeDetail + "/" + storeId + "/detail",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
-         commentNum = (TextView) findViewById(R.id.tv_comment_num);
-        llComment = (LinearLayout) findViewById(R.id.ll_comment);
-        llComment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(StoreDetailActivity.this,ShowCommentActivity.class);
-                startActivity(intent);
-            }
-        });
+
+
     }
 
     private int dip2px(float dip) {
@@ -244,16 +237,25 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
 
 
             if (store.getComments().size()>0){
-                textNoComment.setVisibility(View.INVISIBLE);
+
                 commentView.setAdapter( new CommentsAdapter(store.getComments(),getApplication()));
                 View view = LayoutInflater.from(StoreDetailActivity.this).inflate(R.layout.comment_foot_item, null);
-                commentView.addFooterView(view);
-                /*int num =  store.getCommentsCount();
-//                Log.e("num",num+"");
-                commentNum.setText("("+ num +""+")");
-//
-*/
+                llComment = (LinearLayout) view.findViewById(R.id.ll_comment);
+                commentNum = (TextView) findViewById(R.id.tv_comment_num);
+                textNoComment.setVisibility(View.INVISIBLE);
 
+
+                llComment.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(StoreDetailActivity.this,ShowCommentActivity.class);
+                        startActivity(intent);
+                    }
+                });
+                commentView.addFooterView(view);
+                /*int sum = store.getCommentsCount();
+//                commentNum.setText("("+ sum +")");
+                commentNum.setText(sum+"");*/
             }else {
                 textNoComment.setVisibility(View.VISIBLE);
             }
