@@ -103,12 +103,6 @@ public class NotificationFragment extends BaseFragment implements View.OnClickLi
 
     }
 
-   /* @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-
-    }*/
-
     BaseFragment lastTab;
     private void doTabChanged(BaseFragment fragment) {
         FragmentTransaction ft = mFragmentManager.beginTransaction();

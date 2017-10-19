@@ -415,7 +415,6 @@
 
                 <View
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
                     android:layout_width="match_parent"
                     android:background="#ECEEEF"
                     android:layout_height="1dp"/>
@@ -428,6 +427,8 @@
 
                     <com.cnsunway.saas.wash.view.MyList
                         android:id="@+id/list_comment"
+                        android:dividerHeight="0px"
+                        android:divider="@android:color/transparent"
                         android:cacheColorHint="@android:color/transparent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"></com.cnsunway.saas.wash.view.MyList>

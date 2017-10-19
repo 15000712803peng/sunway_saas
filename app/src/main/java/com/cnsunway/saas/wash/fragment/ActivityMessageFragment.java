@@ -131,24 +131,24 @@ public class ActivityMessageFragment extends BaseFragment implements XListView.I
     protected void initFragmentDatas() {
         userInfos = UserInfosPref.getInstance(getActivity());
         token = userInfos.getUser().getToken();
-        messageVolley = new JsonVolley(getActivity(), Const.Message.MSG_MESSAGE_SUCC,Const.Message.MSG_MESSAGE_FAIL);
-        messageVolley.addParams("msgType",21);
+//        messageVolley = new JsonVolley(getActivity(), Const.Message.MSG_MESSAGE_SUCC,Const.Message.MSG_MESSAGE_FAIL);
+//        messageVolley.addParams("msgType",21);
 //        messageVolley.addParams("msgType",22);
 //        messageVolley.addParams("msgType",23);
 //        messageVolley.addParams("userMobile","13764914819");
 //        messageVolley.addParams("userMobile","13764914805");
-       messageVolley.addParams("userMobile",UserInfosPref.getInstance(getActivity()).getUserName());
+//       messageVolley.addParams("userMobile",UserInfosPref.getInstance(getActivity()).getUserName());
         Log.e("userName",UserInfosPref.getInstance(getActivity()).getUserName()) ;
-        messageVolley.addParams("page",page);
+//        messageVolley.addParams("page",page);
         locationForService = UserInfosPref.getInstance(getActivity()).getLocationServer();
-        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
-        );
+////        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+//        );
     }
 
     @Override
     protected void initMyViews(View view) {
-        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
-        );
+//        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+//        );
 
     }
 
@@ -164,8 +164,8 @@ public class ActivityMessageFragment extends BaseFragment implements XListView.I
             noDataParent = (RelativeLayout)view.findViewById(R.id.rl_no_data);
             noDateText = (TextView) view.findViewById(R.id.tv_no_data);
             noDateText.setText("暂无活动消息");
-            messageVolley.requestPost(Const.Request.messageAll,getHandler(),token,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
-            );
+//            messageVolley.requestPost(Const.Request.messageAll,getHandler(),token,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+//            );
 
         }
 
@@ -179,11 +179,11 @@ public class ActivityMessageFragment extends BaseFragment implements XListView.I
         page = 1;
         userInfos = UserInfosPref.getInstance(getActivity());
         token = userInfos.getUser().getToken();
-        messageVolley.addParams("page",page);
-        messageVolley.addParams("userMobile",UserInfosPref.getInstance(getActivity()).getUserName());
+//        messageVolley.addParams("page",page);
+//        messageVolley.addParams("userMobile",UserInfosPref.getInstance(getActivity()).getUserName());
         Log.e("userName1",UserInfosPref.getInstance(getActivity()).getUserName()) ;
-        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
-        );
+//        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+//        );
     }
 
     @Override
@@ -192,9 +192,9 @@ public class ActivityMessageFragment extends BaseFragment implements XListView.I
         token = userInfos.getUser().getToken();
         int nextPage = page  + 1;
         Log.e("----","next page2:" + nextPage);
-        messageVolley.addParams ("page",nextPage);
-        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
-        );
+//        messageVolley.addParams ("page",nextPage);
+//        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+//        );
     }
     private void showNoMessage(){
         activityMessageLV.setVisibility(View.GONE);

@@ -142,11 +142,11 @@ public class OrderMessageFragment extends BaseFragment implements XListView.IXLi
     protected void initFragmentDatas() {
         getActivity().registerReceiver(refreshReceiver,new IntentFilter(Const.MyFilter.FILTER_REFRESH_MESSAGE));
         getActivity().registerReceiver(refreshTabReceiver,new IntentFilter(Const.MyFilter.FILTER_REFRESH_TABS));
-        messageVolley = new JsonVolley(getActivity(), Const.Message.MSG_MESSAGE_SUCC,Const.Message.MSG_MESSAGE_FAIL);
-        messageVolley.addParams("msgType",1);
-        messageVolley.addParams("userMobile",UserInfosPref.getInstance(getActivity()).getUserName());
+//        messageVolley = new JsonVolley(getActivity(), Const.Message.MSG_MESSAGE_SUCC,Const.Message.MSG_MESSAGE_FAIL);
+//        messageVolley.addParams("msgType",1);
+//        messageVolley.addParams("userMobile",UserInfosPref.getInstance(getActivity()).getUserName());
         Log.e("userName",UserInfosPref.getInstance(getActivity()).getUserName()) ;
-        messageVolley.addParams("page",page);
+//        messageVolley.addParams("page",page);
         userInfos = UserInfosPref.getInstance(getActivity());
         token = userInfos.getUser().getToken();
         locationForService = UserInfosPref.getInstance(getActivity()).getLocationServer();
@@ -172,10 +172,10 @@ public class OrderMessageFragment extends BaseFragment implements XListView.IXLi
             loadingParent = (RelativeLayout) getView().findViewById(R.id.rl_loading);
             loadingImage = (ImageView) getView().findViewById(R.id.iv_loading);
             loadingAni = (AnimationDrawable) loadingImage.getBackground();
-            showLoading();
-            messageVolley.requestPost(Const.Request.messageAll,getHandler(),token
-                    ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
-            );
+//            showLoading();
+//            messageVolley.requestPost(Const.Request.messageAll,getHandler(),token
+//                    ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+//            );
         }
 
         locationForService = UserInfosPref.getInstance(getActivity()).getLocationServer();
@@ -230,11 +230,11 @@ public class OrderMessageFragment extends BaseFragment implements XListView.IXLi
         page = 1;
         userInfos = UserInfosPref.getInstance(getActivity());
         token = userInfos.getUser().getToken();
-        messageVolley.addParams("page",page);
-        messageVolley.addParams("userMobile",UserInfosPref.getInstance(getActivity()).getUserName());
-        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token
-                ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
-        );
+//        messageVolley.addParams("page",page);
+//        messageVolley.addParams("userMobile",UserInfosPref.getInstance(getActivity()).getUserName());
+//        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token
+//                ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+//        );
 
     }
 
@@ -243,10 +243,10 @@ public class OrderMessageFragment extends BaseFragment implements XListView.IXLi
         userInfos = UserInfosPref.getInstance(getActivity());
         token = userInfos.getUser().getToken();
         int nextPage = page  + 1;
-        messageVolley.addParams ("page",nextPage);
-        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token
-                ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
-        );
+//        messageVolley.addParams ("page",nextPage);
+//        messageVolley.requestPost(Const.Request.messageAll,getHandler(),token
+//                ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+//        );
     }
 
     @Override
