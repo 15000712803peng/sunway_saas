@@ -17,6 +17,7 @@ public class Comment {
     String updatedDate;
     String userId;
     String nickName;
+    String headPortraitUrl  ;
 
     public String getHeadPortraitUrl() {
         return headPortraitUrl;
@@ -26,7 +27,7 @@ public class Comment {
         this.headPortraitUrl = headPortraitUrl;
     }
 
-    String headPortraitUrl  ;
+
 
     public String getNickName() {
         return nickName;
