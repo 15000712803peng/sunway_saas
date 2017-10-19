@@ -224,7 +224,7 @@ public class LoginActivity extends InitActivity implements View.OnClickListener 
                         HxHelper.getInstance(this).login(resp.getData().getMobile(),resp.getData().getHxPwd(),true);
                         UmengEventHelper.loginEvent(LoginActivity.this,phoneNum);
                         if(isDoOrder){
-                            Intent intent = new Intent(this, DoOrderActivity.class);
+                            Intent intent = new Intent(this, DoOrderActivity2.class);
                             startActivity(intent);
                             setResult(RESULT_OK);
                             finish();

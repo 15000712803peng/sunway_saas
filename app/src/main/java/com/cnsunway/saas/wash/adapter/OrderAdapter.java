@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.cnsunway.saas.wash.R;
-import com.cnsunway.saas.wash.activity.DoOrderActivity;
+import com.cnsunway.saas.wash.activity.DoOrderActivity2;
 import com.cnsunway.saas.wash.activity.EvaluateActivity;
 import com.cnsunway.saas.wash.activity.GetPayOrderActivity;
 import com.cnsunway.saas.wash.cnst.Const;
@@ -328,7 +328,7 @@ public class OrderAdapter extends BaseAdapter {
                     holder.operationText.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            activity.startActivity(new Intent(activity, DoOrderActivity.class));
+                            activity.startActivity(new Intent(activity, DoOrderActivity2.class));
                         }
                     });
                 }

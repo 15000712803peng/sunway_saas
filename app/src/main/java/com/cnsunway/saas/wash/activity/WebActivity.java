@@ -386,7 +386,7 @@ public class WebActivity extends CordovaActivity implements PayChoiceDialog.Sele
 					intent.putExtra("do_order",true);
 					startActivity(intent);
 				}else {
-					startActivity(new Intent(this,DoOrderActivity.class));
+					startActivity(new Intent(this,DoOrderActivity2.class));
 				}
 				break;
 			case MSG_TO_SHARE:

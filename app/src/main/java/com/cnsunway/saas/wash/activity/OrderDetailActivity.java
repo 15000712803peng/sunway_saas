@@ -1631,7 +1631,7 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                     break;
 
                 case OPERATION_DO_ORDER:
-                    startActivity(new Intent(this, DoOrderActivity.class));
+                    startActivity(new Intent(this, DoOrderActivity2.class));
                     break;
 
                 case OPERATION_ORDER_CONFIRM:
@@ -1642,24 +1642,24 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                     break;
             }
         }else if(view == selCouponParent){
-            Intent intent = new Intent(this, SelCouponActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
-            for(Coupon c : coupons.getCoupons()){
-                c.setSelected(false);
-                if(couponsDiscountText.getTag() != null){
-                    if(c.getCouponNo().equals(couponsDiscountText.getTag()+"")){
-                        c.setSelected(true);
-                    }
-                }
-            }
-
-            intent.putExtra("usableCoupons", JsonParser.objectToJsonStr(coupons));
-            intent.putExtra("unusableCoupons", JsonParser.objectToJsonStr(ununsedCoupons));
-
-
-
-            startActivityForResult(intent, REQUEST_SELECT_COUPON);
+//            Intent intent = new Intent(this, SelCouponActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//            for(Coupon c : coupons.getCoupons()){
+//                c.setSelected(false);
+//                if(couponsDiscountText.getTag() != null){
+//                    if(c.getCouponNo().equals(couponsDiscountText.getTag()+"")){
+//                        c.setSelected(true);
+//                    }
+//                }
+//            }
+//
+//            intent.putExtra("usableCoupons", JsonParser.objectToJsonStr(coupons));
+//            intent.putExtra("unusableCoupons", JsonParser.objectToJsonStr(ununsedCoupons));
+//
+//
+//
+//            startActivityForResult(intent, REQUEST_SELECT_COUPON);
 
         }
     }
