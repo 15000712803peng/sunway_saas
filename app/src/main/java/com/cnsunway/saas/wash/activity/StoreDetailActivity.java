@@ -249,6 +249,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(StoreDetailActivity.this,ShowCommentActivity.class);
+                        intent.putExtra("store_id",storeId);
                         startActivity(intent);
                     }
                 });
