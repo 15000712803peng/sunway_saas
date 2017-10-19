@@ -71,6 +71,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
     TextView commentNum;
     LinearLayout llComment;
     TextView textNoComment;
+    int commentsCount;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -234,32 +235,27 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         if(store.getHotProducts() != null){
             productsView.setAdapter(new HotProductsAdapter(store.getHotProducts()));
 //            productsView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        }
+        if (store.getComments().size()>0){
+
+            commentView.setAdapter( new CommentsAdapter(store.getComments(),getApplication()));
+            View view = LayoutInflater.from(StoreDetailActivity.this).inflate(R.layout.comment_foot_item, null);
+            llComment = (LinearLayout) view.findViewById(R.id.ll_comment);
+            commentNum = (TextView) findViewById(R.id.tv_comment_num);
+            textNoComment.setVisibility(View.INVISIBLE);
 
 
-            if (store.getComments().size()>0){
-
-                commentView.setAdapter( new CommentsAdapter(store.getComments(),getApplication()));
-                View view = LayoutInflater.from(StoreDetailActivity.this).inflate(R.layout.comment_foot_item, null);
-                llComment = (LinearLayout) view.findViewById(R.id.ll_comment);
-                commentNum = (TextView) findViewById(R.id.tv_comment_num);
-                textNoComment.setVisibility(View.INVISIBLE);
-
-
-                llComment.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent intent = new Intent(StoreDetailActivity.this,ShowCommentActivity.class);
-                        intent.putExtra("store_id",storeId);
-                        startActivity(intent);
-                    }
-                });
-                commentView.addFooterView(view);
-            }else {
-                textNoComment.setVisibility(View.VISIBLE);
-            }
-
-
-
+            llComment.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(StoreDetailActivity.this,ShowCommentActivity.class);
+                    intent.putExtra("store_id",storeId);
+                    startActivity(intent);
+                }
+            });
+            commentView.addFooterView(view);
+        }else {
+            textNoComment.setVisibility(View.VISIBLE);
         }
     }
 
@@ -270,6 +266,8 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
                 if(msg.arg1 == NetParams.RESPONCE_NORMAL){
                     StoreDetailResp resp = (StoreDetailResp) JsonParser.jsonToObject(msg.obj +"",StoreDetailResp.class);
                     fillDetail(resp.getData());
+//                    commentsCount = resp.getData().getCommentsCount();
+//                    Log.e("commentsCount",commentsCount+"");
                 }
                 break;
 
