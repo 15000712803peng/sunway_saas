@@ -440,7 +440,7 @@ public class DoOrderActivity2 extends InitActivity implements View.OnClickListen
                 return;
             }
             Intent intent = new Intent(this,DoOrderNextActivity.class);
-           intent.putExtra("addr",JsonParser.objectToJsonStr(this.addr));
+            intent.putExtra("addr",JsonParser.objectToJsonStr(this.addr));
             startActivity(intent);
         }else if (v == addrPrefixEdit) {
             Intent intent = new Intent(this, SelAddrAMapActivity.class);

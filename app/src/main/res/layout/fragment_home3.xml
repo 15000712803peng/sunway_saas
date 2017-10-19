@@ -107,13 +107,14 @@
                                android:gravity="center_horizontal"
                                android:layout_width="match_parent"
                                android:layout_height="wrap_content" />
-                            <com.cnsunway.saas.wash.view.MyList
+                            <ListView
+
                                 android:id="@+id/list_store"
                                 android:dividerHeight="0px"
                                 android:divider="@android:color/transparent"
                                 android:cacheColorHint="@android:color/transparent"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"></com.cnsunway.saas.wash.view.MyList>
+                                android:layout_height="match_parent"></ListView>
                         </RelativeLayout>
 
                     </LinearLayout>

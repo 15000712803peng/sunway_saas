@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -230,6 +231,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                         List<Store> stores = initResp.getData();
                         storeList.setVisibility(View.VISIBLE);
                         storeList.setAdapter(new HomeStoreAdapter(getActivity(),stores));
+                        setListViewHeightBasedOnChildren(storeList);
                         storeList.setOnItemClickListener(this);
 
                     }else{
@@ -255,6 +257,24 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
     StringVolley selectCityVolley;
     StringVolley getCityVolley;
     ServiceCity selectedCity;
+
+    public static void setListViewHeightBasedOnChildren(ListView listView) {
+        if(listView == null) return;
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) {
+            // pre-condition
+            return;
+        }
+        int totalHeight = 0;
+        for (int i = 0; i < listAdapter.getCount(); i++) {
+            View listItem = listAdapter.getView(i, null, listView);
+            listItem.measure(0, 0);
+            totalHeight += listItem.getMeasuredHeight();
+        }
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+        listView.setLayoutParams(params);
+    }
 
 
     @Override
@@ -1119,8 +1139,10 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 //            updateHelper.check(false);
             LocationManager.get().init(getActivity().getApplicationContext());
 
+
         }
         loadData();
+
 
         return getView();
     }

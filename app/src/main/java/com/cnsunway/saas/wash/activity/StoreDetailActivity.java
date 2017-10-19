@@ -243,8 +243,6 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
             llComment = (LinearLayout) view.findViewById(R.id.ll_comment);
             commentNum = (TextView) findViewById(R.id.tv_comment_num);
             textNoComment.setVisibility(View.INVISIBLE);
-
-
             llComment.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -282,8 +280,6 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
     }
 
 
-
-
     private class HotProductsAdapter extends RecyclerView.Adapter<HotProductsAdapter.CourseViewViewHolder> {
         List<Product> hotProducts;
         public HotProductsAdapter(List<Product> hotProducts){
@@ -312,7 +308,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         private View.OnClickListener clickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplication(), ShowCommentActivity.class));
+//                startActivity(new Intent(getApplication(), ShowCommentActivity.class));
             }
         };
 

@@ -165,7 +165,6 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                     }else {
                         BigDecimal proce = new BigDecimal(0);
                         for (int i = 0;i<storeBalances.size();i++){
-
                             proce = proce.add(new BigDecimal(storeBalances.get(i).getTotalAmount()));
 
                         }
@@ -316,7 +315,7 @@ public class MineFragment extends BaseFragment implements LogoutDialog.OnLogoutO
                 if (user != null) {
                     Intent intent = new Intent(getActivity(), WebActivity.class);
                     intent.putExtra("title","余额");
-                    intent.putExtra("url", balance);
+                    intent.putExtra("url", Const.Request.balance);
                     startActivity(intent);
 //                    startActivity(new Intent(getActivity(), WebActivity.class));
                 }else {

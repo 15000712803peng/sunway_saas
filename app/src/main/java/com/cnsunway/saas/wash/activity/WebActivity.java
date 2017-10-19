@@ -105,9 +105,9 @@ public class WebActivity extends CordovaActivity implements PayChoiceDialog.Sele
 			try {
 				URL u = new URL(url);
 				if(TextUtils.isEmpty(u.getQuery())){
-					query = "temp="+UserInfosPref.getInstance(this).getUser().getToken()+"&mobile=" + UserInfosPref.getInstance(this).getUserName();
+					query = "token="+UserInfosPref.getInstance(this).getUser().getToken()+"&mobile=" + UserInfosPref.getInstance(this).getUserName();
 				}else {
-					query = u.getQuery() +"&temp="+UserInfosPref.getInstance(this).getUser().getToken()+"&mobile=" + UserInfosPref.getInstance(this).getUserName();
+					query = u.getQuery() +"&token="+UserInfosPref.getInstance(this).getUser().getToken()+"&mobile=" + UserInfosPref.getInstance(this).getUserName();
 				}
 //				url = u.getProtocol()+ "://" + u.getHost()+"/"+ u.getPath() +"?"+ query;
 				url = u.getProtocol()+ "://" + u.getHost() +"?"+ query;
@@ -386,7 +386,7 @@ public class WebActivity extends CordovaActivity implements PayChoiceDialog.Sele
 					intent.putExtra("do_order",true);
 					startActivity(intent);
 				}else {
-					startActivity(new Intent(this,DoOrderActivity.class));
+					startActivity(new Intent(this,DoOrderActivity2.class));
 				}
 				break;
 			case MSG_TO_SHARE:
