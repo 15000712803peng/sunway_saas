@@ -2,98 +2,121 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:paddingLeft="12dp"
         android:paddingRight="14dp"
-        android:paddingTop="16dp"
-        android:paddingBottom="13dp"
-        android:orientation="horizontal">
+        android:paddingTop="16dp">
+
         <ImageView
             android:id="@+id/image_headPortrait"
             android:layout_width="40dp"
-            android:layout_height="40dp" />
+            android:layout_height="40dp"/>
+
         <LinearLayout
-            android:paddingLeft="12dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="12dp">
+
             <LinearLayout
-                android:paddingTop="4dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingTop="4dp">
+
                 <TextView
                     android:id="@+id/tv_nickName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13dp"
                     android:text="微信昵称001"
-                    android:textColor="#444A59"/>
+                    android:textColor="#444A59"
+                    android:textSize="13dp"/>
+
                 <View
                     android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="0dp"/>
+                    android:layout_height="0dp"
+                    android:layout_weight="1"/>
+
                 <TextView
                     android:id="@+id/tv_createdDate"
-                    android:layout_marginRight="4dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="13dp"
+                    android:layout_marginRight="4dp"
                     android:text="2017-06-29"
-                    android:textColor="#8F939C"/>
+                    android:textColor="#8F939C"
+                    android:textSize="13dp"/>
             </LinearLayout>
+
             <LinearLayout
-                android:paddingTop="6dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingTop="6dp">
+
                 <ImageView
-                android:id="@+id/image_score1"
-                android:layout_width="13dp"
-                android:layout_height="13dp"
-                android:layout_marginRight="4dp"
-                android:src="@mipmap/star_orange"/>
+                    android:id="@+id/image_score1"
+                    android:layout_width="13dp"
+                    android:layout_height="13dp"
+                    android:layout_marginRight="4dp"
+                    android:src="@mipmap/star_orange"/>
+
                 <ImageView
                     android:id="@+id/image_score2"
                     android:layout_width="13dp"
                     android:layout_height="13dp"
                     android:layout_marginRight="4dp"
                     android:src="@mipmap/star_orange"/>
+
                 <ImageView
                     android:id="@+id/image_score3"
                     android:layout_width="13dp"
                     android:layout_height="13dp"
                     android:layout_marginRight="4dp"
                     android:src="@mipmap/star_orange"/>
+
                 <ImageView
                     android:id="@+id/image_score4"
                     android:layout_width="13dp"
                     android:layout_height="13dp"
                     android:layout_marginRight="4dp"
                     android:src="@mipmap/star_orange"/>
+
                 <ImageView
                     android:id="@+id/image_score5"
                     android:layout_width="13dp"
                     android:layout_height="13dp"
                     android:src="@mipmap/star_orange"/>
             </LinearLayout>
+
             <TextView
                 android:id="@+id/tv_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="12dp"
                 android:text="服务态度不错，衣服洗得很干净！不错的一次体验，下次还会再来光顾！"
-                android:textSize="14dp"
-                android:textColor="#444A59"/>
+                android:textColor="#444A59"
+                android:textSize="14dp"/>
+            <View
+                android:visibility="visible"
+                android:id="@+id/view_comment_list"
+                android:layout_marginTop="13dp"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:background="#E1E1E1"/>
         </LinearLayout>
 
     </LinearLayout>
     <View
+        android:visibility="invisible"
+        android:id="@+id/view_store_detail"
         android:layout_marginLeft="12dp"
         android:layout_width="wrap_content"
         android:layout_height="1dp"
         android:background="#E1E1E1"/>
+
 
 </LinearLayout>

@@ -24,6 +24,18 @@ public class CommentsAdapter extends BaseAdapter{
     List<Comment> comments;
     Context context;
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+    public void clear(){
+        if(comments != null){
+            comments.clear();
+        }
+    }
     public CommentsAdapter(List<Comment> comments, Application context ){
         this.comments = comments;
         this.context = context;
