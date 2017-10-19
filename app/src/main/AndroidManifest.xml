@@ -156,6 +156,10 @@
             android:launchMode="singleTop"
             />
 
+        <activity android:name="com.cnsunway.saas.wash.activity.PayActivity2"
+            android:launchMode="singleTop"
+            />
+
         <activity android:name="com.cnsunway.saas.wash.activity.SelAddrAMapActivity"
             android:launchMode="singleTop"
             />

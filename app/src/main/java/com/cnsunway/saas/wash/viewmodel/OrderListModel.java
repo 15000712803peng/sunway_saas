@@ -38,6 +38,7 @@ public class OrderListModel extends ViewModel{
     private List<Order> homeLists;
     private int page = 1;
     private int total;
+    private int rows = 100;
     public int getTotal() {
         return total;
     }
@@ -131,7 +132,7 @@ public class OrderListModel extends ViewModel{
         UserInfosPref userInfos = UserInfosPref.getInstance(activity);
         LocationForService locationForService = UserInfosPref.getInstance(activity).getLocationServer();
         JsonVolley orderVolley = new JsonVolley(activity, Const.Message.MSG_ORDER_DONE_SUCC, Const.Message.MSG_ORDER_DONE_FAIL);
-        orderVolley.addParams("rows",10);
+        orderVolley.addParams("rows",rows);
         orderVolley.addParams("page",1);
         orderVolley.requestPost(Const.Request.inservice,
                 getHandler(), userInfos.getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
@@ -625,7 +626,7 @@ public class OrderListModel extends ViewModel{
         LocationForService locationForService = UserInfosPref.getInstance(activity).getLocationServer();
         JsonVolley orderDoneVolley = new JsonVolley(activity, Const.Message.MSG_ORDER_DONE_SUCC, Const.Message.MSG_ORDER_DONE_FAIL);
         orderDoneVolley.addParams("page",page);
-        orderDoneVolley.addParams("rows",10);
+        orderDoneVolley.addParams("rows",rows);
         orderDoneVolley.requestPost(Const.Request.inservice,
                 getHandler(), userInfos.getUser() == null ? "" : userInfos.getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
         );
@@ -636,7 +637,7 @@ public class OrderListModel extends ViewModel{
         UserInfosPref userInfos = UserInfosPref.getInstance(activity);
         LocationForService locationForService = UserInfosPref.getInstance(activity).getLocationServer();
         JsonVolley orderDoneVolley = new JsonVolley(activity, Const.Message.MSG_ORDER_DONE_SUCC, Const.Message.MSG_ORDER_DONE_FAIL);
-        orderDoneVolley.addParams("rows",10);
+        orderDoneVolley.addParams("rows",rows);
         orderDoneVolley.addParams("page",page);
         orderDoneVolley.requestPost(Const.Request.inservice,
                 getHandler(), userInfos.getUser() == null ? "" : userInfos.getUser().getToken()

@@ -8,9 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -76,6 +78,10 @@ public class OrderStoreAdapter extends BaseAdapter{
         notifyDataSetChanged();
     }
 
+    public void uncheckStore(Store store){
+
+    }
+
     public String getCheckStore(){
         for(Store store : stores){
             if(store.isChecked()){
@@ -86,8 +92,8 @@ public class OrderStoreAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        Store store = (Store) getItem(i);
+    public View getView(final int i, View view, ViewGroup viewGroup) {
+        final Store store = (Store) getItem(i);
         Holder holder = null;
         if(view == null){
             view = LayoutInflater.from(context).inflate(R.layout.order_store,null);
@@ -119,14 +125,42 @@ public class OrderStoreAdapter extends BaseAdapter{
             });
         }else {
             holder.storeBox.setChecked(false);
-            holder.timeTips.setText("营业时间");
+            holder.timeTips.setText("营业时间"
+            );
             holder.openTime.setText(store.getBeginService()+"-" + store.getEndService());
             holder.openTime.setTextColor(Color.parseColor("#444A59"));
             holder.timeContainer.setOnClickListener(null);
         }
 
         holder.storeName.setText(store.getStoreName());
-
+//        holder.storeBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
+//                Toast.makeText(context,"click:" +checked,Toast.LENGTH_SHORT).show();
+////
+//                clearCheck();
+//                store.setChecked(checked);
+//                notifyDataSetChanged();
+////                if(compoundButton.isChecked()){
+////
+////                }else {
+////                    store.setChecked(false);
+////                    notifyDataSetChanged();
+////                }
+//            }
+//        });
+        holder.storeBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               CheckBox box = (CheckBox) view;
+                if(box.isChecked()){
+                    setCheckStore(i,fetchTime);
+                }else {
+                    store.setChecked(false);
+                    notifyDataSetChanged();
+                }
+            }
+        });
         Glide.with(context).load(store.getHeadPortraitUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(R.mipmap.store).into(holder.storeImage);
         return view;
     }

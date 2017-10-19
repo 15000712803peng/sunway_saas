@@ -219,7 +219,7 @@ public class OrderAdapter extends BaseAdapter {
                 holder.dotImage.setImageResource(R.drawable.dot2);
                 holder.operationText.setVisibility(View.INVISIBLE);
                 holder.phnoeText.setVisibility(View.GONE);
-                holder.tvTips.setText("门店："+"赛维洗衣 - " + order.getSiteName());
+                holder.tvTips.setText("门店："+"赛维洗衣 - " + order.getStoreName());
                 break;
             case HomeViewModel.ORDER_STUTAS_SEVEN:
                 //入库检验
@@ -227,7 +227,7 @@ public class OrderAdapter extends BaseAdapter {
                 holder.dotImage.setImageResource(R.drawable.dot3);
                 holder.operationText.setVisibility(View.INVISIBLE);
                 holder.phnoeText.setVisibility(View.GONE);
-                holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getSiteName());
+                holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
                 break;
             case HomeViewModel.ORDER_STUTAS_EIGHT:
                 //洗涤中
@@ -235,7 +235,7 @@ public class OrderAdapter extends BaseAdapter {
                 holder.dotImage.setImageResource(R.drawable.dot3);
                 holder.operationText.setVisibility(View.INVISIBLE);
                 holder.phnoeText.setVisibility(View.GONE);
-                holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getSiteName());
+                holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
                 break;
             case HomeViewModel.ORDER_STUTAS_NINE:
                 //洗涤完成
@@ -243,7 +243,7 @@ public class OrderAdapter extends BaseAdapter {
                 holder.dotImage.setImageResource(R.drawable.dot3);
                 holder.operationText.setVisibility(View.INVISIBLE);
                 holder.phnoeText.setVisibility(View.GONE);
-                holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getSiteName());
+                holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
                 break;
             case HomeViewModel.ORDER_STUTAS_TEN:
                 // 送返中
@@ -300,7 +300,7 @@ public class OrderAdapter extends BaseAdapter {
                 //已完成
                 holder.imageArrow.setImageResource(R.mipmap.clock5);
                 holder.dotImage.setImageResource(R.drawable.dot5);
-                if(order.getOrderStatus() == Const.OrderStatus.ORDER_STATUS_DELIVERED){
+                if(order.isEvaluable()){
                     holder.tvTips.setText("您的评价是我们提升服务的动力");
                     holder.phnoeText.setVisibility(View.GONE);
                     holder.operationText.setVisibility(View.VISIBLE);

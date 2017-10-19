@@ -21,4 +21,19 @@ public class NumberUtil {
 
         return number;
     }
+
+    public static String format1Dicimal(String number){
+        DecimalFormat decimalFormat=new DecimalFormat(".0");
+        if(Float.compare(Float.parseFloat(number),0.0f) == 0){
+            number = "0.0";
+        }else{
+            number= decimalFormat.format(Float.parseFloat(number));
+            if(number.startsWith(".")){
+                number = "0" +number;
+            }
+
+        }
+
+        return number;
+    }
 }

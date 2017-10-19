@@ -409,8 +409,8 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
         selCouponParent = (RelativeLayout) couponsView.findViewById(R.id.sel_coupou_parent);
         selCouponParent.setOnClickListener(this);
         clothesDetailParentTop.addView(couponsView);
-        getPriceVolley.requestGet(Const.Request.pay, getHandler(), UserInfosPref.getInstance(this).getUser().getToken()
-                ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+//        getPriceVolley.requestPost(Const.Request.pay+"/" + orderNo, getHandler(), UserInfosPref.getInstance(this).getUser().getToken()
+//                ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 
 
 
@@ -1279,33 +1279,15 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                     isStart4 = true;
                     OrderDetailResp detailResp = (OrderDetailResp) JsonParser.jsonToObject(msg.obj + "", OrderDetailResp.class);
                     order = detailResp.getData();
+                    subPrice = Float.parseFloat(order.getTotalPrice());
                     clockOn = order.isClockOn();
-                    logVolley.addParams("orderNo",order.getOrderNo());
-                    if(order.getShareInfo() != null && !TextUtils.isEmpty(order.getShareInfo().getAppSharePromocode())){
-                        logVolley.addParams("promoCode",order.getShareInfo().getAppSharePromocode());
-                    }
+//                    logVolley.addParams("orderNo",order.getOrderNo());
+//                    if(order.getShareInfo() != null && !TextUtils.isEmpty(order.getShareInfo().getAppSharePromocode())){
+//                        logVolley.addParams("promoCode",order.getShareInfo().getAppSharePromocode());
+//                    }
 
                     initTopView(order);
-                    if(showGift){
-                        if(TextUtils.isEmpty(order.getAction())){
-                            return;
-                        }
-//                        if(order.getAction().equals("share") || order.getAction().equals("direct")){
-//                            ShareGiftDialog2 shareGiftDialog  =  new ShareGiftDialog2(this,order).builder();
-//                            shareGiftDialog.setShareBtnClickedLinstener(this);
-//                            shareGiftDialog.show();
-//                        }
-                        Intent intent = new Intent(this,WebActivity.class);
-                        intent.putExtra("url",Const.Request.paySuccess + detailResp.getData().getTotalPrice());
-                        intent.putExtra("title","支付成功");
-                        intent.putExtra("order",JsonParser.objectToJsonStr(order));
-
-//                        if(!TextUtils.isEmpty(UserInfosPref.getInstance(this).getUser().getMobile())){
-//                            UmengEventHelper.payEvent(this,UserInfosPref.getInstance(this).getUser().getMobile());
-//                        }
-                        startActivity(intent);
-                        showGift = false;
-                    }
+//
                     fillDetailViewByOrder(order);
                     startTimer();
                     startRefreshTimer();
@@ -1624,16 +1606,16 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                     cancelOrderDialog.show();
                     break;
                 case OPERATION_ORDER_PAY:
-                    Intent intent = new Intent(this, PayActivity.class);
+                    Intent intent = new Intent(this, PayActivity2.class);
                     intent.putExtra("order_no", order.getOrderNo());
                     intent.putExtra("order_price", subPrice);
                     if(couponData != null){
                         intent.putExtra("coupon_data",JsonParser.objectToJsonStr(couponData));
                     }
-                    if(TextUtils.isEmpty(balance)){
-                        balance = "";
-                    }
-                    intent.putExtra("balance",balance);
+//                    if(TextUtils.isEmpty(balance)){
+//                        balance = "";
+//                    }
+//                    intent.putExtra("balance",balance);
                     startActivityForResult(intent, OPERATION_ORDER_PAY);
                     break;
                 case OPERATION_ORDER_REMARK:
@@ -1657,7 +1639,7 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
 //                    OperationToast.showOperationResult(this,"confirm",0);
                     setOperationMsg(getString(R.string.operating));
                     locationForService = UserInfosPref.getInstance(this).getLocationServer();
-                    confirmDoneVolley.requestPost(Const.Request.confirmDone,this,getHandler(),UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+                    confirmDoneVolley.requestPost(Const.Request.confirmDone+"/"+orderNo+"/receive",this,getHandler(),UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
                     break;
             }
         }else if(view == selCouponParent){

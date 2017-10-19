@@ -247,9 +247,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
             case Const.Message.MSG_GET_RECC_STORES_FAIL:
 
                 break;
-
         }
-
 
     }
 
@@ -506,8 +504,8 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
     }
 
     private void requestArea(){
-        catogoriesVolley = new JsonVolley(getActivity(), Const.Message.MSG_CATEGORIS_SUCC,Const.Message.MSG_CATEGORIS_FAIL);
-        catogoriesVolley.requestGet(Const.Request.categoris,getHandler(), "",locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+//        catogoriesVolley = new JsonVolley(getActivity(), Const.Message.MSG_CATEGORIS_SUCC,Const.Message.MSG_CATEGORIS_FAIL);
+//        catogoriesVolley.requestGet(Const.Request.categoris,getHandler(), "",locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
     }
 
     @Override
@@ -800,7 +798,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     holder.dotImage.setImageResource(R.drawable.dot2);
                     holder.operationText.setVisibility(View.INVISIBLE);
                     holder.phnoeText.setVisibility(View.GONE);
-                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getSiteName());
+                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
                     break;
                 case HomeViewModel.ORDER_STUTAS_SEVEN:
                     //入库检验
@@ -808,7 +806,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     holder.dotImage.setImageResource(R.drawable.dot3);
                     holder.operationText.setVisibility(View.INVISIBLE);
                     holder.phnoeText.setVisibility(View.GONE);
-                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getSiteName());
+                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
                     break;
                 case HomeViewModel.ORDER_STUTAS_EIGHT:
                     //洗涤中
@@ -816,7 +814,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     holder.dotImage.setImageResource(R.drawable.dot3);
                     holder.operationText.setVisibility(View.INVISIBLE);
                     holder.phnoeText.setVisibility(View.GONE);
-                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getSiteName());
+                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
                     break;
                 case HomeViewModel.ORDER_STUTAS_NINE:
                     //洗涤完成
@@ -824,7 +822,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     holder.dotImage.setImageResource(R.drawable.dot3);
                     holder.operationText.setVisibility(View.INVISIBLE);
                     holder.phnoeText.setVisibility(View.GONE);
-                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getSiteName());
+                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
                     break;
                 case HomeViewModel.ORDER_STUTAS_TEN:
                     // 送返中
@@ -1114,8 +1112,8 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
             setView(inflater.inflate(R.layout.fragment_home3,container,false));
 //            FontUtil.applyFont(getActivity(), getView(), "OpenSans-Regular.ttf");
             initMyViews(getView());
-            updateHelper = new ApkUpgradeHelper(getActivity());
-            updateHelper.check(false);
+//            updateHelper = new ApkUpgradeHelper(getActivity());
+//            updateHelper.check(false);
             LocationManager.get().init(getActivity().getApplicationContext());
 
         }

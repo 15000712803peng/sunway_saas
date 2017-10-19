@@ -14,9 +14,9 @@ public class Store {
     District district  ;//(District, optional),
     String districtId  ;//(integer, optional): 地区id ,
     String endService  ;//(LocalTime, optional): 营业结束时间 ,
-    String freightAmount  ;//(number, optional): 运费 ,
+    String freightAmount="0"  ;//(number, optional): 运费 ,
     String freightInfo  ;//(string, optional),
-    String freightRemitAmount  ;//(number, optional): 免运费最低价 ,
+    String freightRemitAmount="0"  ;//(number, optional): 免运费最低价 ,
     String headPortraitUrl  ;//(string, optional): 门店图标 ,
     String id  ;//(integer, optional),
     String innerLevel  ;//(integer, optional): 星级 ,
@@ -36,7 +36,7 @@ public class Store {
    int rows ;//(integer, optional),
     String serviceCount ;//(integer, optional),
    int size ;//(integer, optional): 规模 ,
-    String startAmount ;//(number, optional): 起价费 ,
+    String startAmount="0" ;//(number, optional): 起价费 ,
    int status ;//(integer, optional): 状态:1-正常营业,2-暂停接单,3-暂停营业 ,
     String storeName ;//(string, optional): 门店店名 ,
     String  storeNickName ;//(string, optional): 门店别名 ,
@@ -48,6 +48,15 @@ public class Store {
     String  withdrawerBankAccount ;//(string, optional): 门店提现账户号 ,
     String  withdrawerName ;//(string, optional): 门店提现账户名
     boolean isChecked = false;
+    int score;
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
 
     public boolean isChecked() {
         return isChecked;

@@ -103,6 +103,15 @@ public class Order implements Serializable{
     boolean clockOn;
     Coupon coupon;
     String deductMemo;
+    String storeName;
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
 
     public String getDeductMemo() {
         return deductMemo;
