@@ -195,7 +195,6 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     }
 
     public void load(){
-
         UserInfosPref userInfos = UserInfosPref.getInstance(getActivity());
         locationForService = UserInfosPref.getInstance(getActivity()).getLocationServer();
         if(userInfos.getUser() == null){

@@ -71,6 +71,7 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
     JsonVolley payBanlanceVolley;
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_pay);
         ButterKnife.bind(this);
@@ -81,7 +82,6 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
         orderNo = getIntent().getStringExtra("order_no");
         order = (Order)getIntent().getSerializableExtra("order");
         subPriceText.setText("￥" + NumberUtil.format2Dicimal(subPrice +""));
-
         myPayRequest = new MyPayRequest();
         myPayRequest.setOrderNo(orderNo);
         settleAccountsVolley = new JsonVolley(this, Const.Message.MSG_SETTLE_ACCOUNTS_SUCC, Const.Message.MSG_SETTLE_ACCOUNTS_FAIL);
@@ -124,7 +124,6 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
         payParent.setOnClickListener(this);
         payVolley = new JsonVolley(this,Const.Message.MSG_GET_PAY_SUCC,Const.Message.MSG_GET_PAY_FAIL);
     }
-
     float finalPrice = 0f;
     float balanceDiscount;
     @Bind(R.id.text_final_pay)
@@ -146,7 +145,6 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
         );
 
     }
-
     private void payFail(){
         LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
         cancelPayVolley.requestGet(Const.Request.payCancel,getHandler(),UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
@@ -185,7 +183,6 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
     }
 
     int payChoice = 0;
-
     private static final int SELECT_WE_PAY = 32;
     private static final int SELECT_ALI_PAY = 33;
     private static final int SELECT_BANLANCE_PAY = 3;
@@ -329,9 +326,6 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
             case Const.Message.MSG_GET_PAY_FAIL:
                 break;
 
-
-
-
         }
     }
 
@@ -408,7 +402,8 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
 //                    if (payListArray != null) {
 //                        settleAccountsVolley.addParams("payList", payListArray);
 //                    }
-                    LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
+
+                LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
                 payVolley.addParams("amount",subPrice);
                 payVolley.addParams("balance",myBlance);
                 payVolley.addParams("thirdPartyPayChannel","31");
