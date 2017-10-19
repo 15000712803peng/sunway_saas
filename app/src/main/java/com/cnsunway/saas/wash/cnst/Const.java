@@ -92,6 +92,8 @@ public class Const {
         public static String storeCategories;
         public static String products;
         public static String inServiceStores;
+        public static String payBanlance;
+        public static String evaluate;
         public static void setServer(String baseUrl) {
             SERVER = baseUrl;
             code = SERVER + "/user/login/send_verify_code";
@@ -113,9 +115,9 @@ public class Const {
             updateAddr = SERVER + "/user/address/update";     //   修改地址
             showDefaultAddr = SERVER + "/user/address/default";   //展示默认地址
             all = SERVER + "/user/account/balance";
-            pay = SERVER + "/accounts/pay";
+            pay = SERVER + "/pay/order";
             confirmPay = SERVER + "/pay/confirmPay";
-            confirmDone = SERVER + "/orders/confirmDone";
+            confirmDone = SERVER + "/orders";
             payCancel = SERVER + "/pay/cancelPay";
             addEvaluate = SERVER + "/orders/addEvaluate";
             settleAccounts = SERVER + "/pay/settleAccounts";
@@ -166,6 +168,8 @@ public class Const {
                     storeCategories = SERVER +"/stores";
             products = SERVER +"/stores";
             inServiceStores = SERVER +"/stores/in_service";
+            payBanlance = SERVER + "/user/account/pay";
+            evaluate =SERVER + "/orders";
         }
 
         static {
@@ -365,6 +369,9 @@ public class Const {
 
         public static final int MSG_GET_PRODUCTS_SUCC = 148;
         public static final int MSG_GET_PRODUCTS_FAIL = 149;
+
+        public static final int MSG_GET_PAY_BANLANCE_SUCC = 150;
+        public static final int MSG_GET_PAY_BANLANCE_FAIL = 151;
 
     }
 

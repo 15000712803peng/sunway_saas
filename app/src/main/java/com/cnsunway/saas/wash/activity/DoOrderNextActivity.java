@@ -294,6 +294,7 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
                         storeList.setVisibility(View.VISIBLE);
                         storeList.addFooterView(getLayoutInflater().inflate(R.layout.hide_bottom,null));
                         orderStoreAdapter = new OrderStoreAdapter(this,stores,this);
+                        orderStoreAdapter.setFetchTime(getDefaultFetchTime());
                         storeList.setAdapter(orderStoreAdapter);
                         storeList.setOnItemClickListener(this);
                     }else{
@@ -550,8 +551,6 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
 
             }
 
-
-
             createOrderVolley.addParams("expectDateB", uploadTimeBegin);
             createOrderVolley.addParams("expectDateE", uploadTimeEnd);
             createOrderVolley.addParams("userAddressId", addr.getId());
@@ -616,10 +615,16 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Toast.makeText(this,"click",Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this,"click",Toast.LENGTH_SHORT).show();
         HeaderViewListAdapter adapter = (HeaderViewListAdapter) adapterView.getAdapter();
         OrderStoreAdapter orderAdapter = (OrderStoreAdapter) adapter.getWrappedAdapter();
-        orderAdapter.setCheckStore(i,getDefaultFetchTime());
+        if(orderAdapter.getItem(i) instanceof Store){
+            Intent storeIntent = new Intent(this, StoreDetailActivity.class);
+            Store store = (Store) orderAdapter.getItem(i);
+            storeIntent.putExtra("store_id",store.getId());
+            startActivity(storeIntent);
+        }
+//        orderAdapter.setCheckStore(i,getDefaultFetchTime());
     }
 
     @Override

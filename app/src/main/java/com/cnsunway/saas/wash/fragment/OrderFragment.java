@@ -441,13 +441,13 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
 
             int count = orderListModel.getHomeLists().size();
             if(count >= orderListModel.getTotal()){
-//                listView.setPullLoadEnable(false);
-                listView.showHistoryFooter(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        getActivity().startActivity(new Intent(getActivity(), HistoryOrdersActivity.class));
-                    }
-                });
+                listView.setPullLoadEnable(false);
+//                listView.showHistoryFooter(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        getActivity().startActivity(new Intent(getActivity(), HistoryOrdersActivity.class));
+//                    }
+//                });
             }else{
                 listView.setPullLoadEnable(true);
 
@@ -571,7 +571,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     @Override
     public void confirmClicked(String orderNo) {
         confirmDoneVolley.addParams("orderNo",orderNo);
-        confirmDoneVolley.requestPost(Const.Request.confirmDone,this,getHandler(),UserInfosPref.getInstance(getActivity()).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+        confirmDoneVolley.requestPost(Const.Request.confirmDone+"/"+orderNo + "/receive",this,getHandler(),UserInfosPref.getInstance(getActivity()).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
     }
 
     BroadcastReceiver logoutReceiver = new BroadcastReceiver() {

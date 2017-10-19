@@ -22,6 +22,7 @@ import android.widget.Toast;
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.cnst.Const;
 import com.cnsunway.saas.wash.framework.inter.LoadingDialogInterface;
+import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.net.StringVolley;
 import com.cnsunway.saas.wash.model.BoxReason;
 import com.cnsunway.saas.wash.model.LocationForService;
@@ -41,7 +42,7 @@ public class CancelOrderDialog2 implements View.OnClickListener {
     View view;
     TextView okBtn, cancelBtn;
     String orderNo;
-    StringVolley orderCancelVolley;
+    JsonVolley orderCancelVolley;
     Handler handler;
     LinearLayout reasonParent1, reasonParent2, reasonParent3, reasonParent4,reasonParent5, reasonParent6, reasonParent7, reasonParent8;
     CheckBox reasonBox1, reasonBox2, reasonBox3,reasonBox4, reasonBox5, reasonBox6,reasonBox7,reasonBox8;
@@ -164,7 +165,7 @@ public class CancelOrderDialog2 implements View.OnClickListener {
             orderCancelVolley.addParams("memo", reason);
             orderCancelVolley.addParams("orderNo", orderNo);
             LocationForService locationForService = UserInfosPref.getInstance(context).getLocationServer();
-            orderCancelVolley.requestPost(Const.Request.cancel, handler, new LoadingDialogInterface() {
+            orderCancelVolley.requestPost(Const.Request.cancel,new LoadingDialogInterface() {
                 @Override
                 public void showLoading() {
                     getLoadingDialog(context.getString(R.string.operating)).show();
@@ -173,7 +174,7 @@ public class CancelOrderDialog2 implements View.OnClickListener {
                 public void hideLoading() {
                     hideLoadingDialog();
                 }
-            }, UserInfosPref.getInstance(context).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+            },  handler, UserInfosPref.getInstance(context).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
         } else if (view == cancelBtn) {
             cancel();
         } else if (view == reasonParent1) {
@@ -338,7 +339,7 @@ public class CancelOrderDialog2 implements View.OnClickListener {
                 }
             }
         };
-        orderCancelVolley = new StringVolley(context, Const.Message.MSG_ORDER_CANCEL_SUCC, Const.Message.MSG_ORDER_CANCEL_SUCC);
+        orderCancelVolley = new JsonVolley(context, Const.Message.MSG_ORDER_CANCEL_SUCC, Const.Message.MSG_ORDER_CANCEL_SUCC);
     }
 
     public void show() {

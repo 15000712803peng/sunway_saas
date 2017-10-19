@@ -28,7 +28,6 @@ public class Order implements Serializable{
 
     Evaluate evaluate;
     String memo;
-    String pickContact; //颜鹏",
     int type;/*: 1,*/
     String pickLatitude;//: 31.3561,
     String pickLogitude;//: 121.438677,
@@ -87,6 +86,7 @@ public class Order implements Serializable{
     String packingDate;
     String pickerName;
 
+
     int disinfectingDuration;   //单位是毫秒
     int caringDuration;         //单位是毫秒
     int qualifyingDuration;     //单位是毫秒
@@ -103,6 +103,18 @@ public class Order implements Serializable{
     boolean clockOn;
     Coupon coupon;
     String deductMemo;
+    String storeName;
+    String pickContact;
+
+
+
+    public String getStoreName() {
+        return storeName;
+    }
+
+    public void setStoreName(String storeName) {
+        this.storeName = storeName;
+    }
 
     public String getDeductMemo() {
         return deductMemo;

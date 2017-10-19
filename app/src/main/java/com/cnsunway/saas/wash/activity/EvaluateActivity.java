@@ -82,16 +82,17 @@ public class EvaluateActivity extends InitActivity implements View.OnClickListen
         washingScore = "" + starStore.getCount();
         evaluate = evaluateEdit.getText().toString().trim();
         evaluateVolley.addParams("orderNo", orderNo);
-        evaluateVolley.addParams("operScore", operScore);
-        evaluateVolley.addParams("washingScore", washingScore);
+        evaluateVolley.addParams("fetcherScore", operScore);
+        evaluateVolley.addParams("storeScore", washingScore);
         evaluateVolley.addParams("comment", evaluate);
+
         setOperationMsg(getString(R.string.operating));
         /*Log.e("operScore",operScore);
         Log.e("washingScore",washingScore);
         Log.e("orderNo",orderNo);
         Log.e("evaluate",evaluate);*/
         LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
-        evaluateVolley.requestPost(Const.Request.confirmReceive, this,
+        evaluateVolley.requestPost(Const.Request.evaluate+"/"+orderNo +"/evaluate", this,
                 getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
     }
 

@@ -233,10 +233,10 @@ public class HomeActivity2 extends FragmentActivity implements HomeTabHost.OnTab
     @Override
     protected void onResume() {
         super.onResume();
-        if(UserInfosPref.getInstance(this).getUser() != null){
-            getHxAccountVolley.requestGet(Const.Request.hxAccount, updateUserhander, UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
-
-        }
+//        if(UserInfosPref.getInstance(this).getUser() != null){
+//            getHxAccountVolley.requestGet(Const.Request.hxAccount, updateUserhander, UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+//
+//        }
 
 
     }

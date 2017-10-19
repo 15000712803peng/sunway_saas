@@ -62,31 +62,36 @@
                 </LinearLayout>
                 <LinearLayout
                     android:gravity="center_vertical"
-                    android:paddingTop="10dp"
+                    android:paddingTop="6dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
                     <ImageView
+                        android:id="@+id/score_one"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_marginRight="4dp"
                         android:src="@mipmap/star_orange"/>
                     <ImageView
+                        android:id="@+id/score_two"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_marginRight="4dp"
                         android:src="@mipmap/star_orange"/>
                     <ImageView
+                        android:id="@+id/score_three"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_marginRight="4dp"
                         android:src="@mipmap/star_orange"/>
                     <ImageView
+                        android:id="@+id/score_four"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_marginRight="4dp"
                         android:src="@mipmap/star_orange"/>
                     <ImageView
+                        android:id="@+id/score_five"
                         android:layout_width="10dp"
                         android:layout_height="10dp"
                         android:layout_marginRight="4dp"
@@ -96,27 +101,30 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="11dp"
-                        android:text="4.0"
+                        android:id="@+id/text_star"
                         android:textColor="#444A59"/>
                     <TextView
+                        android:id="@+id/text_service_count"
                         android:paddingRight="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="11dp"
-                        android:text="服务 169 次"
                         android:textColor="#444A59"/>
                 </LinearLayout>
                 <LinearLayout
-                    android:paddingTop="11dp"
+                    android:paddingTop="6dp"
                     android:paddingBottom="9dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <TextView
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:id="@+id/text_fee"
                         android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="11dp"
-                        android:text="订单满60元免5元取送费"
+                        android:text=""
                         android:textColor="#444A59"/>
                 </LinearLayout>
             </LinearLayout>
@@ -138,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <LinearLayout
-                            android:id="@+id/ll_coupon1"
+                            android:id="@+id/recharge_parent"
                             android:visibility="visible"
                         android:paddingTop="10dp"
                         android:layout_width="match_parent"
@@ -150,97 +158,22 @@
                             android:layout_marginRight="10dp"
                             android:src="@mipmap/full_cut"/>
                         <TextView
+                            android:layout_marginRight="12dp"
+                            android:singleLine="true"
+                            android:ellipsize="end"
+                            android:id="@+id/text_recharge"
                             android:gravity="center"
                             android:paddingRight="8dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="11dp"
-                            android:text="消费满 100 减 20"
+                            android:text=""
                             android:textColor="#444A59"/>
                     </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/ll_coupon2"
-                            android:visibility="visible"
-                            android:paddingTop="8dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:src="@mipmap/first_order"/>
-                            <TextView
-                                android:gravity="center"
-                                android:paddingRight="8dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="11dp"
-                                android:text="首次下单 9.9 可洗三件衣服"
-                                android:textColor="#444A59"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/ll_coupon3"
-                            android:visibility="gone"
-                            android:paddingTop="10dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
 
-                            <ImageView
-                                android:id="@+id/imageView"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:src="@mipmap/recharge"/>
+                    </LinearLayout>
 
-                            <TextView
-                                android:gravity="center"
-                                android:paddingRight="8dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="11dp"
-                                android:text="充值 100 送 20，充值 200 送 50，…"
-                                android:textColor="#444A59"/>
-                        </LinearLayout>
-                        <LinearLayout
-                            android:id="@+id/ll_coupon4"
-                            android:visibility="gone"
-                            android:paddingTop="8dp"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginRight="10dp"
-                                android:src="@mipmap/first_order"/>
-                            <TextView
-                                android:gravity="center"
-                                android:paddingRight="8dp"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:textSize="11dp"
-                                android:text="进店领 3~6 元"
-                                android:textColor="#444A59"/>
-                        </LinearLayout>
-                    </LinearLayout>
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"/>
-                    <LinearLayout
-                        android:id="@+id/ll_arrow"
-                        android:paddingTop="18dp"
-                        android:layout_marginRight="16dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-                        <ImageView
-                            android:id="@+id/iv_arrow"
-                            android:layout_width="8dp"
-                            android:layout_height="5dp"
-                            android:src="@mipmap/arrow_blow"/>
-                    </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
