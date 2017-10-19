@@ -311,7 +311,8 @@ public class OrderAdapter extends BaseAdapter {
                         public void onClick(View view) {
                             Intent intent = new Intent(activity, EvaluateActivity.class);
                             intent.putExtra("order_no", order.getOrderNo());
-                            intent.putExtra("sender_name", order.getPickerName());
+                            intent.putExtra("site_name", order.getStoreName());
+                            intent.putExtra("sender_name", order.getDelivererName());
                             activity.startActivity(intent);
                         }
                     });

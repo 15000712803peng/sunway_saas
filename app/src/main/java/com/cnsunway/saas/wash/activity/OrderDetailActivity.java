@@ -1622,9 +1622,8 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                     Intent remarkIntent = new Intent(this, EvaluateActivity.class);
                     remarkIntent.putExtra("order_no", order.getOrderNo());
                     remarkIntent.putExtra("sender_name", order.getDelivererName());
-                    remarkIntent.putExtra("site_name",order.getSiteName());
+                    remarkIntent.putExtra("site_name",order.getStoreName());
                     startActivityForResult(remarkIntent, OPERATION_ORDER_REMARK);
-                    Log.e("site name","site name:" + order.getSiteName());
                     break;
                 case OPERATION_ORDER_SHARE:
                     orderShare();
