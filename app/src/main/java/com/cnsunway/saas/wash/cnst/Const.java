@@ -94,6 +94,7 @@ public class Const {
         public static String inServiceStores;
         public static String payBanlance;
         public static String evaluate;
+        public static String comments;
         public static void setServer(String baseUrl) {
             SERVER = baseUrl;
             code = SERVER + "/user/login/send_verify_code";
@@ -170,6 +171,7 @@ public class Const {
             inServiceStores = SERVER +"/stores/in_service";
             payBanlance = SERVER + "/user/account/pay";
             evaluate =SERVER + "/orders";
+            comments = SERVER +"/stores";
         }
 
         static {
@@ -372,6 +374,9 @@ public class Const {
 
         public static final int MSG_GET_PAY_BANLANCE_SUCC = 150;
         public static final int MSG_GET_PAY_BANLANCE_FAIL = 151;
+
+        public static final int MSG_GET_COMMENTS_SUCC = 152;
+        public static final int MSG_GET_COMMENTS_FAIL = 153;
 
     }
 

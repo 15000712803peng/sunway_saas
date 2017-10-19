@@ -254,9 +254,6 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
                     }
                 });
                 commentView.addFooterView(view);
-                /*int sum = store.getCommentsCount();
-//                commentNum.setText("("+ sum +")");
-                commentNum.setText(sum+"");*/
             }else {
                 textNoComment.setVisibility(View.VISIBLE);
             }

@@ -10,10 +10,8 @@ import com.cnsunway.saas.wash.cnst.Const;
 import com.cnsunway.saas.wash.dialog.OperationToast;
 import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.net.NetParams;
-import com.cnsunway.saas.wash.framework.utils.DateUtil;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
 import com.cnsunway.saas.wash.model.Comment;
-import com.cnsunway.saas.wash.model.CommentDetail;
 import com.cnsunway.saas.wash.model.LocationForService;
 import com.cnsunway.saas.wash.resp.CommentDetailResp;
 import com.cnsunway.saas.wash.sharef.UserInfosPref;
@@ -27,17 +25,19 @@ import java.util.List;
 
 class ShowCommentActivity extends InitActivity implements XListView.IXListViewListener {
     TextView title;
-    JsonVolley storeVolley;
+    JsonVolley commentsVolley;
     LocationForService locationForService;
     String storeId;
     XListView commentList;
     int pageNum;
-    int page;
+    int page = 1;
     List<Comment> comments;
     CommentDetailResp resp;
     CommentsAdapter commentsAdapter;
     UserInfosPref userInfos;
     String token;
+    int rows = 10;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_show_comment);
@@ -48,7 +48,7 @@ class ShowCommentActivity extends InitActivity implements XListView.IXListViewLi
     protected void initData() {
         storeId = getIntent().getStringExtra("store_id");
         locationForService = UserInfosPref.getInstance(this).getLocationServer();
-        storeVolley = new JsonVolley(this, Const.Message.MSG_GET_STORE_DETAIL_SUCC,Const.Message.MSG_GET_STORE_DETAIL_FAIL);
+        commentsVolley = new JsonVolley(this, Const.Message.MSG_GET_COMMENTS_SUCC,Const.Message.MSG_GET_COMMENTS_FAIL);
 
     }
 
@@ -57,7 +57,12 @@ class ShowCommentActivity extends InitActivity implements XListView.IXListViewLi
         title = (TextView) findViewById(R.id.text_title);
         title.setText("用户评价");
         commentList = (XListView) findViewById(R.id.list_comment);
-        storeVolley.requestPost(Const.Request.storeDetail + "/" + storeId + "/comments",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+        commentList.setPullLoadEnable(true);
+        commentList.setPullRefreshEnable(true);
+        commentList.setXListViewListener(this);
+        commentsVolley.addParams("page",page);
+        commentsVolley.addParams("rows",rows);
+        commentsVolley.requestPost(Const.Request.comments + "/" + storeId + "/comments",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 
 
     }
@@ -65,35 +70,29 @@ class ShowCommentActivity extends InitActivity implements XListView.IXListViewLi
     @Override
     protected void handlerMessage(Message msg) {
         switch (msg.what){
-            case Const.Message.MSG_GET_STORE_DETAIL_SUCC:
+            case Const.Message.MSG_GET_COMMENTS_SUCC:
                 if(msg.arg1 == NetParams.RESPONCE_NORMAL){
-                    commentList.setRefreshTime(DateUtil.getCurrentDate());
-                    commentList.stopRefresh("刷新成功");
                     resp = (CommentDetailResp) JsonParser.jsonToObject(msg.obj +"",CommentDetailResp.class);
-                    pageNum = resp.getData().getPageNum();     //总页数
-                    page = resp.getData().getPages(); //页数
-                    if (pageNum == 0){
-                        return;
-                    }
-                    if (pageNum == 1){
-                        commentList.setPullLoadEnable(true);
+                    page = resp.getData().getPageNum();     //总页数
+                    if (page == 1 && resp.getData().getList() != null && resp.getData().getList().size() > 0){
+                        commentList.stopRefresh("刷新成功");
                         comments = resp.getData().getList();
-                        initList(comments);
-                    }else if (page>1){
+                        initList(comments,resp.getData().isLastPage());
+                    }else if (page>1 && resp.getData().getList() != null && resp.getData().getList().size() > 0){
                         comments = resp.getData().getList();
-                        loadMoreList(comments);
+                        loadMoreList(comments,resp.getData().isLastPage());
                     }
                 }
                 break;
 
-            case Const.Message.MSG_GET_STORE_DETAIL_FAIL:
+            case Const.Message.MSG_GET_COMMENTS_FAIL:
                 commentList.stopRefresh("刷新失败");
                 commentList.stopLoadMore();
                 OperationToast.showOperationResult(getApplication(),msg.obj+"",0);
                 break;
         }
     }
-    private void initList(List<Comment> comments){
+    private void initList(List<Comment> comments,boolean isLast){
         if (commentsAdapter == null){
             commentsAdapter = new CommentsAdapter(resp.getData().getList(),getApplication());
             commentsAdapter.setComments(comments);
@@ -104,47 +103,39 @@ class ShowCommentActivity extends InitActivity implements XListView.IXListViewLi
             commentsAdapter.notifyDataSetChanged();
         }
 
-        if (page >= pageNum) {
+        if (isLast) {
             commentList.setPullLoadEnable(false);
+        } else {
+            commentList.setPullLoadEnable(true);
         }
     }
-    private void fillDetail(CommentDetail commentDetail){
 
-           if (commentDetail.getList()!= null) {
-               commentList.setAdapter(new CommentsAdapter(commentDetail.getList(),getApplication()));
-               commentList.setRefreshTime(DateUtil.getCurrentDate());
-               commentList.stopRefresh("刷新成功");
-               pageNum = commentDetail.getPageNum();
-               if (pageNum == 1){
-                   commentList.setPullLoadEnable(true);
-               } else if (pageNum>1){
-//                   loadMoreList(comments);
-               }
-           }
-    }
-    private void loadMoreList(List<Comment> comments) {
+    private void loadMoreList(List<Comment> comments,boolean isLast) {
         commentList.stopLoadMore();
         if (comments == null) {
             return;
         }
         commentsAdapter.getComments().addAll(comments);
         commentsAdapter.notifyDataSetChanged();
-        if (page >= pageNum) {
+        if (isLast) {
             commentList.setPullLoadEnable(false);
+        } else {
+            commentList.setPullLoadEnable(true);
         }
     }
 
     @Override
     public void onRefresh() {
-        page = 1;
-        storeVolley.addParams("pages",page);
-        storeVolley.requestPost(Const.Request.storeDetail + "/" + storeId + "/comments",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+
+        commentsVolley.addParams("page",1);
+        commentsVolley.addParams("rows",rows);
+        commentsVolley.requestPost(Const.Request.comments + "/" + storeId + "/comments",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
     }
 
     @Override
     public void onLoadMore() {
-        int nextPage = page  + 1;
-        storeVolley.addParams ("pages",nextPage);
-        storeVolley.requestPost(Const.Request.storeDetail + "/" + storeId + "/comments",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+        commentsVolley.addParams ("page",page  + 1);
+        commentsVolley.addParams ("rows",rows);
+        commentsVolley.requestPost(Const.Request.comments + "/" + storeId + "/comments",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
     }
 }

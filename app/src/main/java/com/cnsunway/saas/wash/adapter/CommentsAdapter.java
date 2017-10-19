@@ -13,10 +13,9 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.model.Comment;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.List;
-
-import static com.cnsunway.saas.wash.R.mipmap.store;
 
 
 public class CommentsAdapter extends BaseAdapter{
@@ -74,7 +73,7 @@ public class CommentsAdapter extends BaseAdapter{
 
             holder.createdDate = (TextView) view.findViewById(R.id.tv_createdDate); //createdDate 评论时间
 
-            holder.headPortrait = (ImageView) view.findViewById(R.id.image_headPortrait);   // headPortraitUrl 头像图片URL
+            holder.headPortrait = (RoundedImageView) view.findViewById(R.id.image_headPortrait);   // headPortraitUrl 头像图片URL
             view.setTag(holder);
         }else {
             holder = (Holder) view.getTag();
@@ -132,7 +131,7 @@ public class CommentsAdapter extends BaseAdapter{
 
 
         }
-        Glide.with(context).load(comment.getHeadPortraitUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).placeholder(store).into(holder.headPortrait);
+        Glide.with(context).load(comment.getHeadPortraitUrl()).diskCacheStrategy(DiskCacheStrategy.ALL).into(holder.headPortrait);
         return view;
     }
 
@@ -142,7 +141,7 @@ public class CommentsAdapter extends BaseAdapter{
         public TextView nickName;
         public ImageView score1,score2,score3,score4,score5;
         public TextView createdDate;
-        public ImageView headPortrait;
+        public RoundedImageView headPortrait;
 
 
     }
