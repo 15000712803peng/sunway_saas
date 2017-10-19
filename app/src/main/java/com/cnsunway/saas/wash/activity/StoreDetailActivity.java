@@ -237,11 +237,12 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
 //            productsView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         }
         if (store.getComments().size()>0){
-
             commentView.setAdapter( new CommentsAdapter(store.getComments(),getApplication()));
             View view = LayoutInflater.from(StoreDetailActivity.this).inflate(R.layout.comment_foot_item, null);
             llComment = (LinearLayout) view.findViewById(R.id.ll_comment);
-            commentNum = (TextView) findViewById(R.id.tv_comment_num);
+            commentNum = (TextView) view.findViewById(R.id.text_comment_num);
+
+            commentNum.setText("("+store.getCommentsCount()+""+")");
             textNoComment.setVisibility(View.INVISIBLE);
 
 
@@ -266,8 +267,6 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
                 if(msg.arg1 == NetParams.RESPONCE_NORMAL){
                     StoreDetailResp resp = (StoreDetailResp) JsonParser.jsonToObject(msg.obj +"",StoreDetailResp.class);
                     fillDetail(resp.getData());
-//                    commentsCount = resp.getData().getCommentsCount();
-//                    Log.e("commentsCount",commentsCount+"");
                 }
                 break;
 

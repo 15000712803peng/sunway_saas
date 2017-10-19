@@ -23,7 +23,7 @@ import java.util.List;
  * Created by Sunway on 2017/10/18.
  */
 
-class ShowCommentActivity extends InitActivity implements XListView.IXListViewListener {
+public class ShowCommentActivity extends InitActivity implements XListView.IXListViewListener {
     TextView title;
     JsonVolley commentsVolley;
     LocationForService locationForService;
