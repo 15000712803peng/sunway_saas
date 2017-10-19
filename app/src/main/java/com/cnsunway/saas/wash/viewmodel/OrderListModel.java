@@ -38,7 +38,7 @@ public class OrderListModel extends ViewModel{
     private List<Order> homeLists;
     private int page = 1;
     private int total;
-    private int rows = 100;
+    private int rows = 10;
     public int getTotal() {
         return total;
     }

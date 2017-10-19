@@ -36,6 +36,7 @@ import com.cnsunway.saas.wash.activity.LoginActivity;
 import com.cnsunway.saas.wash.activity.OrderDetailActivity;
 
 import com.cnsunway.saas.wash.activity.OrderDetailActivity2;
+import com.cnsunway.saas.wash.activity.PayActivity2;
 import com.cnsunway.saas.wash.activity.ServiceAreaActivity;
 import com.cnsunway.saas.wash.activity.StoreDetailActivity;
 import com.cnsunway.saas.wash.activity.WebActivity;
@@ -765,21 +766,23 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     holder.operationText.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-//                            Intent intent = new Intent(getActivity(), GetPayOrderActivity.class);
-//                            intent.putExtra("order_no", order.getOrderNo());
-//                            intent.putExtra("order_price", order.getTotalPrice());
-//                            intent.putExtra("order", order);
-//                            intent.putExtra("order_index",order.getIndex());
-//                            startActivityForResult(intent,OPERATION_ORDER_PAY);
-                            if(order.getType() == 1){
-                                Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
-                                intent.putExtra("order_no", order.getOrderNo());
-                                startActivityForResult(intent, 1);
-                            }else if(order.getType() == 2){
-                                Intent intent = new Intent(getActivity(), BackWashOrderDetailActivity.class);
-                                intent.putExtra("order_no", order.getOrderNo());
-                                startActivityForResult(intent, 1);
-                            }
+                            Intent intent = new Intent(getActivity(), PayActivity2.class);
+                            intent.putExtra("order_no", order.getOrderNo());
+                            intent.putExtra("order_price", order.getTotalPrice());
+//                    if(TextUtils.isEmpty(balance)){
+//                        balance = "";
+//                    }
+//                    intent.putExtra("balance",balance);
+                            startActivityForResult(intent, OPERATION_ORDER_PAY);
+//                            if(order.getType() == 1){
+//                                Intent intent = new Intent(getActivity(), OrderDetailActivity.class);
+//                                intent.putExtra("order_no", order.getOrderNo());
+//                                startActivityForResult(intent, 1);
+//                            }else if(order.getType() == 2){
+//                                Intent intent = new Intent(getActivity(), BackWashOrderDetailActivity.class);
+//                                intent.putExtra("order_no", order.getOrderNo());
+//                                startActivityForResult(intent, 1);
+//                            }
                         }
                     });
 
@@ -881,7 +884,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     //已完成
                     holder.imageArrow.setImageResource(R.mipmap.clock5);
                     holder.dotImage.setImageResource(R.drawable.dot5);
-                    if(order.getOrderStatus() == Const.OrderStatus.ORDER_STATUS_DELIVERED){
+                    if(order.isEvaluable()){
                         holder.tvTips.setText("您的评价是我们提升服务的动力");
                         holder.phnoeText.setVisibility(View.GONE);
                         holder.operationText.setVisibility(View.VISIBLE);

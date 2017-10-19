@@ -20,7 +20,7 @@ import com.cnsunway.saas.wash.sharef.UserInfosPref;
  * Created by Sunway on 2017/10/18.
  */
 
-class ShowCommentActivity extends InitActivity {
+public  class ShowCommentActivity extends InitActivity {
     TextView title;
     JsonVolley storeVolley;
     LocationForService locationForService;
