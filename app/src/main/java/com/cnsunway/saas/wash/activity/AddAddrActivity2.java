@@ -333,7 +333,7 @@ public class AddAddrActivity2 extends InitActivity implements View.OnClickListen
         LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
         if (operation == OPERATION_EDIT) {
             createAddrVolley.addParams("id", addr.getId());
-            Log.e("------","default flag:" + defaultFlag);
+
             createAddrVolley.addParams("cityCode", addr.getCityCode());
             createAddrVolley.addParams("cityName", addr.getCityName());
             createAddrVolley.addParams("districtCode",addr.getDistrictCode());

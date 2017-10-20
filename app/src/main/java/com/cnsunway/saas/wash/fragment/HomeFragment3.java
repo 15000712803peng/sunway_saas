@@ -586,10 +586,28 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
             orderPager.setPageMargin(getResources().getDimensionPixelOffset(R.dimen._10dp));
 //            orderPager.setPageTransformer(true, new ZoomOutPageTransformer());
             orderPager.setPageTransformer(true, new ScaleInTransformer());
-            orderPager.setAdapter(new OrderAdapter2(homeOrderModel.getHomeLists()));
+            List<Order> filterOrders = filterDoneOrder(homeOrderModel.getHomeLists());
+            if(filterOrders.size() > 0){
+                orderPager.setAdapter(new OrderAdapter2(filterOrders));
+            }else {
+                orderPager.setAdapter(new DefaultOrderAdapter());
+            }
+
 
         }
     };
+
+    private List<Order> filterDoneOrder(List<Order> orders){
+        List<Order> newOrders = new ArrayList<>();
+        for(Order order : orders){
+            if(HomeViewModel.getOrderSimpleStatus(order) == HomeViewModel.ORDER_STUTAS_TWELVE && !order.isEvaluable()){
+//                orders.remove(order);
+            }else {
+                newOrders.add(order);
+            }
+        }
+        return newOrders;
+    }
 
     class DefaultOrderAdapter extends PagerAdapter{
 
@@ -788,7 +806,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                         public void onClick(View view) {
                             Intent intent = new Intent(getActivity(), PayActivity2.class);
                             intent.putExtra("order_no", order.getOrderNo());
-                            intent.putExtra("order_price", order.getTotalPrice());
+                            intent.putExtra("order_price", Float.parseFloat(order.getTotalPrice()));
 //                    if(TextUtils.isEmpty(balance)){
 //                        balance = "";
 //                    }
@@ -895,7 +913,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 //                                confirmClickedListenr.confirmClicked(order.getOrderNo());
 //                            }
                             confirmDoneVolley.addParams("orderNo", order.getOrderNo());
-                            confirmDoneVolley.requestPost(Const.Request.confirmDone,HomeFragment3.this,getHandler(),UserInfosPref.getInstance(getActivity()).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+                            confirmDoneVolley.requestPost(Const.Request.confirmDone+"/"+order.getOrderNo() + "/receive",HomeFragment3.this,getHandler(),UserInfosPref.getInstance(getActivity()).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
                         }
                     });
 

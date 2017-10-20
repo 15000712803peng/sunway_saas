@@ -26,6 +26,7 @@ import com.cnsunway.saas.wash.activity.HistoryOrdersActivity;
 import com.cnsunway.saas.wash.activity.LoginActivity;
 import com.cnsunway.saas.wash.activity.OrderDetailActivity;
 import com.cnsunway.saas.wash.activity.PayActivity;
+import com.cnsunway.saas.wash.activity.PayActivity2;
 import com.cnsunway.saas.wash.activity.WebActivity;
 import com.cnsunway.saas.wash.adapter.OrderAdapter;
 import com.cnsunway.saas.wash.cnst.Const;
@@ -587,20 +588,9 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     public void onPayClicked(String myPrice,String orderNo) {
         this.orderNo = orderNo;
         this.totalPrice = myPrice;
-        getPriceVolley = new JsonVolley(getActivity(),Const.Message.MSG_GET_PAY_SUCC, Const.Message.MSG_GET_PAY_FAIL);
-        getPriceVolley.addParams("orderNo", orderNo);
-        getPriceVolley.requestGet(Const.Request.pay, new LoadingDialogInterface() {
-                    @Override
-                    public void showLoading() {
-                       showLoadingDialog("支付中");
-                    }
-
-                    @Override
-                    public void hideLoading() {
-                        hideLoadingDialog();
-                    }
-                }, getHandler(), UserInfosPref.getInstance(getActivity()).getUser().getToken()
-                , locationForService.getCityCode(), locationForService.getProvince(), locationForService.getAdcode(), locationForService.getDistrict()
-        );
+        Intent intent = new Intent(getActivity(), PayActivity2.class);
+        intent.putExtra("order_no", orderNo);
+        intent.putExtra("order_price", Float.parseFloat(myPrice));
+        startActivityForResult(intent, OPERATION_ORDER_PAY);
     }
 }

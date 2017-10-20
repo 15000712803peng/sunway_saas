@@ -134,7 +134,7 @@ public class HomeOrderModel extends ViewModel{
         LocationForService locationForService = UserInfosPref.getInstance(activity).getLocationServer();
 
         JsonVolley orderVolley = new JsonVolley(activity, Const.Message.MSG_ORDER_DONE_SUCC, Const.Message.MSG_ORDER_DONE_FAIL);
-        orderVolley.addParams("rows",5);
+        orderVolley.addParams("rows",7);
         orderVolley.addParams("page",1);
         orderVolley.requestPost(Const.Request.inservice,
                 getHandler(), userInfos.getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()

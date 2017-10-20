@@ -124,7 +124,7 @@ public class Const {
             settleAccounts = SERVER + "/pay/settleAccounts";
             getOrderPayDetail = SERVER + "/pay/getOrderPayDetail";
             getPrePayInfo = SERVER + "/pay/getPrePayInfo";
-            notifyPaySuccess = SERVER +"/pay/notifyPaySuccess";
+            notifyPaySuccess = SERVER +"/pay/success";
             checkUpdate = SERVER + "/version/check";
             cityList = SERVER + "/cities/all";
             showImages = SERVER + "/banners";

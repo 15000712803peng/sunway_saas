@@ -180,9 +180,11 @@ public class DoOrderActivity2 extends InitActivity implements View.OnClickListen
 //        JsonVolley shippingFeeVolley = new JsonVolley(this, Const.Message.MSG_SHIPPINGFEE_SUCC, Const.Message.MSG_SHIPPINGFEE_FAIL);
 //        shippingFeeVolley.requestGet(Const.Request.shippingFee, getHandler(), UserInfosPref.getInstance(this).getUser().getToken());
         addrDetailVolley = new JsonVolley(this,Const.Message.MSG_ADDR_DETAIL_SUCC,Const.Message.MSG_ADDR_DETAIL_FAIL);
-        getFreightRuleVolley = new JsonVolley(this,Const.Message.MSG_GET_FREIGHT_RULE_SUCC,Const.Message.MSG_GET_FREIGHT_RULE_FAIL);
-        getFreightRuleVolley.requestGet(Const.Request.getFreightRule,getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),UserInfosPref.getInstance(this).getServiceCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
-        );
+//        getFreightRuleVolley = new JsonVolley(this,Const.Message.MSG_GET_FREIGHT_RULE_SUCC,Const.Message.MSG_GET_FREIGHT_RULE_FAIL);
+//        getFreightRuleVolley.requestGet(Const.Request.getFreightRule,getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),UserInfosPref.getInstance(this).getServiceCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+//        );
+        createAddrVolley = new JsonVolley(this, Const.Message.MSG_CREATE_ADDR_SUCC, Const.Message.MSG_CREATE_ADDR_FAIL);
+
 
 
     }
@@ -382,6 +384,17 @@ public class DoOrderActivity2 extends InitActivity implements View.OnClickListen
                 }
                 break;
 
+           case Const.Message.MSG_CREATE_ADDR_SUCC:
+               if(msg.arg1 == Const.Request.REQUEST_SUCC){
+                   OperationToast.showOperationResult(this,"地址创建成功",0);
+                   DefaultAddrResp resp = (DefaultAddrResp) JsonParser.jsonToObject(msg.obj+"",DefaultAddrResp.class);
+                   Addr addr = resp.getData();
+                   Intent intent = new Intent(this,DoOrderNextActivity.class);
+                   intent.putExtra("addr",JsonParser.objectToJsonStr(addr));
+                   startActivity(intent);
+               }
+            break;
+
         }
     }
 
@@ -419,6 +432,7 @@ public class DoOrderActivity2 extends InitActivity implements View.OnClickListen
                 unwashShoesText.setEnabled(false);
             }
         } else if (v == unwashShoesParent) {
+
             if (unwashShoesImage.isShown()) {
                 washShoesImage.setVisibility(View.VISIBLE);
                 unwashShoesImage.setVisibility(View.INVISIBLE);
@@ -435,14 +449,28 @@ public class DoOrderActivity2 extends InitActivity implements View.OnClickListen
 //            Toast.makeText(this,"next step",Toast.LENGTH_SHORT).show();
             if(this.addr == null){
                 this.addr = getFillAddr();
+                if(this.addr == null){
+                    return;
+                }
+                createAddrVolley.addParams("contact", addr.getContact());
+                createAddrVolley.addParams("gender", addr.getGender());
+                createAddrVolley.addParams("address", addr.getAddress());
+                createAddrVolley.addParams("addressDetail", addr.getAddressDetail());
+                createAddrVolley.addParams("mobile", addr.getMobile());
+                setOperationMsg(getString(R.string.operating));
+                createAddrVolley.requestPost(Const.Request.creaetAddr,this, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+
+            }else {
+                Intent intent = new Intent(this,DoOrderNextActivity.class);
+                intent.putExtra("addr",JsonParser.objectToJsonStr(this.addr));
+                startActivity(intent);
             }
-            if(this.addr == null){
-                return;
-            }
-            Intent intent = new Intent(this,DoOrderNextActivity.class);
-            intent.putExtra("addr",JsonParser.objectToJsonStr(this.addr));
-            startActivity(intent);
+//            if(this.addr == null){
+//                return;
+//            }
+
         }else if (v == addrPrefixEdit) {
+
             Intent intent = new Intent(this, SelAddrAMapActivity.class);
             startActivityForResult(intent, OPERATION_MAP);
         }if (v == genderWomanText) {
@@ -502,13 +530,37 @@ public class DoOrderActivity2 extends InitActivity implements View.OnClickListen
                 );
             }
         }else if(requestCode == OPERATION_MAP && resultCode == RESULT_OK){
+//            longtitule = data.getStringExtra("longtitule");
+//            latitude = data.getStringExtra("latitude");
+
+
             longtitule = data.getStringExtra("longtitule");
             latitude = data.getStringExtra("latitude");
+            cityCode = data.getStringExtra("cityCode");;
+            cityName = data.getStringExtra("cityName");
+            provinceName = data.getStringExtra("provinceName");
+//            districtCode = data.getStringExtra("districtCode");
+//            provinceName = data.getStringExtra("districtName");
+
             addrPrefixEdit.setText(data.getStringExtra("address"));
             addrEndfixEdit.setText(data.getStringExtra("addressDetail"));
+
+            createAddrVolley.addParams("longtitude", longtitule);
+            createAddrVolley.addParams("latitude", latitude);
+            createAddrVolley.addParams("cityCode", cityCode);
+            createAddrVolley.addParams("cityName", cityName);
+            createAddrVolley.addParams("provinceName", provinceName);
+            createAddrVolley.addParams("districtCode", cityCode);
+            createAddrVolley.addParams("districtName", cityName);
+
         }
 
     }
+
+    String cityCode;
+    String cityName;
+    String provinceName;
+    JsonVolley createAddrVolley;
 
     private void refreshAddr(Addr addr) {
         if (addr == null) {

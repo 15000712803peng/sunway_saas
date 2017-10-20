@@ -141,7 +141,7 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
     private void paySucc() {
         OperationToast.showOperationResult(getApplicationContext(), R.string.pay_succ,R.mipmap.success_icon);
         LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
-        notifyPaySuccessVolley.requestGet(Const.Request.notifyPaySuccess, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+        notifyPaySuccessVolley.requestPost(Const.Request.notifyPaySuccess, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
         );
 
     }
