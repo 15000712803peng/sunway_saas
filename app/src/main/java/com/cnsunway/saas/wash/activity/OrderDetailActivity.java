@@ -294,41 +294,59 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
     private void fillOrderSenderInfo(Order order){
         senderTipsText.setText("取送员：");
         senderInfoParent.setVisibility(View.VISIBLE);
-        if(TextUtils.isEmpty(order.getPickerName())){
-            if(TextUtils.isEmpty(order.getDelivererName())){
+//        if(TextUtils.isEmpty(order.getPickerName())){
+//            if(TextUtils.isEmpty(order.getDelivererName())){
+//                operatorNameText.setText("暂无");
+//            }else {
+//                operatorNameText.setText(order.getDelivererName());
+//            }
+//        }else {
+//            operatorNameText.setText(order.getPickerName());
+//        }
+
+        if(TextUtils.isEmpty(order.getDelivererName())){
+            if(TextUtils.isEmpty(order.getFetcherName())){
                 operatorNameText.setText("暂无");
             }else {
-                operatorNameText.setText(order.getDelivererName());
+                operatorNameText.setText(order.getFetcherName());
+                if(!TextUtils.isEmpty(order.getFetcherMobile())){
+                    operatorMoileText.setText(Html.fromHtml("<u>" + order.getFetcherMobile() + "</u>"));
+                    operatorMoileText.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            String phoneNum = operatorMoileText.getText().toString().trim();
+                            if (!TextUtils.isEmpty(phoneNum)) {
+                                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNum));
+                                startActivity(intent);
+                            }
+                        }
+                    });
+                }
+
             }
         }else {
-            operatorNameText.setText(order.getPickerName());
+            operatorNameText.setText(order.getDelivererName());
+            if(!TextUtils.isEmpty(order.getDelivererMobile())){
+                operatorMoileText.setText(Html.fromHtml("<u>" + order.getDelivererMobile() + "</u>"));
+                operatorMoileText.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String phoneNum = operatorMoileText.getText().toString().trim();
+                        if (!TextUtils.isEmpty(phoneNum)) {
+                            Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNum));
+                            startActivity(intent);
+                        }
+                    }
+                });
+            }
+
         }
 
-        if (!TextUtils.isEmpty(order.getDelivererMobile())){
-            operatorMoileText.setText(Html.fromHtml("<u>" + order.getDelivererMobile() + "</u>"));
-            operatorMoileText.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String phoneNum = operatorMoileText.getText().toString().trim();
-                    if (!TextUtils.isEmpty(phoneNum)) {
-                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNum));
-                        startActivity(intent);
-                    }
-                }
-            });
-        }else if(!TextUtils.isEmpty(order.getPickerMobile())){
-            operatorMoileText.setText(Html.fromHtml("<u>" + order.getPickerMobile() + "</u>"));
-            operatorMoileText.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    String phoneNum = operatorMoileText.getText().toString().trim();
-                    if (!TextUtils.isEmpty(phoneNum)) {
-                        Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + phoneNum));
-                        startActivity(intent);
-                    }
-                }
-            });
-        }
+//        if (!TextUtils.isEmpty(order.getDelivererMobile())){
+//
+//        }else if(!TextUtils.isEmpty(order.getFetcherMobile())){
+//
+//        }
         if(!TextUtils.isEmpty(order.getMemo())){
             noMemoText.setVisibility(View.GONE);
             orderMemoText.setText(getString(R.string.memo_tips) + order.getMemo());
@@ -371,7 +389,7 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
             TextView clothesNameText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_name);
             TextView clothesPriceText = (TextView) clothesItemView.findViewById(R.id.clothes_item_price);
             TextView clothtesSubpriceText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_subprice);
-            clothesNameText.setText(item.getProductName() + "x" + item.getSqmCount());
+            clothesNameText.setText(item.getProductName() + "x" + 1);
             clothesPriceText.setText(getString(R.string.price) +"￥" + item.getBasePrice());
             clothtesSubpriceText.setText("￥" + NumberUtil.format2Dicimal(item.getRealPrice() + ""));
             clothesDetailParentTop.addView(clothesItemView);
@@ -433,7 +451,7 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
             TextView clothesNameText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_name);
             TextView clothesPriceText = (TextView) clothesItemView.findViewById(R.id.clothes_item_price);
             TextView clothtesSubpriceText = (TextView) clothesItemView.findViewById(R.id.clothes_itme_subprice);
-            clothesNameText.setText(item.getProductName() + "x" + item.getSqmCount());
+            clothesNameText.setText(item.getProductName() + "x" + 1);
             clothesPriceText.setText(getString(R.string.price) +"￥" + item.getBasePrice());
             clothtesSubpriceText.setText("￥" + NumberUtil.format2Dicimal(item.getRealPrice() + ""));
             clothesDetailParentCener.addView(clothesItemView);

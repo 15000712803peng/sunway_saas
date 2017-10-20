@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">赛维洗衣官方</string>
+    <string name="app_name">赛维云洗衣</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -99,7 +99,7 @@
     <string name="operation_order_pay">继续支付</string>
     <string name="operation_order_remark">打分评价</string>
     <string name="operation_order_share">分享有礼</string>
-    <string name="operation_order_confirm">确认收衣</string>
+    <string name="operation_order_confirm">确认送达</string>
 
     <string name="order_no">订单编号</string>
     <string name="appointment_time">预约时间</string>

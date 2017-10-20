@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.cnst.Const;
 import com.cnsunway.saas.wash.dialog.OperationToast;
+import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.net.StringVolley;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
 import com.cnsunway.saas.wash.model.Addr;
@@ -30,7 +31,7 @@ public class AddAddrActivity extends InitActivity implements View.OnClickListene
     EditText addrUserEdit, addrMobileEdit, addrEndfixEdit;
     EditText addrPrefixEdit;
     TextView titleText;
-    StringVolley createAddrVolley;
+    JsonVolley createAddrVolley;
     Addr addr;
     int defaultFlag = 0;
     UserInfosPref userInfosPref;
@@ -52,7 +53,7 @@ public class AddAddrActivity extends InitActivity implements View.OnClickListene
     protected void initData() {
         operation = getIntent().getIntExtra("operation", 0);
         showMobile = getIntent().getBooleanExtra("showMobile", false);
-        createAddrVolley = new StringVolley(this, Const.Message.MSG_CREATE_ADDR_SUCC, Const.Message.MSG_CREATE_ADDR_FAIL);
+        createAddrVolley = new JsonVolley(this, Const.Message.MSG_CREATE_ADDR_SUCC, Const.Message.MSG_CREATE_ADDR_FAIL);
         userInfosPref = UserInfosPref.getInstance(this);
     }
 
@@ -280,11 +281,11 @@ public class AddAddrActivity extends InitActivity implements View.OnClickListene
             setOperationMsg(getString(R.string.operating));
 
 
-            createAddrVolley.requestPost(Const.Request.updateAddr, getHandler(), this, UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+            createAddrVolley.requestPost(Const.Request.updateAddr,  this,getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 
         } else {
             setOperationMsg(getString(R.string.operating));
-            createAddrVolley.requestPost(Const.Request.creaetAddr, getHandler(), this, UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+            createAddrVolley.requestPost(Const.Request.creaetAddr,  this, getHandler(),UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 
         }
 

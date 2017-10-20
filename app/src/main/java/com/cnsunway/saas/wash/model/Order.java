@@ -41,7 +41,7 @@ public class Order implements Serializable{
     String freightCharge;//: null,
     String pickAddress;//: "北外环产业园 泰和路2038号d座203",
     String createdDate;//: null,
-    String totalPrice;//: null,
+    String totalPrice ="";//: null,
     String departDate;//: null,
     String outstoreDate;//: null,
     int status;//: 120,
@@ -94,7 +94,7 @@ public class Order implements Serializable{
 
     String action;
     DirectInfo directInfo;
-    boolean evaluable;
+    boolean evaluable = true;
     String freightInfo;
 
     String siteName;
@@ -105,8 +105,24 @@ public class Order implements Serializable{
     String deductMemo;
     String storeName;
     String pickContact;
+    String fetcherMobile;
+    String fetcherName;
 
+    public String getFetcherMobile() {
+        return fetcherMobile;
+    }
 
+    public void setFetcherMobile(String fetcherMobile) {
+        this.fetcherMobile = fetcherMobile;
+    }
+
+    public String getFetcherName() {
+        return fetcherName;
+    }
+
+    public void setFetcherName(String fetcherName) {
+        this.fetcherName = fetcherName;
+    }
 
     public String getStoreName() {
         return storeName;
@@ -879,5 +895,21 @@ public class Order implements Serializable{
                 ", index=" + index +
                 ", containShoes=" + containShoes +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Order order = (Order) o;
+
+        return orderNo.equals(order.orderNo);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return orderNo.hashCode();
     }
 }
