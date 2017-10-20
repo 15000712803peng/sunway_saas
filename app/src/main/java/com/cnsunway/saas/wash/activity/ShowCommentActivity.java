@@ -37,7 +37,7 @@ public class ShowCommentActivity extends InitActivity implements XListView.IXLis
     CommentsAdapter commentsAdapter;
     UserInfosPref userInfos;
     String token;
-    int rows = 10;
+    int rows = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
