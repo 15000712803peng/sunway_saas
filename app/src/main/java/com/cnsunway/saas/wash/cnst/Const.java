@@ -17,8 +17,8 @@ public class Const {
         //        public static final String WX_SERVER = "http://wx.landaojia.com/ldj-app";
 //        public static final String WX_SERVER = "http://wx.sunwayxiyi.com/ldj-app";
         public static final String WX_SERVER = "https://saas-app.sunwayxiyi.com/saas-app";
-        public static final String WXTEST_SERVER = "http://wxtest.landaojia.com/ldj-app";
-        public static final String WXDEV_SERVER = "http://wxdev.landaojia.com/ldj-app";
+        public static final String WXTEST_SERVER = "http://wxtest.landaojia.com/saas-app";
+        public static final String WXDEV_SERVER = "http://10.0.10.209:6060/saas-app";
         public static final String TEMP_SERVER = "http://10.0.11.143:9090/ldj-app";
         public static String SERVER = "";
         public static String code;
@@ -175,8 +175,8 @@ public class Const {
         }
 
         static {
-            setServer(WX_SERVER);
-//            setServer(WXDEV_SERVER);
+//            setServer(WX_SERVER);
+            setServer(WXDEV_SERVER);
 //           setServer(TEMP_SERVER);
         }
     }
