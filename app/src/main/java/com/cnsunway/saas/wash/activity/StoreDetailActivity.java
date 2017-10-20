@@ -9,6 +9,7 @@ import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -72,6 +73,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
     LinearLayout llComment;
     TextView textNoComment;
     int commentsCount;
+    TextView chargeText;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -112,6 +114,20 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         morePrice = (RelativeLayout) findViewById(R.id.more_price);
         commentView = (ListView) findViewById(R.id.list_comment);
         textNoComment = (TextView) findViewById(R.id.text_no_comment);
+        chargeText = (TextView) findViewById(R.id.text_charge);
+        chargeText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StoreDetailActivity.this, RechargeWebActivity.class);
+
+                String url = Const.Request.SERVER.replace("/saas-app", "/")+"?token=" + UserInfosPref.getInstance(StoreDetailActivity.this).getUser().getToken()+"&mobile="+UserInfosPref.getInstance(StoreDetailActivity.this).getUser().getMobile()+"#/storeRecharge/"+storeId;
+                Log.e("--","pass url:"+url);
+                https://saas-app.sunwayxiyi.com?token=1&mobile=1&username=15026801649#/storeRecharge/2
+                intent.putExtra("url", url);
+                intent.putExtra("title", "充值");
+                startActivity(intent);
+            }
+        });
         morePrice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

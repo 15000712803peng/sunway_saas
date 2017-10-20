@@ -8,8 +8,8 @@ android {
         applicationId 'com.cnsunway.saas.wash'
         minSdkVersion 11
         targetSdkVersion 22
-        versionCode 24
-        versionName '2.1.3'
+        versionCode 1
+        versionName '1.0.1'
         multiDexEnabled true
     }
 

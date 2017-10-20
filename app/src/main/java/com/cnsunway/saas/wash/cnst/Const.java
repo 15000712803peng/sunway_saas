@@ -16,7 +16,7 @@ public class Const {
         public static final int REQUEST_FAIL = 1;
         //        public static final String WX_SERVER = "http://wx.landaojia.com/ldj-app";
 //        public static final String WX_SERVER = "http://wx.sunwayxiyi.com/ldj-app";
-        public static final String WX_SERVER = "https://saas-app.sunwayxiyi.com/saas-app";
+        public static final String WX_SERVER = "https://yun-app.sunwayxiyi.com/saas-app";
         public static final String WXTEST_SERVER = "http://wxtest.landaojia.com/saas-app";
         public static final String WXDEV_SERVER = "http://10.0.10.209:6060/saas-app";
         public static final String TEMP_SERVER = "http://10.0.11.143:9090/ldj-app";
@@ -140,21 +140,21 @@ public class Const {
             shareKey = SERVER + "/promotion/share/key";
             categoris = SERVER + "/categoris";
             recommendStores = SERVER + "/stores/recommend";
-            priceList = SERVER.replace("/ldj-app", "/") + "#/priceList";
-            storeShow = SERVER.replace("/ldj-app", "/") + "#/storeShow";
-            agreement = SERVER.replace("/ldj-app", "/") + "#/agreements";
-            question = SERVER.replace("/ldj-app", "/") + "#/qa";
-            about = SERVER.replace("/ldj-app", "/") + "#/aboutUs";
-            balance = SERVER.replace("/ldj-app", "/") + "#/account";
-            invoices = SERVER.replace("/ldj-app", "/") + "market/invoices/index.html";
-            rechargeagreement = SERVER.replace("/ldj-app", "/") + "index.html#/tabs/depositAgreement";
+            priceList = SERVER.replace("/saas-app", "/") + "#/priceList";
+            storeShow = SERVER.replace("/saas-app", "/") + "#/storeShow";
+            agreement = SERVER.replace("/saas-app", "/") + "#/agreements";
+            question = SERVER.replace("/saas-app", "/") + "#/qa";
+            about = SERVER.replace("/saas-app", "/") + "#/aboutUs";
+            balance = SERVER.replace("/saas-app", "/") + "#/account";
+            invoices = SERVER.replace("/saas-app", "/") + "market/invoices/index.html";
+            rechargeagreement = SERVER.replace("/saas-app", "/") + "index.html#/tabs/depositAgreement";
             getFreightRule = SERVER + "/orders/getFreightRule";
-            newBalance = SERVER.replace("/ldj-app", "/") + "#/recharge";
-            serviceprocess = SERVER.replace("/ldj-app", "/") + "#/serviceProcess";
-            servicerange = SERVER.replace("/ldj-app", "/") + "#/servicerange";
-            healthwash = SERVER.replace("/ldj-app", "/") + "#/healthWash";
+            newBalance = SERVER.replace("/saas-app", "/") + "#/recharge";
+            serviceprocess = SERVER.replace("/saas-app", "/") + "#/serviceProcess";
+            servicerange = SERVER.replace("/saas-app", "/") + "#/servicerange";
+            healthwash = SERVER.replace("/saas-app", "/") + "#/healthWash";
             pastCoupons = SERVER + "/accounts/coupons/past";
-            paySuccess = SERVER.replace("/ldj-app", "/") + "market/pay_success/paySuccess.html?amount=";
+            paySuccess = SERVER.replace("/saas-app", "/") + "market/pay_success/paySuccess.html?amount=";
             addrDetail = SERVER + "/useraddresses/detail";
             cardList = SERVER +"/cards/balance/search";
             cardConsumeDetail = SERVER +"/cards/consume/search";
@@ -162,7 +162,7 @@ public class Const {
             messageAll = SERVER +"/message/findAll";
             messageRead = SERVER + "/message/read";
             allCityStores = SERVER +"/cities/service_range";
-            recharge = SERVER + "#/recharge";
+            recharge = SERVER.replace("/saas-app", "/") + "storeRecharge";
             hxAccount = SERVER + "/users/ocs/account";
             storeDetail =SERVER + "/stores";
 
@@ -175,8 +175,8 @@ public class Const {
         }
 
         static {
-//            setServer(WX_SERVER);
-            setServer(WXDEV_SERVER);
+            setServer(WX_SERVER);
+//            setServer(WXDEV_SERVER);
 //           setServer(TEMP_SERVER);
         }
     }

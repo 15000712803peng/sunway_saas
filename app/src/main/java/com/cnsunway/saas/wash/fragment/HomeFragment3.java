@@ -99,22 +99,19 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 
     JsonVolley catogoriesVolley;
     LinearLayout citySelect;
-
+    TextView storeTips;
     JsonVolley recommendStoresVolley;
-
-
     ApkUpgradeHelper updateHelper;
-
-
     JsonVolley confirmDoneVolley;
     TextView cityText;
     ServiceCity defaultCity;
     ServiceCityDialog cityDialog;
-
     ServiceCity locateCity;
     LocationForService locationForService;
     ListView storeList;
     TextView loadStoreText;
+
+    View noStoreView;
     BroadcastReceiver locationReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -146,7 +143,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     if(marketings != null && marketings.size() > 0){
                         loadAds(marketings);
                     }else{
-                        OperationToast.showOperationResult(getActivity(), R.string.no_marketing);
+//                        OperationToast.showOperationResult(getActivity(), R.string.no_marketing);
                     }
                 }else{
                     OperationToast.showOperationResult(getActivity(),R.string.get_marketing_fail);
@@ -223,16 +220,27 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 
             case Const.Message.MSG_GET_RECC_STORES_SUCC:
                 loadStoreText.setVisibility(View.GONE);
-
                 if (msg.arg1 == Const.Request.REQUEST_SUCC) {
                     RowsStoreResp initResp = (RowsStoreResp) JsonParser.jsonToObject(msg.obj + "", RowsStoreResp.class);
 //                    RowsStore rowsStore = initResp.getData();
                     if(initResp != null) {
                         List<Store> stores = initResp.getData();
-                        storeList.setVisibility(View.VISIBLE);
-                        storeList.setAdapter(new HomeStoreAdapter(getActivity(),stores));
-                        setListViewHeightBasedOnChildren(storeList);
-                        storeList.setOnItemClickListener(this);
+                        if(stores != null && stores.size() > 0){
+
+                            storeTips.setVisibility(View.VISIBLE);
+                            storeList.setVisibility(View.VISIBLE);
+                            noStoreView.setVisibility(View.INVISIBLE);
+                            storeList.setAdapter(new HomeStoreAdapter(getActivity(),stores));
+                            setListViewHeightBasedOnChildren(storeList);
+                            storeList.setOnItemClickListener(this);
+
+                        }else {
+                            noStoreView.setVisibility(View.VISIBLE);
+                            storeList.setVisibility(View.INVISIBLE);
+                            storeTips.setVisibility(View.INVISIBLE);
+
+                        }
+
 
                     }else{
 
@@ -311,6 +319,8 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 //        doOrderText = (TextView) view.findViewById(R.id.text_do_order);
 
         cityText = (TextView) view.findViewById(R.id.text_city);
+        storeTips = (TextView) view.findViewById(R.id.store_tips);
+        noStoreView = view.findViewById(R.id.no_store);
         banner.setFocusable(true);
         banner.setFocusableInTouchMode(true);
         banner.requestFocus();
@@ -474,10 +484,15 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent storeIntent = new Intent(getActivity(), StoreDetailActivity.class);
-        Store store = (Store) adapterView.getAdapter().getItem(i);
-        storeIntent.putExtra("store_id",store.getId());
-        startActivity(storeIntent);
+        if(UserInfosPref.getInstance(getActivity()).getUser() == null){
+            startActivity(new Intent(getActivity(),LoginActivity.class));
+        }else {
+            Intent storeIntent = new Intent(getActivity(), StoreDetailActivity.class);
+            Store store = (Store) adapterView.getAdapter().getItem(i);
+            storeIntent.putExtra("store_id",store.getId());
+            startActivity(storeIntent);
+        }
+
     }
 
     public class SpaceItemDecoration extends RecyclerView.ItemDecoration {

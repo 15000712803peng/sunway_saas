@@ -43,6 +43,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:visibility="gone"
                     android:clickable="true"
                     android:id="@+id/text_price"
                     android:textColor="@color/order_wash"

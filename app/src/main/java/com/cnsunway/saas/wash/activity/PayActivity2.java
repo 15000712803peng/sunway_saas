@@ -420,7 +420,7 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
         payChoice = WAY_BALANCE;
         LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
 //        payVolley.addParams("amount",subPrice);
-        payVolley.addParams("balance",myBlance);
+        payVolley.addParams("balance",subPrice);
 //        payVolley.addParams("thirdPartyPayChannel",WAY_BALANCE);
         payVolley.requestPost(Const.Request.pay+"/" + orderNo, this, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 

@@ -210,6 +210,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/text_charge"
                         android:text="去充值"
                         android:textSize="14sp"
                         android:gravity="center"
