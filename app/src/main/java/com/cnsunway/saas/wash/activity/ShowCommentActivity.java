@@ -139,7 +139,6 @@ public class ShowCommentActivity extends InitActivity implements XListView.IXLis
         commentsVolley.addParams ("rows",rows);
         commentsVolley.requestPost(Const.Request.comments + "/" + storeId + "/comments",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
     }
-
     public void back(View view){
         finish();
     }
