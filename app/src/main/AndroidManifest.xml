@@ -137,6 +137,10 @@
         <activity android:name="com.cnsunway.saas.wash.activity.ServerSwitchActivity" />
         <activity android:name="com.cnsunway.saas.wash.activity.WebActivity" />
 
+        <activity android:name="com.cnsunway.saas.wash.activity.RechargeWebActivity"
+            android:launchMode="singleTop"
+            />
+
         <activity android:name="com.cnsunway.saas.wash.activity.DoOrderSuccActivity"
             android:launchMode="singleTop"
             />

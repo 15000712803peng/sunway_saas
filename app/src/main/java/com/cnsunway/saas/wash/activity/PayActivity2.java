@@ -86,8 +86,8 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
         myPayRequest.setOrderNo(orderNo);
         settleAccountsVolley = new JsonVolley(this, Const.Message.MSG_SETTLE_ACCOUNTS_SUCC, Const.Message.MSG_SETTLE_ACCOUNTS_FAIL);
         settleAccountsVolley.addParams("orderNo", orderNo);
-        notifyPaySuccessVolley = new StringVolley(this,Const.Message.MSG_RECHARGE_NOTIFY_SUCC,Const.Message.MSG_RECHARGE_NOTIFY_FAIL);
-        notifyPaySuccessVolley.addParams("orderNo",orderNo);
+        notifyPaySuccessVolley = new JsonVolley(this,Const.Message.MSG_RECHARGE_NOTIFY_SUCC,Const.Message.MSG_RECHARGE_NOTIFY_FAIL);
+        notifyPaySuccessVolley.addParams("outTradeNo",orderNo);
         getPayInfoVolley = new StringVolley(this, Const.Message.MSG_GET_PAY_INFO_SUCC, Const.Message.MSG_GET_PAY_INFO_FAIL);
         getPayInfoVolley.addParams("orderNo", orderNo);
         cancelPayVolley = new JsonVolley(this,Const.Message.MSG_PAY_CANCEL_SUCC,Const.Message.MSG_PAY_CANCEL_FAIL);
@@ -136,7 +136,7 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
     CheckBox alipayBox;
     @Bind(R.id.we_pay_box)
     CheckBox wepayBox;
-    StringVolley notifyPaySuccessVolley;
+    JsonVolley notifyPaySuccessVolley;
 
     private void paySucc() {
         OperationToast.showOperationResult(getApplicationContext(), R.string.pay_succ,R.mipmap.success_icon);
@@ -420,7 +420,7 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
         payChoice = WAY_BALANCE;
         LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
 //        payVolley.addParams("amount",subPrice);
-        payVolley.addParams("balance",myBlance);
+        payVolley.addParams("balance",subPrice);
 //        payVolley.addParams("thirdPartyPayChannel",WAY_BALANCE);
         payVolley.requestPost(Const.Request.pay+"/" + orderNo, this, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 

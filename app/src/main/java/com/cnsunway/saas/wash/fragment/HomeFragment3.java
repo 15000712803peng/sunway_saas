@@ -29,8 +29,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.cnsunway.saas.wash.R;
-import com.cnsunway.saas.wash.activity.BackWashOrderDetailActivity;
-import com.cnsunway.saas.wash.activity.DoOrderActivity;
+
 import com.cnsunway.saas.wash.activity.DoOrderActivity2;
 import com.cnsunway.saas.wash.activity.EvaluateActivity;
 import com.cnsunway.saas.wash.activity.LoginActivity;
@@ -64,7 +63,7 @@ import com.cnsunway.saas.wash.resp.GetImagesResp;
 import com.cnsunway.saas.wash.resp.OrderDetailResp;
 import com.cnsunway.saas.wash.resp.RowsStoreResp;
 import com.cnsunway.saas.wash.sharef.UserInfosPref;
-import com.cnsunway.saas.wash.util.LocationManager;
+import com.cnsunway.saas.wash.util.HomeLocationManager;
 import com.cnsunway.saas.wash.view.OrderStatusView;
 import com.cnsunway.saas.wash.view.ScaleInTransformer;
 import com.cnsunway.saas.wash.viewmodel.HomeOrderModel;
@@ -99,38 +98,38 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 
     JsonVolley catogoriesVolley;
     LinearLayout citySelect;
-
+    TextView storeTips;
     JsonVolley recommendStoresVolley;
-
-
     ApkUpgradeHelper updateHelper;
-
-
     JsonVolley confirmDoneVolley;
     TextView cityText;
     ServiceCity defaultCity;
     ServiceCityDialog cityDialog;
-
     ServiceCity locateCity;
     LocationForService locationForService;
     ListView storeList;
     TextView loadStoreText;
+
+    View noStoreView;
     BroadcastReceiver locationReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String city = intent.getStringExtra("city");
-            if(!TextUtils.isEmpty(city)){
-                locateCity  = (ServiceCity) JsonParser.jsonToObject(city,ServiceCity.class);
-                if(cityDialog != null && cityDialog.isShowing()){
-                    cityDialog.setCurrentCity(selectedCity);
-                }
-                getHandler().post(new Runnable() {
-                    @Override
-                    public void run() {
-                        getCityVolley.requestGet(Const.Request.cityList,handler,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
-                    }
-                });
-            }
+//            String city = intent.getStringExtra("city");
+            String lat = intent.getStringExtra("latitude");
+            String lon = intent.getStringExtra("longitude");
+            requestRecommendStores(lat,lon);
+//            if(!TextUtils.isEmpty(city)){
+//                locateCity  = (ServiceCity) JsonParser.jsonToObject(city,ServiceCity.class);
+//                if(cityDialog != null && cityDialog.isShowing()){
+//                    cityDialog.setCurrentCity(selectedCity);
+//                }
+//                getHandler().post(new Runnable() {
+//                    @Override
+//                    public void run() {
+////                        getCityVolley.requestGet(Const.Request.cityList,handler,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+//                    }
+//                });
+//            }
 //            Toast.makeText(getActivity(),"location succ:" + city,Toast.LENGTH_SHORT).show();
         }
     };
@@ -146,7 +145,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     if(marketings != null && marketings.size() > 0){
                         loadAds(marketings);
                     }else{
-                        OperationToast.showOperationResult(getActivity(), R.string.no_marketing);
+//                        OperationToast.showOperationResult(getActivity(), R.string.no_marketing);
                     }
                 }else{
                     OperationToast.showOperationResult(getActivity(),R.string.get_marketing_fail);
@@ -175,64 +174,75 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                 break;
 
             case Const.Message.MSG_SERVICE_CITY_SUCC:
-                if (msg.arg1 == Const.Request.REQUEST_SUCC) {
-                    AllCityResp allCityResp = (AllCityResp) JsonParser.jsonToObject(msg.obj+ "",AllCityResp.class);
-                    List<ServiceCity> cities = allCityResp.getData();
-                    if(cities == null || cities.size() <= 0){
-                        OperationToast.showOperationResult(getActivity(),"没有可以选择的城市",0);
-                    }else {
-
-                        cityDialog.setCities(cities);
-                        cityDialog.setCurrentCity(selectedCity);
-                        cityDialog.setOnCitySelectedLinstenr(HomeFragment3.this);
-                        cityDialog.show();
-                    }
-                }else {
-
-                }
-                break;
+//                if (msg.arg1 == Const.Request.REQUEST_SUCC) {
+//                    AllCityResp allCityResp = (AllCityResp) JsonParser.jsonToObject(msg.obj+ "",AllCityResp.class);
+//                    List<ServiceCity> cities = allCityResp.getData();
+//                    if(cities == null || cities.size() <= 0){
+//                        OperationToast.showOperationResult(getActivity(),"没有可以选择的城市",0);
+//                    }else {
+//
+//                        cityDialog.setCities(cities);
+//                        cityDialog.setCurrentCity(selectedCity);
+//                        cityDialog.setOnCitySelectedLinstenr(HomeFragment3.this);
+//                        cityDialog.show();
+//                    }
+//                }else {
+//
+//                }
+//                break;
             case Const.Message.MSG_SERVICE_CITY_FAIL:
                 OperationToast.showOperationResult(getActivity(),"网络异常",0);
                 break;
 
             case Const.Message.MSG_GET_CITIES_SUCC:
-                if (msg.arg1 == Const.Request.REQUEST_SUCC) {
-                    AllCityResp allCityResp = (AllCityResp) JsonParser.jsonToObject(msg.obj+ "",AllCityResp.class);
-                    List<ServiceCity> cities = allCityResp.getData();
-                    if(cities == null || cities.size() <= 0){
-
-                    }else {
-                        if(locateCity != null){
-                            for(ServiceCity city : cities){
-                                if(locateCity.equals(city)){
-                                    selectedCity = city;
-                                    cityText.setText(selectedCity.getCityName());
-                                    UserInfosPref.getInstance(getActivity()).setServiceCityCode(selectedCity.getCityCode());
-                                    return;
-                                }
-                            }
-                        }
-                    }
-                }else {
-
-                }
-                break;
+//                if (msg.arg1 == Const.Request.REQUEST_SUCC) {
+//                    AllCityResp allCityResp = (AllCityResp) JsonParser.jsonToObject(msg.obj+ "",AllCityResp.class);
+//                    List<ServiceCity> cities = allCityResp.getData();
+//                    if(cities == null || cities.size() <= 0){
+//
+//                    }else {
+//                        if(locateCity != null){
+//                            for(ServiceCity city : cities){
+//                                if(locateCity.equals(city)){
+//                                    selectedCity = city;
+//                                    cityText.setText(selectedCity.getCityName());
+//                                    UserInfosPref.getInstance(getActivity()).setServiceCityCode(selectedCity.getCityCode());
+//                                    return;
+//                                }
+//                            }
+//                        }
+//                    }
+//                }else {
+//
+//                }
+//                break;
 
             case Const.Message.MSG_GET_CITIES_FAIL:
                 break;
 
             case Const.Message.MSG_GET_RECC_STORES_SUCC:
                 loadStoreText.setVisibility(View.GONE);
-
                 if (msg.arg1 == Const.Request.REQUEST_SUCC) {
                     RowsStoreResp initResp = (RowsStoreResp) JsonParser.jsonToObject(msg.obj + "", RowsStoreResp.class);
 //                    RowsStore rowsStore = initResp.getData();
                     if(initResp != null) {
                         List<Store> stores = initResp.getData();
-                        storeList.setVisibility(View.VISIBLE);
-                        storeList.setAdapter(new HomeStoreAdapter(getActivity(),stores));
-                        setListViewHeightBasedOnChildren(storeList);
-                        storeList.setOnItemClickListener(this);
+                        if(stores != null && stores.size() > 0){
+
+                            storeTips.setVisibility(View.VISIBLE);
+                            storeList.setVisibility(View.VISIBLE);
+                            noStoreView.setVisibility(View.INVISIBLE);
+                            storeList.setAdapter(new HomeStoreAdapter(getActivity(),stores));
+                            setListViewHeightBasedOnChildren(storeList);
+                            storeList.setOnItemClickListener(this);
+
+                        }else {
+                            noStoreView.setVisibility(View.VISIBLE);
+                            storeList.setVisibility(View.INVISIBLE);
+                            storeTips.setVisibility(View.INVISIBLE);
+
+                        }
+
 
                     }else{
 
@@ -256,7 +266,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 
     StringVolley selectCityVolley;
     StringVolley getCityVolley;
-    ServiceCity selectedCity;
+//    ServiceCity selectedCity;
 
     public static void setListViewHeightBasedOnChildren(ListView listView) {
         if(listView == null) return;
@@ -287,19 +297,19 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                 .showImageOnFail(R.mipmap.bannder_loading).cacheInMemory()
                 .cacheOnDisc()
                 .build();
-        defaultCity = new ServiceCity();
-        defaultCity.setCityName("上海市");
-        defaultCity.setCityCode("021");
-        defaultCity.setLatitude(31.139974);
-        defaultCity.setLongitude(121.485011);
-        selectedCity = defaultCity;
-        cityDialog  = new ServiceCityDialog(getActivity()).builder();
-        cityDialog.setCurrentCity(selectedCity);
+//        defaultCity = new ServiceCity();
+//        defaultCity.setCityName("上海市");
+//        defaultCity.setCityCode("021");
+//        defaultCity.setLatitude(31.139974);
+//        defaultCity.setLongitude(121.485011);
+//        selectedCity = defaultCity;
+//        cityDialog  = new ServiceCityDialog(getActivity()).builder();
+//        cityDialog.setCurrentCity(selectedCity);
         getCityVolley = new StringVolley(getActivity(),Const.Message.MSG_GET_CITIES_SUCC,Const.Message.MSG_GET_CITIES_FAIL);
         orderDetailVolley = new JsonVolley(getActivity(), Const.Message.MSG_ORDER_DETAIL_SUCC, Const.Message.MSG_ORDER_DETAIL_FAIL);
 
-        getActivity().registerReceiver(locationReceiver,new IntentFilter(Const.Action.ACTION_LOCATION_SUCCEED));
-        getActivity().registerReceiver(cityChangedReciver,new IntentFilter(Const.MyFilter.FILTER_CITY_CHANGED));
+        getActivity().registerReceiver(locationReceiver,new IntentFilter(Const.Action.HOME_LOCATION_SUCCEED));
+//        getActivity().registerReceiver(cityChangedReciver,new IntentFilter(Const.MyFilter.FILTER_CITY_CHANGED));
         locationForService = UserInfosPref.getInstance(getActivity()).getLocationServer();
 
     }
@@ -311,6 +321,8 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 //        doOrderText = (TextView) view.findViewById(R.id.text_do_order);
 
         cityText = (TextView) view.findViewById(R.id.text_city);
+        storeTips = (TextView) view.findViewById(R.id.store_tips);
+        noStoreView = view.findViewById(R.id.no_store);
         banner.setFocusable(true);
         banner.setFocusableInTouchMode(true);
         banner.requestFocus();
@@ -319,8 +331,8 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
         storeList.setVisibility(View.INVISIBLE);
 //        storeList.setAdapter(new HomeStoreAdapter(getActivity(),null));
 
-        cityText.setText(selectedCity.getCityName());
-        UserInfosPref.getInstance(getActivity()).setServiceCityCode(selectedCity.getCityCode());
+//        cityText.setText(selectedCity.getCityName());
+//        UserInfosPref.getInstance(getActivity()).setServiceCityCode(selectedCity.getCityCode());
 
 
 
@@ -356,10 +368,9 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
     }
 
     private void loadData(){
-
         requestAds();
         requestArea();
-        requestRecommendStores();
+//        requestRecommendStores();
         User user = UserInfosPref.getInstance(getActivity()).getUser();
         locationForService = UserInfosPref.getInstance(getActivity()).getLocationServer();
         if(user == null){
@@ -457,27 +468,32 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 
     @Override
     public void onCitySelected(ServiceCity city) {
-        if(city != null){
-            selectedCity = city;
-            if(selectedCity.getCityCode().equals("021")){
-                selectedCity.setLatitude(31.139974);
-                selectedCity.setLongitude(121.485011);
-            }else if(selectedCity.getCityCode().equals("028")){
-                selectedCity.setLatitude(30.579099);
-                selectedCity.setLongitude(104.068138);
-            }
-            cityText.setText(city.getCityName());
-            UserInfosPref.getInstance(getActivity()).setServiceCityCode(selectedCity.getCityCode());
-        }
+//        if(city != null){
+//            selectedCity = city;
+//            if(selectedCity.getCityCode().equals("021")){
+//                selectedCity.setLatitude(31.139974);
+//                selectedCity.setLongitude(121.485011);
+//            }else if(selectedCity.getCityCode().equals("028")){
+//                selectedCity.setLatitude(30.579099);
+//                selectedCity.setLongitude(104.068138);
+//            }
+//            cityText.setText(city.getCityName());
+//            UserInfosPref.getInstance(getActivity()).setServiceCityCode(selectedCity.getCityCode());
+//        }
 
     }
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent storeIntent = new Intent(getActivity(), StoreDetailActivity.class);
-        Store store = (Store) adapterView.getAdapter().getItem(i);
-        storeIntent.putExtra("store_id",store.getId());
-        startActivity(storeIntent);
+        if(UserInfosPref.getInstance(getActivity()).getUser() == null){
+            startActivity(new Intent(getActivity(),LoginActivity.class));
+        }else {
+            Intent storeIntent = new Intent(getActivity(), StoreDetailActivity.class);
+            Store store = (Store) adapterView.getAdapter().getItem(i);
+            storeIntent.putExtra("store_id",store.getId());
+            startActivity(storeIntent);
+        }
+
     }
 
     public class SpaceItemDecoration extends RecyclerView.ItemDecoration {
@@ -516,7 +532,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
 
     }
 
-    private void requestRecommendStores(){
+    private void requestRecommendStores(String lat,String lng){
         recommendStoresVolley = new JsonVolley(getActivity(),Const.Message.MSG_GET_RECC_STORES_SUCC,Const.Message.MSG_GET_RECC_STORES_FAIL);
         recommendStoresVolley.addParams("lat","31.088448");
         recommendStoresVolley.addParams("lng","121.432977");
@@ -757,13 +773,13 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     holder.tvTips.setText(getString(R.string.tips_fetcher_name) + order.getPickerName()+",");
                     holder.operationText.setVisibility(View.INVISIBLE);
                     holder.phnoeText.setVisibility(View.VISIBLE);
-                    if(!TextUtils.isEmpty(order.getPickerMobile())){
-                        holder.phnoeText.setText(order.getPickerMobile());
+                    if(!TextUtils.isEmpty(order.getFetcherMobile())){
+                        holder.phnoeText.setText(order.getFetcherMobile());
                         holder.phnoeText.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 new AlertDialog.Builder(getActivity()).setTitle("联系取件员")
-                                        .setMessage("确定拨打取件员电话："+  order.getPickerMobile()+"吗？")
+                                        .setMessage("确定拨打取件员电话："+  order.getFetcherMobile()+"吗？")
                                         .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialog, int which) {
@@ -1155,8 +1171,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
             initMyViews(getView());
 //            updateHelper = new ApkUpgradeHelper(getActivity());
 //            updateHelper.check(false);
-            LocationManager.get().init(getActivity().getApplicationContext());
-
+            HomeLocationManager.get().init(getActivity().getApplicationContext());
 
         }
         loadData();
@@ -1202,24 +1217,24 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
     public void onDestroy() {
         getActivity().unregisterReceiver(refreshReceiver);
         getActivity().unregisterReceiver(locationReceiver);
-        getActivity().unregisterReceiver(cityChangedReciver);
+//        getActivity().unregisterReceiver(cityChangedReciver);
         super.onDestroy();
     }
 
 
 
 
-    BroadcastReceiver cityChangedReciver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            if(intent != null){
-                String cityStr = intent.getStringExtra("selected_city");
-                if(!TextUtils.isEmpty(cityStr)){
-                    ServiceCity city = (ServiceCity) JsonParser.jsonToObject(cityStr,ServiceCity.class);
-                    onCitySelected(city);
-
-                }
-            }
-        }
-    };
+//    BroadcastReceiver cityChangedReciver = new BroadcastReceiver() {
+//        @Override
+//        public void onReceive(Context context, Intent intent) {
+//            if(intent != null){
+//                String cityStr = intent.getStringExtra("selected_city");
+//                if(!TextUtils.isEmpty(cityStr)){
+//                    ServiceCity city = (ServiceCity) JsonParser.jsonToObject(cityStr,ServiceCity.class);
+//                    onCitySelected(city);
+//
+//                }
+//            }
+//        }
+//    };
 }

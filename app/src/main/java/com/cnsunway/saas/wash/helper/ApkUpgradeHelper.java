@@ -14,6 +14,7 @@ import com.cnsunway.saas.wash.dialog.DownloadProgressDialog;
 import com.cnsunway.saas.wash.dialog.LoadingDialog;
 import com.cnsunway.saas.wash.dialog.OperationToast;
 import com.cnsunway.saas.wash.framework.inter.LoadingDialogInterface;
+import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.net.StringVolley;
 import com.cnsunway.saas.wash.framework.utils.InstallUtil;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
@@ -34,7 +35,7 @@ public class ApkUpgradeHelper implements ApkUpgradeDialog.OnUpgradeOkClickedList
     LoadingDialog operationWaitingDialog;
     ApkUpgradeDialog upgradeDialog;
     FileDownLoadHelper apkDownLoadHelper;
-    StringVolley checkUpdateVolley;
+    JsonVolley checkUpdateVolley;
     String appVersion, note;
 
     ProgressBar downloadProgress;
@@ -54,7 +55,7 @@ public class ApkUpgradeHelper implements ApkUpgradeDialog.OnUpgradeOkClickedList
         downloadProgress = downloadProgressDialog.getProgressBar();
         apkParent = Environment.getExternalStoragePublicDirectory("ldj_app");
         apkPath = new File(apkParent, "apk");
-        checkUpdateVolley = new StringVolley(act, Const.Message.MSG_CHECK_UPGRADE_SUCC, Const.Message.MSG_CHECK_UPGRADE_FAIL);
+        checkUpdateVolley = new JsonVolley(act, Const.Message.MSG_CHECK_UPGRADE_SUCC, Const.Message.MSG_CHECK_UPGRADE_FAIL);
         operationWaitingDialog = new LoadingDialog(activity, "检查版本中");
         operationWaitingDialog.setCancelable(false);
         if (!apkPath.exists()) {
@@ -145,11 +146,11 @@ public class ApkUpgradeHelper implements ApkUpgradeDialog.OnUpgradeOkClickedList
 
     public void check(boolean showPrompt) {
         this.showPrompt = showPrompt;
-        checkUpdateVolley.addOrderedParams(VersionUtil.getAppVersionCode(activity));
-        checkUpdateVolley.addOrderedParams("" + deviceType);
+        checkUpdateVolley.addParams("version",VersionUtil.getAppVersionCode(activity)+"");
+        checkUpdateVolley.addParams("deviceType",deviceType);
         LocationForService locationForService = UserInfosPref.getInstance(activity).getLocationServer();
         if(showPrompt){
-            checkUpdateVolley._requestGet(Const.Request.checkUpdate, updateHandler, new LoadingDialogInterface() {
+            checkUpdateVolley._requestPost(Const.Request.checkUpdate, new LoadingDialogInterface() {
                 @Override
                 public void showLoading() {
                     operationWaitingDialog.show();
@@ -160,10 +161,9 @@ public class ApkUpgradeHelper implements ApkUpgradeDialog.OnUpgradeOkClickedList
                     operationWaitingDialog.dismiss();
 
                 }
-            }
-                    ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+            },updateHandler, locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
         }else {
-            checkUpdateVolley._requestGet(Const.Request.checkUpdate, updateHandler
+            checkUpdateVolley.requestPost(Const.Request.checkUpdate, updateHandler
                     ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
         }
 

@@ -4,10 +4,10 @@
     android:descendantFocusability="blocksDescendants"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="14dp"
+    android:paddingTop="10dp"
     android:paddingRight="16dp"
     android:paddingLeft="16dp"
-    android:background="@drawable/white_shape2">
+    android:background="@drawable/card_white">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -75,8 +75,8 @@
             </RelativeLayout>
 
             <LinearLayout
-                android:layout_marginBottom="10dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="3dp"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"
@@ -127,7 +127,7 @@
     <RelativeLayout
         android:paddingLeft="16dp"
         android:paddingTop="8dp"
-        android:paddingBottom="8dp"
+        android:paddingBottom="6dp"
         android:paddingRight="16dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

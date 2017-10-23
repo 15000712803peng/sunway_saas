@@ -139,16 +139,16 @@ public class OrderAdapter extends BaseAdapter {
                 //待上门
                 holder.imageArrow.setImageResource(R.mipmap.clock1);
                 holder.dotImage.setImageResource(R.drawable.dot1);
-                holder.tvTips.setText(activity.getString(R.string.tips_fetcher_name) + order.getPickerName()+",");
+                holder.tvTips.setText(activity.getString(R.string.tips_fetcher_name) + order.getFetcherName()+",");
                 holder.operationText.setVisibility(View.INVISIBLE);
                 holder.phnoeText.setVisibility(View.VISIBLE);
-                if(!TextUtils.isEmpty(order.getPickerMobile())){
-                    holder.phnoeText.setText(order.getPickerMobile());
+                if(!TextUtils.isEmpty(order.getFetcherMobile())){
+                    holder.phnoeText.setText(order.getFetcherMobile());
                     holder.phnoeText.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
                             new AlertDialog.Builder(activity).setTitle("联系取件员")
-                                    .setMessage("确定拨打取件员电话："+  order.getPickerMobile()+"吗？")
+                                    .setMessage("确定拨打取件员电话："+  order.getFetcherMobile()+"吗？")
                                     .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
