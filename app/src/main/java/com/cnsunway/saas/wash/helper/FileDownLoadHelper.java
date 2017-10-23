@@ -30,6 +30,7 @@ public class FileDownLoadHelper extends Thread {
 		this.url = url;
 		is_cancel = false;
 		this.filePath = filePath;
+
 	}
 
 	public void cancel() {

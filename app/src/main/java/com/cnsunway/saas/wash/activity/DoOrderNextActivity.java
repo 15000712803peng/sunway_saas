@@ -6,7 +6,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
@@ -16,10 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.cnsunway.saas.wash.R;
-import com.cnsunway.saas.wash.adapter.HomeStoreAdapter;
 import com.cnsunway.saas.wash.adapter.OrderStoreAdapter;
 import com.cnsunway.saas.wash.cnst.Const;
 import com.cnsunway.saas.wash.dialog.DoOrderFailDialog;
@@ -43,9 +40,6 @@ import com.cnsunway.saas.wash.resp.RowsStoreResp;
 import com.cnsunway.saas.wash.resp.ShippingFeeResp;
 import com.cnsunway.saas.wash.sharef.UserInfosPref;
 import com.cnsunway.saas.wash.util.FontUtil;
-
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.List;
