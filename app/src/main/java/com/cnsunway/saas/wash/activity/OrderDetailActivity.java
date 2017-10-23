@@ -380,6 +380,8 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
     }
 
     private void fillOrderClotesDetailInfo(List<Cloth> items){
+        String subPrice = order.getTotalPrice();
+        String deductPrice = "0";
         priceParentCenter.setVisibility(View.GONE);
         priceParentTop.setVisibility(View.VISIBLE);
         clothesDetailParentTop.setVisibility(View.VISIBLE);
@@ -427,6 +429,27 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
         selCouponParent = (RelativeLayout) couponsView.findViewById(R.id.sel_coupou_parent);
         selCouponParent.setOnClickListener(this);
         clothesDetailParentTop.addView(couponsView);
+        if(TextUtils.isEmpty(order.getDeductedPrice()) || new BigDecimal(order.getDeductedPrice()).compareTo(new BigDecimal("0")) == 0){
+            //没有门店折扣
+//            offLineParent.setVisibility(View.GONE);
+//            onLineParent.setVisibility(View.VISIBLE);
+
+        }else {
+            TextView des = (TextView) couponsView.findViewById(R.id.text_offline_desc);
+            TextView deduct = (TextView) couponsView.findViewById(R.id.text_offline_deduct);
+            deduct.setText(NumberUtil.format2Dicimal(order.getDeductedPrice()));
+            deductPrice = order.getDeductedPrice();
+//            if(!TextUtils.isEmpty(order.getDeductMemo())){
+//                des.setText(order.getDeductMemo());
+//            }else {
+//                des.setVisibility(View.GONE);
+//            }
+//            offLineParent.setVisibility(View.VISIBLE);
+//            onLineParent.setVisibility(View.GONE);
+            subPrice = new BigDecimal(subPrice).subtract(new BigDecimal(order.getDeductedPrice())).floatValue() +"";
+        }
+        textPayAmmout.setText("￥"+NumberUtil.format2Dicimal(subPrice));
+        copounsTips.setText("优惠："  +"￥" + NumberUtil.format2Dicimal(deductPrice));
 //        getPriceVolley.requestPost(Const.Request.pay+"/" + orderNo, getHandler(), UserInfosPref.getInstance(this).getUser().getToken()
 //                ,locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 
@@ -438,7 +461,7 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
 
     LinearLayout offLineParent;
 
-    private void fillOrderClotesDetailInfo(Order order,List<Cloth> items,boolean hasPaied){
+    private void fillOrderClotesDetailInfo(Order order,List<Cloth> items){
         String subPrice = order.getTotalPrice();
         String deductPrice = "0";
         priceParentTop.setVisibility(View.GONE);
@@ -656,7 +679,7 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                 fillOrderSenderInfo(order);
                 noPriceParent.setVisibility(View.GONE);
                 if(!TextUtils.isEmpty(order.getTotalPrice()) && items != null && items.size() > 0){
-                    fillOrderClotesDetailInfo(order,items,true);
+                    fillOrderClotesDetailInfo(order,items);
                 }else{
                     clothesDetailParentTop.setVisibility(View.GONE);
                     clothesDetailParentCener.setVisibility(View.GONE);
@@ -698,7 +721,7 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                 noPriceParent.setVisibility(View.GONE);
                 fillOrderSenderInfo();
                 if(!TextUtils.isEmpty(order.getTotalPrice()) && items != null && items.size() > 0){
-                    fillOrderClotesDetailInfo(order,items,true);
+                    fillOrderClotesDetailInfo(order,items);
                 }else{
                     clothesDetailParentCener.setVisibility(View.GONE);
                     clothesDetailParentTop.setVisibility(View.GONE);
@@ -735,7 +758,7 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                 noPriceParent.setVisibility(View.GONE);
                 fillOrderSenderInfo(order);
                 if(!TextUtils.isEmpty(order.getTotalPrice()) && items != null && items.size() > 0){
-                    fillOrderClotesDetailInfo(order,items,true);
+                    fillOrderClotesDetailInfo(order,items);
                 }else{
                     clothesDetailParentCener.setVisibility(View.GONE);
                     clothesDetailParentTop.setVisibility(View.GONE);
@@ -770,7 +793,7 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                 //已送达
                 fillOrderSenderInfo(order);
                 if(!TextUtils.isEmpty(order.getTotalPrice()) && items != null && items.size() > 0){
-                    fillOrderClotesDetailInfo(order,items,true);
+                    fillOrderClotesDetailInfo(order,items);
                 }else{
                     clothesDetailParentCener.setVisibility(View.GONE);
                     clothesDetailParentTop.setVisibility(View.GONE);
@@ -840,7 +863,7 @@ public class OrderDetailActivity extends LoadingActivity implements OnClickListe
                 noPriceParent.setVisibility(View.GONE);
                 fillOrderSenderInfo();
                 if(!TextUtils.isEmpty(order.getTotalPrice()) && items != null && items.size() > 0){
-                    fillOrderClotesDetailInfo(order,items,true);
+                    fillOrderClotesDetailInfo(order,items);
                 }else{
                     clothesDetailParentCener.setVisibility(View.GONE);
                     clothesDetailParentTop.setVisibility(View.GONE);

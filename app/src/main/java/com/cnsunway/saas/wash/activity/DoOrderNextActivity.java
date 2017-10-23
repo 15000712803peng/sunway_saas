@@ -85,6 +85,7 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
     String addrId;
     JsonVolley addrDetailVolley;
     LinearLayout hasAddrParent;
+    ImageView noStoreImage;
 
     ServiceCity defaultCity;
 //    ImageView conntactImage;
@@ -210,8 +211,8 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
 //        shippingFeeVolley.requestGet(Const.Request.shippingFee, getHandler(), UserInfosPref.getInstance(this).getUser().getToken());
         addrDetailVolley = new JsonVolley(this,Const.Message.MSG_ADDR_DETAIL_SUCC,Const.Message.MSG_ADDR_DETAIL_FAIL);
         getFreightRuleVolley = new JsonVolley(this,Const.Message.MSG_GET_FREIGHT_RULE_SUCC,Const.Message.MSG_GET_FREIGHT_RULE_FAIL);
-        getFreightRuleVolley.requestGet(Const.Request.getFreightRule,getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),UserInfosPref.getInstance(this).getServiceCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
-        );
+//        getFreightRuleVolley.requestGet(Const.Request.getFreightRule,getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),UserInfosPref.getInstance(this).getServiceCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+//        );
 
 
     }
@@ -249,6 +250,7 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
         washShoesText = (TextView) findViewById(R.id.text_wash_shoes);
 //        noAddrText = (TextView) findViewById(R.id.text_no_addr);
         unwashShoesText = (TextView) findViewById(R.id.text_unwash_shoes);
+        noStoreImage = (ImageView) findViewById(R.id.image_no_store);
 
         hasAddrParent = (LinearLayout) findViewById(R.id.ll_has_addr);
 
@@ -291,12 +293,20 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
 //                    RowsStore rowsStore = initResp.getData();
                     if(initResp != null) {
                         List<Store> stores = initResp.getData();
-                        storeList.setVisibility(View.VISIBLE);
-                        storeList.addFooterView(getLayoutInflater().inflate(R.layout.hide_bottom,null));
-                        orderStoreAdapter = new OrderStoreAdapter(this,stores,this);
-                        orderStoreAdapter.setFetchTime(getDefaultFetchTime());
-                        storeList.setAdapter(orderStoreAdapter);
-                        storeList.setOnItemClickListener(this);
+                        Log.e("-------","stores:" +stores.size());
+                        if(stores != null && stores.size() > 0){
+                            storeList.setVisibility(View.VISIBLE);
+                            noStoreImage.setVisibility(View.INVISIBLE);
+                            storeList.addFooterView(getLayoutInflater().inflate(R.layout.hide_bottom,null));
+                            orderStoreAdapter = new OrderStoreAdapter(this,stores,this);
+                            orderStoreAdapter.setFetchTime(getDefaultFetchTime());
+                            storeList.setAdapter(orderStoreAdapter);
+                            storeList.setOnItemClickListener(this);
+                        }else {
+                            storeList.setVisibility(View.INVISIBLE);
+                            noStoreImage.setVisibility(View.VISIBLE);
+                        }
+
                     }else{
 
                     }

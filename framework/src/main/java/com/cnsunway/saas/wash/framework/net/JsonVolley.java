@@ -345,6 +345,22 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 
 	}
 
+	private void initHeader(Map<String, String> headers,final String cityCode,
+							final String province,
+							final String adcode,
+							final String district){
+		headers.put("Accept", "application/json");
+		headers.put("x-sw-ctype",REQUEST_TYPE);
+		headers.put("x-sw-channel",CHANNEL);
+		headers.put("Content-Type", "application/json; charset=utf-8");
+
+		headers.put("x-sw-city",cityCode);
+		headers.put("x-sw-adcode",adcode);
+		headers.put("x-sw-district",district);
+		headers.put("x-sw-province",province);
+
+	}
+
 	public void requestPost(String url,LoadingDialogInterface dialog, Handler handler,final String accessToken,final String cityCode,
 							final String province,
 							final String adcode,
@@ -382,6 +398,29 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 			public Map<String, String> getHeaders() throws AuthFailureError {
 				Map<String, String> headers = new HashMap<String, String>();
 				initHeader(headers,accessToken,cityCode,province,adcode,district);
+				return headers;
+			}
+
+		};
+		jsonObjectRequest.setRetryPolicy(new DefaultRetryPolicy(10 * 1000,// 默认超时时间，应设置一个稍微大点儿的
+				DefaultRetryPolicy.DEFAULT_MAX_RETRIES,// 默认最大尝试次数0
+				DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+		myQueue.add(jsonObjectRequest);
+	}
+
+	public void requestPost(String url, Handler handler,final String cityCode,
+							final String province,
+							final String adcode,
+							final String district) {
+		this.handler = new WeakReference<Handler>(handler);
+		JSONObject jsonObject = new JSONObject(params);
+		JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
+				Method.POST, url, jsonObject, this, this) {
+			@Override
+			public Map<String, String> getHeaders() throws AuthFailureError {
+				Map<String, String> headers = new HashMap<String, String>();
+				initHeader(headers,cityCode,province,adcode,district);
 				return headers;
 			}
 
