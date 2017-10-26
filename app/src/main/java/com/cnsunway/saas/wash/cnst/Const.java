@@ -175,8 +175,8 @@ public class Const {
         }
 
         static {
-//            setServer(WX_SERVER);
-            setServer(WXDEV_SERVER);
+            setServer(WX_SERVER);
+//            setServer(WXDEV_SERVER);
 //           setServer(TEMP_SERVER);
         }
     }

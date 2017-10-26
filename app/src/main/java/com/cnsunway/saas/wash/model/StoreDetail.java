@@ -35,6 +35,15 @@ public class StoreDetail {
     String freightRemitAmount;
     String freightAmount;
     String startAmount = "0";
+    String storeTel ;
+
+    public String getStoreTel() {
+        return storeTel;
+    }
+
+    public void setStoreTel(String storeTel) {
+        this.storeTel = storeTel;
+    }
 
     public String getStartAmount() {
         return startAmount;
