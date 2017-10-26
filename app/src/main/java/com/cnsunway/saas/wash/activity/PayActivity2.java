@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -19,6 +20,7 @@ import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.cnst.Const;
 import com.cnsunway.saas.wash.dialog.BanlancePayDialog;
 import com.cnsunway.saas.wash.dialog.OperationToast;
+import com.cnsunway.saas.wash.framework.net.BaseResp;
 import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.net.NetParams;
 import com.cnsunway.saas.wash.framework.net.StringVolley;
@@ -265,8 +267,8 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
                         AlipayResp alipayResp = (AlipayResp) JsonParser.jsonToObject(msg.obj + "", AlipayResp.class);
                         alipayTool.pay(alipayResp.getData());
                     } else if (payChoice == SELECT_WE_PAY) {
-                        WepayResp wepayResp = (WepayResp) JsonParser.jsonToObject(msg.obj + "", WepayResp.class);
-                        wepayTool.pay(wepayResp.getData());
+//                        WepayResp wepayResp = (WepayResp) JsonParser.jsonToObject(msg.obj + "", WepayResp.class);
+//                        wepayTool.pay(wepayResp.getData());
                     }
 
                 } else {
@@ -318,7 +320,11 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
                     } else if (payChoice == SELECT_WE_PAY) {
                         Toast.makeText(this,"wepay",Toast.LENGTH_SHORT).show();
                         WepayResp wepayResp = (WepayResp) JsonParser.jsonToObject(msg.obj + "", WepayResp.class);
-                        wepayTool.pay(wepayResp.getData());
+                        wepayTool.pay(wepayResp.getData().getPrePayInfo().getParams());
+                    }
+                }else {
+                    if(!TextUtils.isEmpty(msg.obj + "")){
+                        OperationToast.showOperationResult(this,msg.obj + "",R.mipmap.wrong_icon);
                     }
                 }
                 break;
@@ -345,25 +351,6 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
     public void onClick(View view) {
         if(view == payParent){
             if (payChoice == SELECT_BANLANCE_PAY) {
-//                JSONArray payListArray = null;
-//                myPayRequest.getPayList().remove(new PayData(WAY_BALANCE));
-//                myPayRequest.getPayList().remove(new PayData(WAY_COUPON));
-//                if (Float.compare(balanceDiscount, 0) != 0) {
-//                    banlanceData = new PayData(WAY_BALANCE, balanceDiscount + "");
-//                    myPayRequest.getPayList().add(banlanceData);
-//                }
-//                if (couponData != null) {
-//                    myPayRequest.getPayList().add(couponData);
-//                }
-//                try {
-//                    JSONObject object = new JSONObject(JsonParser.objectToJsonStr(myPayRequest));
-//                    payListArray = object.getJSONArray("payList");
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-//                if (payListArray != null) {
-//                    settleAccountsVolley.addParams("payList", payListArray);
-//                }
                 banlancePayDialog = new BanlancePayDialog(this, balanceDiscount + "", balanceDiscount + "").builder();
                 banlancePayDialog.setBanlanceOkLinstener(this);
                 banlancePayDialog.show();
@@ -377,36 +364,14 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
                 }
                 if(alipayBox.isChecked()){
                     payChoice = SELECT_ALI_PAY;
-
                 }
-//                    thirdPartData = new PayData(WAY_THIRD_PARTY_PAY, finalPrice + "");
-//                    JSONArray payListArray = null;
-//                    myPayRequest.getPayList().remove(new PayData(WAY_BALANCE));
-//                    myPayRequest.getPayList().remove(new PayData(WAY_COUPON));
-//                    myPayRequest.getPayList().remove(new PayData(WAY_THIRD_PARTY_PAY));
-//                    if (Float.compare(balanceDiscount, 0) != 0) {
-//                        banlanceData = new PayData(WAY_BALANCE, balanceDiscount + "");
-//                        myPayRequest.getPayList().add(banlanceData);
-//                    }
-//                    if (couponData != null) {
-//                        myPayRequest.getPayList().add(couponData);
-//                    }
-//                    myPayRequest.getPayList().add(thirdPartData);
-//                    try {
-//                        JSONObject object = new JSONObject(JsonParser.objectToJsonStr(myPayRequest));
-//                        payListArray = object.getJSONArray("payList");
-//
-//                    } catch (JSONException e) {
-//                        e.printStackTrace();
-//                    }
-//                    if (payListArray != null) {
-//                        settleAccountsVolley.addParams("payList", payListArray);
-//                    }
-
                 LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
                 payVolley.addParams("amount",subPrice);
                 payVolley.addParams("balance",myBlance);
                 payVolley.addParams("thirdPartyPayChannel",payChoice);
+//                Log.e("--------","amount:" + subPrice + "-balance:" + myBlance +"-thirdPartyPayChannel:" + payChoice);
+//                Log.e("--------","token:" + UserInfosPref.getInstance(this).getUser().getToken());
+//                Log.e("-------","url:" + Const.Request.pay + "/" + orderNo);
                     payVolley.requestPost(Const.Request.pay + "/" + orderNo,this, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
                     );
                 }
@@ -422,8 +387,6 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
         payVolley.addParams("balance",subPrice);
 //        payVolley.addParams("thirdPartyPayChannel",WAY_BALANCE);
         payVolley.requestPost(Const.Request.pay+"/" + orderNo, this, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
-
-
     }
 
     @Override
@@ -446,10 +409,10 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
             int reuslt = intent.getIntExtra("pay_result", 0);
             if (reuslt == WEPAY_SUCC_RESULT) {
                 paySucc();
+
             } else {
                 OperationToast.showOperationResult(context, R.string.pay_fail,R.mipmap.wrong_icon);
                 payFail();
-
             }
         }
     };
