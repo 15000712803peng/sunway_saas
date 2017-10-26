@@ -39,8 +39,4 @@ public class AlipayTool {
 		payThread.start();
 	}
 
-
-
-
-
 }

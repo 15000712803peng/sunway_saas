@@ -46,13 +46,13 @@ public class WepayTool {
 		req.packageValue = config.getPackageName();
 		req.nonceStr = config.getNonceStr();
 		req.timeStamp = config.getTimeStamp();
-		List<NameValuePair> signParams = new LinkedList<NameValuePair>();
-		signParams.add(new BasicNameValuePair("appid", req.appId));
-		signParams.add(new BasicNameValuePair("noncestr", req.nonceStr));
-		signParams.add(new BasicNameValuePair("package", req.packageValue));
-		signParams.add(new BasicNameValuePair("partnerid", req.partnerId));
-		signParams.add(new BasicNameValuePair("prepayid", req.prepayId));
-		signParams.add(new BasicNameValuePair("timestamp", req.timeStamp));
+//		List<NameValuePair> signParams = new LinkedList<NameValuePair>();
+//		signParams.add(new BasicNameValuePair("appid", req.appId));
+//		signParams.add(new BasicNameValuePair("noncestr", req.nonceStr));
+//		signParams.add(new BasicNameValuePair("package", req.packageValue));
+//		signParams.add(new BasicNameValuePair("partnerid", req.partnerId));
+//		signParams.add(new BasicNameValuePair("prepayid", req.prepayId));
+//		signParams.add(new BasicNameValuePair("timestamp", req.timeStamp));
 //		req.sign = genAppSign(signParams);
 		req.sign = config.getSign();
 	}

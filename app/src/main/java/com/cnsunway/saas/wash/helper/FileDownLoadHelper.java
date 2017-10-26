@@ -3,6 +3,7 @@ package com.cnsunway.saas.wash.helper;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.cnsunway.saas.wash.cnst.Const;
 
@@ -10,6 +11,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -43,7 +45,7 @@ public class FileDownLoadHelper extends Thread {
 			URL url = new URL(this.url);
 			String filename = this.url.substring(this.url.lastIndexOf("/") + 1);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-			conn.setConnectTimeout(10 * 1000);
+			conn.setConnectTimeout(100 * 10000);
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty(
 					"Accept",
@@ -61,6 +63,8 @@ public class FileDownLoadHelper extends Thread {
 				// TODO: handle exception
 			}
 			int length = conn.getContentLength();
+			BigDecimal bigLength = new BigDecimal(length);
+			BigDecimal b = new BigDecimal(100);
 			InputStream is = conn.getInputStream();
 			File file = new File(filePath, filename);
 			if (file.exists()) {
@@ -68,12 +72,13 @@ public class FileDownLoadHelper extends Thread {
 			}
 			FileOutputStream fos = new FileOutputStream(file);
 			int len = 0;
-			int count = 0;
-			byte buf[] = new byte[1024];
+			long count = 0;
+			byte buf[] = new byte[1024*1024];
 			while (((len = is.read(buf)) != -1) && (!is_cancel)) {
 				count += len;
+
 				if (handle != null) {
-					int progress = count * 100 / length;
+					int progress = new BigDecimal(count).divide(bigLength,10,BigDecimal.ROUND_HALF_DOWN).multiply(b).intValue();
 					handle.sendEmptyMessage(Const.Message.MSG_DOWNLOAD);
 					Message message = new Message();
 					message.what = Const.Message.MSG_DOWNLOAD;
