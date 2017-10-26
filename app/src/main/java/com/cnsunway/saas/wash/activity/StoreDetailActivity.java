@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
@@ -25,6 +26,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.cnsunway.saas.wash.R;
 import com.cnsunway.saas.wash.adapter.CommentsAdapter;
 import com.cnsunway.saas.wash.cnst.Const;
+import com.cnsunway.saas.wash.dialog.CallHotlineDialog;
 import com.cnsunway.saas.wash.framework.net.JsonVolley;
 import com.cnsunway.saas.wash.framework.net.NetParams;
 import com.cnsunway.saas.wash.framework.utils.JsonParser;
@@ -62,6 +64,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
     ImageView threeScoreImage;
     ImageView fourScoreImage;
     ImageView fiveScoreImage;
+    ImageView storeTel;
     TextView  scoreText;
     TextView serviceCountText;
     TextView feeText;
@@ -74,7 +77,8 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
     TextView textNoComment;
     int commentsCount;
     TextView chargeText;
-
+    String storeTelNum;
+    CallHotlineDialog callHotlineDialog;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         setContentView(R.layout.activity_store_detail);
@@ -114,6 +118,8 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         morePrice = (RelativeLayout) findViewById(R.id.more_price);
         commentView = (ListView) findViewById(R.id.list_comment);
         textNoComment = (TextView) findViewById(R.id.text_no_comment);
+        storeTel = (ImageView) findViewById(R.id.image_tel);
+
         chargeText = (TextView) findViewById(R.id.text_charge);
         chargeText.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -270,6 +276,17 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
             commentView.addFooterView(view);
         }else {
             textNoComment.setVisibility(View.VISIBLE);
+        }
+
+        if (!TextUtils.isEmpty(store.getStoreTel())){
+            storeTelNum = store.getStoreTel();
+            storeTel.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + storeTelNum));
+                    startActivity(intent);
+                }
+            });
         }
     }
 
