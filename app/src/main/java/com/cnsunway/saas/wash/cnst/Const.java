@@ -6,7 +6,7 @@ public class Const {
     private static final String PACKAGE_NAME = "com.cnsunway.saas.wash";
     public static final String AMAP_KEY = "c400c88e96e075b82e8bdd0719577f82";
     public static final String WE_APP_ID = "wx70f2574b97ad060b";
-    public static final String MCH_ID = "1394051902";
+    public static final String MCH_ID = "1490982782";
     public static final int MAN = 1;
     public static final int WOMAN = 2;
     public static final String MARKET_BALANCE = "BALANCE_RECHARGE";

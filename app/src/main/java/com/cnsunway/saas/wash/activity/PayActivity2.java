@@ -345,25 +345,25 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
     public void onClick(View view) {
         if(view == payParent){
             if (payChoice == SELECT_BANLANCE_PAY) {
-                JSONArray payListArray = null;
-                myPayRequest.getPayList().remove(new PayData(WAY_BALANCE));
-                myPayRequest.getPayList().remove(new PayData(WAY_COUPON));
-                if (Float.compare(balanceDiscount, 0) != 0) {
-                    banlanceData = new PayData(WAY_BALANCE, balanceDiscount + "");
-                    myPayRequest.getPayList().add(banlanceData);
-                }
-                if (couponData != null) {
-                    myPayRequest.getPayList().add(couponData);
-                }
-                try {
-                    JSONObject object = new JSONObject(JsonParser.objectToJsonStr(myPayRequest));
-                    payListArray = object.getJSONArray("payList");
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-                if (payListArray != null) {
-                    settleAccountsVolley.addParams("payList", payListArray);
-                }
+//                JSONArray payListArray = null;
+//                myPayRequest.getPayList().remove(new PayData(WAY_BALANCE));
+//                myPayRequest.getPayList().remove(new PayData(WAY_COUPON));
+//                if (Float.compare(balanceDiscount, 0) != 0) {
+//                    banlanceData = new PayData(WAY_BALANCE, balanceDiscount + "");
+//                    myPayRequest.getPayList().add(banlanceData);
+//                }
+//                if (couponData != null) {
+//                    myPayRequest.getPayList().add(couponData);
+//                }
+//                try {
+//                    JSONObject object = new JSONObject(JsonParser.objectToJsonStr(myPayRequest));
+//                    payListArray = object.getJSONArray("payList");
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//                if (payListArray != null) {
+//                    settleAccountsVolley.addParams("payList", payListArray);
+//                }
                 banlancePayDialog = new BanlancePayDialog(this, balanceDiscount + "", balanceDiscount + "").builder();
                 banlancePayDialog.setBanlanceOkLinstener(this);
                 banlancePayDialog.show();
@@ -406,12 +406,11 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
                 LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
                 payVolley.addParams("amount",subPrice);
                 payVolley.addParams("balance",myBlance);
-                payVolley.addParams("thirdPartyPayChannel","31");
+                payVolley.addParams("thirdPartyPayChannel",payChoice);
                     payVolley.requestPost(Const.Request.pay + "/" + orderNo,this, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
                     );
                 }
             }
-
     }
 
     @Override
