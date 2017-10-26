@@ -125,10 +125,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StoreDetailActivity.this, RechargeWebActivity.class);
-
-                //  https://saas-app.sunwayxiyi.com/
-//                String url = Const.Request.SERVER.replace("/saas-app", "/")+"?token=" + UserInfosPref.getInstance(StoreDetailActivity.this).getUser().getToken()+"&mobile="+UserInfosPref.getInstance(StoreDetailActivity.this).getUser().getMobile()+"#/storeRecharge/"+storeId;
-                String url = "https://saas-app.sunwayxiyi.com"+"?token=" + UserInfosPref.getInstance(StoreDetailActivity.this).getUser().getToken()+"&mobile="+UserInfosPref.getInstance(StoreDetailActivity.this).getUser().getMobile()+"#/storeRecharge/"+storeId;
+                String url = Const.Request.SERVER.replace("/saas-app", "/")+"?token=" + UserInfosPref.getInstance(StoreDetailActivity.this).getUser().getToken()+"&mobile="+UserInfosPref.getInstance(StoreDetailActivity.this).getUser().getMobile()+"#/storeRecharge/"+storeId;
                 Log.e("--","pass url:"+url);
                 https://saas-app.sunwayxiyi.com?token=1&mobile=1&username=15026801649#/storeRecharge/2
                 intent.putExtra("url", url);

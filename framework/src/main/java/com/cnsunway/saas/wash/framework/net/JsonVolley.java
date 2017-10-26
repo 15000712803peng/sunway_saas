@@ -81,7 +81,7 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 				headers.put("x-sw-ctype",REQUEST_TYPE);
 				headers.put("x-sw-channel",CHANNEL);
 				headers.put("Content-Type", "application/json; charset=utf-8");
-
+				headers.put("x-sw-devicetype","1");
 				headers.put("x-sw-city",cityCode);
 				headers.put("x-sw-adcode",adcode);
 				headers.put("x-sw-district",district);
@@ -113,7 +113,7 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 				headers.put("x-sw-ctype",REQUEST_TYPE);
 				headers.put("x-sw-channel",CHANNEL);
 				headers.put("Content-Type", "application/json; charset=utf-8");
-
+				headers.put("x-sw-devicetype","1");
 				headers.put("x-sw-city",cityCode);
 				headers.put("x-sw-adcode",adcode);
 				headers.put("x-sw-district",district);
@@ -267,7 +267,7 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 				headers.put("x-sw-ctype",REQUEST_TYPE);
 				headers.put("x-sw-channel",CHANNEL);
 				headers.put("Content-Type", "application/json; charset=utf-8");
-
+				headers.put("x-sw-devicetype","1");
 				headers.put("x-sw-city",cityCode);
 				headers.put("x-sw-adcode",adcode);
 				headers.put("x-sw-district",district);
@@ -292,6 +292,7 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 				headers.put("Accept", "application/json");
 				headers.put("x-sw-ctype",REQUEST_TYPE);
 				headers.put("x-sw-channel",CHANNEL);
+				headers.put("x-sw-devicetype","1");
 				headers.put("Content-Type", "application/json; charset=utf-8");
 				return headers;
 			}
@@ -337,7 +338,7 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 		headers.put("x-sw-channel",CHANNEL);
 		headers.put("Content-Type", "application/json; charset=utf-8");
 		headers.put("x-sw-token", accessToken);
-
+		headers.put("x-sw-devicetype","1");
 		headers.put("x-sw-city",cityCode);
 		headers.put("x-sw-adcode",adcode);
 		headers.put("x-sw-district",district);
@@ -355,7 +356,7 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 		headers.put("x-sw-ctype",REQUEST_TYPE);
 		headers.put("x-sw-channel",CHANNEL);
 		headers.put("Content-Type", "application/json; charset=utf-8");
-
+		headers.put("x-sw-devicetype","1");
 		headers.put("x-sw-city",cityCode);
 		headers.put("x-sw-adcode",adcode);
 		headers.put("x-sw-district",district);
