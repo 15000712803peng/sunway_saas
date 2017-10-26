@@ -532,16 +532,16 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == OPERATION_ORDER_PAY && resultCode == Activity.RESULT_OK) {
-
-            if(data == null){
+                  onRefresh();
+            /*if(data == null){
                 return;
-            }
+            }*/
 //            final Order order = (Order)data.getSerializableExtra("order");
 //            if(order == null){
 //                return;
 //            }
-            String orderNo = data.getStringExtra("order_no");
-            orderDetailVolley.requestGet(Const.Request.detail + "/" + orderNo, getHandler(), UserInfosPref.getInstance(getActivity()).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
+           /* String orderNo = data.getStringExtra("order_no");
+            orderDetailVolley.requestGet(Const.Request.detail + "/" + orderNo, getHandler(), UserInfosPref.getInstance(getActivity()).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());*/
 //            getActivity().sendBroadcast(new Intent(Const.MyFilter.FILTER_REFRESH_HOME_ORDERS));
 
         }

@@ -27,7 +27,6 @@ import com.cnsunway.saas.wash.model.Order;
 import com.cnsunway.saas.wash.model.PayData;
 import com.cnsunway.saas.wash.model.PayResult;
 import com.cnsunway.saas.wash.resp.AlipayResp;
-import com.cnsunway.saas.wash.resp.WepayResp;
 import com.cnsunway.saas.wash.sharef.UserInfosPref;
 import com.cnsunway.saas.wash.util.AlipayTool;
 import com.cnsunway.saas.wash.util.NumberUtil;
@@ -260,8 +259,8 @@ public class PayActivity extends InitActivity implements View.OnClickListener,Ba
                         AlipayResp alipayResp = (AlipayResp) JsonParser.jsonToObject(msg.obj + "", AlipayResp.class);
                         alipayTool.pay(alipayResp.getData());
                     } else if (payChoice == SELECT_WE_PAY) {
-                        WepayResp wepayResp = (WepayResp) JsonParser.jsonToObject(msg.obj + "", WepayResp.class);
-                        wepayTool.pay(wepayResp.getData());
+                        /*WepayResp wepayResp = (WepayResp) JsonParser.jsonToObject(msg.obj + "", WepayResp.class);
+                        wepayTool.pay(wepayResp.getData());*/
                     }
 
                 } else {
