@@ -166,7 +166,7 @@ public class Const {
             hxAccount = SERVER + "/users/ocs/account";
             storeDetail =SERVER + "/stores";
 
-                    storeCategories = SERVER +"/stores";
+            storeCategories = SERVER +"/stores";
             products = SERVER +"/stores";
             inServiceStores = SERVER +"/stores/in_service";
             payBanlance = SERVER + "/user/account/pay";
