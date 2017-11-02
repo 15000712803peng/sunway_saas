@@ -71,6 +71,7 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
     LinearLayout payChoiceParent;
     JsonVolley cancelPayVolley;
     JsonVolley payBanlanceVolley;
+   String outTradeNo;
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
@@ -89,7 +90,7 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
         settleAccountsVolley = new JsonVolley(this, Const.Message.MSG_SETTLE_ACCOUNTS_SUCC, Const.Message.MSG_SETTLE_ACCOUNTS_FAIL);
         settleAccountsVolley.addParams("orderNo", orderNo);
         notifyPaySuccessVolley = new JsonVolley(this,Const.Message.MSG_RECHARGE_NOTIFY_SUCC,Const.Message.MSG_RECHARGE_NOTIFY_FAIL);
-        notifyPaySuccessVolley.addParams("outTradeNo",orderNo);
+
         getPayInfoVolley = new StringVolley(this, Const.Message.MSG_GET_PAY_INFO_SUCC, Const.Message.MSG_GET_PAY_INFO_FAIL);
         getPayInfoVolley.addParams("orderNo", orderNo);
         cancelPayVolley = new JsonVolley(this,Const.Message.MSG_PAY_CANCEL_SUCC,Const.Message.MSG_PAY_CANCEL_FAIL);
@@ -143,8 +144,12 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
     private void paySucc() {
         OperationToast.showOperationResult(getApplicationContext(), R.string.pay_succ,R.mipmap.success_icon);
         LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
-        notifyPaySuccessVolley.requestPost(Const.Request.notifyPaySuccess, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
-        );
+        if(!TextUtils.isEmpty(outTradeNo)){
+            notifyPaySuccessVolley.addParams("outTradeNo",outTradeNo);
+            notifyPaySuccessVolley.requestPost(Const.Request.notifyPaySuccess, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+            );
+        }
+
 
     }
     private void payFail(){
@@ -153,7 +158,6 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
     }
 
     private void refreshFinalPay() {
-
         if(Float.compare(subPrice,0.0f) <= 0){
             finalPrice = 0;
         }else {
@@ -265,7 +269,7 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
 
                     if (payChoice == SELECT_ALI_PAY) {
                         AlipayResp alipayResp = (AlipayResp) JsonParser.jsonToObject(msg.obj + "", AlipayResp.class);
-                        alipayTool.pay(alipayResp.getData());
+                        alipayTool.pay(alipayResp.getData().getPrePayInfo().getParams());
                     } else if (payChoice == SELECT_WE_PAY) {
 //                        WepayResp wepayResp = (WepayResp) JsonParser.jsonToObject(msg.obj + "", WepayResp.class);
 //                        wepayTool.pay(wepayResp.getData());
@@ -302,13 +306,10 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
                             accountText.setText("目前账户余额："+ NumberUtil.format2Dicimal(balance) + "元");
                     myBlance = new BigDecimal(balance).floatValue();
                     refreshFinalPay();
-
                 }
                 break;
-
             case Const.Message.MSG_GET_PAY_BANLANCE_FAIL:
                 break;
-
             case Const.Message.MSG_GET_PAY_SUCC:
                 if(msg.arg1 == NetParams.RESPONCE_NORMAL){
                     if(payChoice == WAY_BALANCE){
@@ -316,10 +317,11 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
                     }else if (payChoice == SELECT_ALI_PAY) {
                         Toast.makeText(this,"alipay",Toast.LENGTH_SHORT).show();
                         AlipayResp alipayResp = (AlipayResp) JsonParser.jsonToObject(msg.obj + "", AlipayResp.class);
-                        alipayTool.pay(alipayResp.getData());
+                        outTradeNo = alipayResp.getData().getPrePayInfo().getOutTradeNo();
+                        alipayTool.pay(alipayResp.getData().getPrePayInfo().getParams());
                     } else if (payChoice == SELECT_WE_PAY) {
-                        Toast.makeText(this,"wepay",Toast.LENGTH_SHORT).show();
                         WepayResp wepayResp = (WepayResp) JsonParser.jsonToObject(msg.obj + "", WepayResp.class);
+                        outTradeNo = wepayResp.getData().getPrePayInfo().getOutTradeNo();
                         wepayTool.pay(wepayResp.getData().getPrePayInfo().getParams());
                     }
                 }else {
@@ -366,7 +368,7 @@ public class PayActivity2 extends InitActivity implements View.OnClickListener,B
                     payChoice = SELECT_ALI_PAY;
                 }
                 LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
-                payVolley.addParams("amount",subPrice);
+                payVolley.addParams("amount",finalPrice);
                 payVolley.addParams("balance",myBlance);
                 payVolley.addParams("thirdPartyPayChannel",payChoice);
 //                Log.e("--------","amount:" + subPrice + "-balance:" + myBlance +"-thirdPartyPayChannel:" + payChoice);

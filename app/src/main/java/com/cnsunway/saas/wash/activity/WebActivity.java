@@ -331,12 +331,12 @@ public class WebActivity extends CordovaActivity implements PayChoiceDialog.Sele
 				if (msg.arg1 == Const.Request.REQUEST_SUCC) {
 					if (rechargeChoice == ALIPAY_RECHARGE) {
 						RechargeAlipayResp alipayResp = (RechargeAlipayResp) JsonParser.jsonToObject(msg.obj + "", RechargeAlipayResp.class);
-						depositOrderNo =   alipayResp.getData().getDepositOrderNo();
-						alipayTool.pay(alipayResp.getData().getPayInfo());
+						depositOrderNo =   alipayResp.getData().getOutTradeNo();
+						alipayTool.pay(alipayResp.getData().getParams());
 					} else if (rechargeChoice == WX_RECHARGE) {
 						RechargeWxpayResp wepayResp = (RechargeWxpayResp) JsonParser.jsonToObject(msg.obj + "", RechargeWxpayResp.class);
-						depositOrderNo = wepayResp.getData().getDepositOrderNo();
-						wepayTool.pay(wepayResp.getData().getPayInfo());
+						depositOrderNo = wepayResp.getData().getOutTradeNo();
+						wepayTool.pay(wepayResp.getData().getParams());
 					}
 				} else {
 					if(!TextUtils.isEmpty(msg.obj+"")){

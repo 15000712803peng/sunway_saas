@@ -83,7 +83,7 @@ public class CommentsAdapter extends BaseAdapter{
 //
 
         holder.comment.setText(comment.getComment());
-        holder.createdDate.setText(comment.getCreatedDate().substring(0,9));
+        holder.createdDate.setText(comment.getCreatedDate());
         holder.nickName.setText(comment.getNickName());
         switch (comment.getStoreScore()){
             case 0:

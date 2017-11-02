@@ -258,10 +258,10 @@ public class PayActivity extends InitActivity implements View.OnClickListener,Ba
 
                     if (payChoice == SELECT_ALI_PAY) {
                         AlipayResp alipayResp = (AlipayResp) JsonParser.jsonToObject(msg.obj + "", AlipayResp.class);
-                        alipayTool.pay(alipayResp.getData());
+                        alipayTool.pay(alipayResp.getData().getPrePayInfo().getParams());
                     } else if (payChoice == SELECT_WE_PAY) {
-                        WepayResp wepayResp = (WepayResp) JsonParser.jsonToObject(msg.obj + "", WepayResp.class);
-                        wepayTool.pay(wepayResp.getData());
+//                        WepayResp wepayResp = (WepayResp) JsonParser.jsonToObject(msg.obj + "", WepayResp.class);
+//                        wepayTool.pay(wepayResp.getData());
                     }
 
                 } else {

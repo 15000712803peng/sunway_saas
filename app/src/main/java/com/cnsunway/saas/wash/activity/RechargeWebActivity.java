@@ -69,12 +69,14 @@ public class RechargeWebActivity extends CordovaActivity implements PayChoiceDia
 	TextView titleText;
 	Order order;
 	String hash = "";
+	String storeId;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_web);
 		super.onCreate(savedInstanceState);
 		url = getIntent().getStringExtra("url");
+		storeId = getIntent().getStringExtra("store_id");
 
 		if(TextUtils.isEmpty(url)){
 			url = Const.Request.newBalance;
@@ -266,7 +268,7 @@ public class RechargeWebActivity extends CordovaActivity implements PayChoiceDia
 		}
 	}
 
-	String depositOrderNo;
+	String outTradeNo;
 	AlipayTool alipayTool;
 	WepayTool wepayTool;
 	private static final String ALIPEY_PAY_SUCC = "9000";
@@ -291,12 +293,12 @@ public class RechargeWebActivity extends CordovaActivity implements PayChoiceDia
 				if (msg.arg1 == Const.Request.REQUEST_SUCC) {
 					if (rechargeChoice == ALIPAY_RECHARGE) {
 						RechargeAlipayResp alipayResp = (RechargeAlipayResp) JsonParser.jsonToObject(msg.obj + "", RechargeAlipayResp.class);
-						depositOrderNo =   alipayResp.getData().getDepositOrderNo();
-						alipayTool.pay(alipayResp.getData().getPayInfo());
+						outTradeNo =  alipayResp.getData().getOutTradeNo();
+						alipayTool.pay(alipayResp.getData().getParams());
 					} else if (rechargeChoice == WX_RECHARGE) {
 						RechargeWxpayResp wepayResp = (RechargeWxpayResp) JsonParser.jsonToObject(msg.obj + "", RechargeWxpayResp.class);
-						depositOrderNo = wepayResp.getData().getDepositOrderNo();
-						wepayTool.pay(wepayResp.getData().getPayInfo());
+						outTradeNo = wepayResp.getData().getOutTradeNo();
+						wepayTool.pay(wepayResp.getData().getParams());
 					}
 				} else {
 					if(!TextUtils.isEmpty(msg.obj+"")){
@@ -400,6 +402,8 @@ public class RechargeWebActivity extends CordovaActivity implements PayChoiceDia
 		rechargeChoice = ALIPAY_RECHARGE;
 		startRechargeVolley.addParams("paymentAmount",chargePrice);
 		startRechargeVolley.addParams("payChannel", ALIPAY_RECHARGE + "");
+//		Log.e("-------","store_id:" + storeId);
+		startRechargeVolley.addParams("storeId", storeId);
 		setOperationMsg(getString(R.string.paying));
 		LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
 		startRechargeVolley.requestPost(Const.Request.startRecharge, this, handler, UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
@@ -414,6 +418,7 @@ public class RechargeWebActivity extends CordovaActivity implements PayChoiceDia
 		rechargeChoice = WX_RECHARGE;
 		startRechargeVolley.addParams("paymentAmount", chargePrice);
 		startRechargeVolley.addParams("payChannel", WX_RECHARGE + "");
+		startRechargeVolley.addParams("storeId", storeId + "");
 		setOperationMsg(getString(R.string.paying));
 		LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
 		startRechargeVolley.requestPost(Const.Request.startRecharge, this, handler, UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
@@ -434,8 +439,19 @@ public class RechargeWebActivity extends CordovaActivity implements PayChoiceDia
 	};
 
 	private void paySucc() {
+		OperationToast.showOperationResult(this,"充值成功",R.mipmap.icon_right);
 		if(!TextUtils.isEmpty(callBack)){
 			appView.loadUrl(callBack);
 		}
+
+		notifyPaySuccessVolley = new JsonVolley(this,Const.Message.MSG_RECHARGE_NOTIFY_SUCC,Const.Message.MSG_RECHARGE_NOTIFY_FAIL);
+		LocationForService locationForService = UserInfosPref.getInstance(this).getLocationServer();
+		if(!TextUtils.isEmpty(outTradeNo)){
+			notifyPaySuccessVolley.addParams("outTradeNo",outTradeNo);
+			notifyPaySuccessVolley.requestPost(Const.Request.notifyPaySuccess, getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict()
+			);
+		}
 	}
+
+	JsonVolley notifyPaySuccessVolley;
 }

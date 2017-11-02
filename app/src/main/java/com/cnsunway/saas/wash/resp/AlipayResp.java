@@ -1,18 +1,19 @@
 package com.cnsunway.saas.wash.resp;
 
 import com.cnsunway.saas.wash.framework.net.BaseResp;
+import com.cnsunway.saas.wash.model.AliPayData;
 
 /**
  * Created by LL on 2015/12/14.
  */
 public class AlipayResp extends BaseResp {
-    String data;
+    AliPayData data;
 
-    public String getData() {
+    public AliPayData getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(AliPayData data) {
         this.data = data;
     }
 }

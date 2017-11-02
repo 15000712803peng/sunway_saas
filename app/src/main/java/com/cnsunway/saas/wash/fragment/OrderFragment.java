@@ -267,15 +267,11 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
             noLoginLay = (LinearLayout) getView().findViewById(R.id.ll_no_login);
             loadingImage = (ImageView) getView().findViewById(R.id.iv_loading);
             loadingAni = (AnimationDrawable) loadingImage.getBackground();
-
         }
         //刷新界面
         load();
         return getView();
     }
-
-
-
 
     protected  void showCenterLoading(){
         loadingParent.setVisibility(View.VISIBLE);
@@ -467,8 +463,6 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
         }
     };
 
-
-
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
        Order o = (Order) adapterView.getAdapter().getItem(i);
@@ -532,18 +526,7 @@ public class OrderFragment extends BaseFragment implements View.OnClickListener,
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == OPERATION_ORDER_PAY && resultCode == Activity.RESULT_OK) {
-
-            if(data == null){
-                return;
-            }
-//            final Order order = (Order)data.getSerializableExtra("order");
-//            if(order == null){
-//                return;
-//            }
-            String orderNo = data.getStringExtra("order_no");
-            orderDetailVolley.requestGet(Const.Request.detail + "/" + orderNo, getHandler(), UserInfosPref.getInstance(getActivity()).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
-//            getActivity().sendBroadcast(new Intent(Const.MyFilter.FILTER_REFRESH_HOME_ORDERS));
-
+            onRefresh();
         }
     }
 

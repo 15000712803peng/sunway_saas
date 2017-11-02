@@ -1,20 +1,12 @@
 package com.cnsunway.saas.wash.model;
 
 /**
- * Created by LL on 2016/2/25.
+ * Created by Administrator on 2017/10/26 0026.
  */
-public class AliRechargeInfo {
 
-    String params;
+public class AliPrePayInfo {
     String outTradeNo;
-
-    public String getParams() {
-        return params;
-    }
-
-    public void setParams(String params) {
-        this.params = params;
-    }
+    String params;
 
     public String getOutTradeNo() {
         return outTradeNo;
@@ -22,5 +14,13 @@ public class AliRechargeInfo {
 
     public void setOutTradeNo(String outTradeNo) {
         this.outTradeNo = outTradeNo;
+    }
+
+    public String getParams() {
+        return params;
+    }
+
+    public void setParams(String params) {
+        this.params = params;
     }
 }

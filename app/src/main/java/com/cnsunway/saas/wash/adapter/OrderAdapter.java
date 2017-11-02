@@ -219,7 +219,7 @@ public class OrderAdapter extends BaseAdapter {
                 holder.dotImage.setImageResource(R.drawable.dot2);
                 holder.operationText.setVisibility(View.INVISIBLE);
                 holder.phnoeText.setVisibility(View.GONE);
-                holder.tvTips.setText("门店："+"赛维洗衣 - " + order.getStoreName());
+                holder.tvTips.setText("门店："+"赛维云洗衣 - " + order.getStoreName());
                 break;
             case HomeViewModel.ORDER_STUTAS_SEVEN:
                 //入库检验
@@ -227,7 +227,7 @@ public class OrderAdapter extends BaseAdapter {
                 holder.dotImage.setImageResource(R.drawable.dot3);
                 holder.operationText.setVisibility(View.INVISIBLE);
                 holder.phnoeText.setVisibility(View.GONE);
-                holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
+                holder.tvTips.setText("门店：" +"赛维云洗衣 - "+ order.getStoreName());
                 break;
             case HomeViewModel.ORDER_STUTAS_EIGHT:
                 //洗涤中
@@ -235,7 +235,7 @@ public class OrderAdapter extends BaseAdapter {
                 holder.dotImage.setImageResource(R.drawable.dot3);
                 holder.operationText.setVisibility(View.INVISIBLE);
                 holder.phnoeText.setVisibility(View.GONE);
-                holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
+                holder.tvTips.setText("门店：" +"赛维云洗衣 - "+ order.getStoreName());
                 break;
             case HomeViewModel.ORDER_STUTAS_NINE:
                 //洗涤完成
@@ -243,7 +243,7 @@ public class OrderAdapter extends BaseAdapter {
                 holder.dotImage.setImageResource(R.drawable.dot3);
                 holder.operationText.setVisibility(View.INVISIBLE);
                 holder.phnoeText.setVisibility(View.GONE);
-                holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
+                holder.tvTips.setText("门店：" +"赛维云洗衣 - "+ order.getStoreName());
                 break;
             case HomeViewModel.ORDER_STUTAS_TEN:
                 // 送返中

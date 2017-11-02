@@ -120,7 +120,7 @@ public class HomeStoreAdapter extends BaseAdapter{
 
 
         }
-        String fee = "订单满 " + store.getFreightRemitAmount() + " 元免 " + store.getFreightAmount() + " 元取送费"   + ",满 " + store.getStartAmount()+" 元上门";
+        String fee = "订单满 " + store.getFreightRemitAmount() + " 元免 " + store.getFreightAmount() + " 元取送费";
         holder.feeText.setText(fee);
         holder.serviceCountText.setText("已服务 " +store.getServiceCount() + " 次");
         holder.starText.setText(NumberUtil.format1Dicimal(store.getScore()+""));

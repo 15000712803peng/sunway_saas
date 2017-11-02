@@ -275,14 +275,13 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
     }
 
     DoOrderFailDialog failDialog;
+    boolean noStore = false;
 
     @Override
     protected void handlerMessage(Message msg) {
         switch (msg.what) {
-
             case Const.Message.MSG_GET_RECC_STORES_SUCC:
                 loadStoreText.setVisibility(View.GONE);
-
                 if (msg.arg1 == Const.Request.REQUEST_SUCC) {
                     RowsStoreResp initResp = (RowsStoreResp) JsonParser.jsonToObject(msg.obj + "", RowsStoreResp.class);
 //                    RowsStore rowsStore = initResp.getData();
@@ -290,6 +289,7 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
                         List<Store> stores = initResp.getData();
                         Log.e("-------","stores:" +stores.size());
                         if(stores != null && stores.size() > 0){
+                            noStore =false;
                             storeList.setVisibility(View.VISIBLE);
                             noStoreImage.setVisibility(View.INVISIBLE);
                             storeList.addFooterView(getLayoutInflater().inflate(R.layout.hide_bottom,null));
@@ -298,6 +298,7 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
                             storeList.setAdapter(orderStoreAdapter);
                             storeList.setOnItemClickListener(this);
                         }else {
+                            noStore = true;
                             storeList.setVisibility(View.INVISIBLE);
                             noStoreImage.setVisibility(View.VISIBLE);
                         }
@@ -544,6 +545,10 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
     private void createOrder() {
         String storeId = "";
         String time = "";
+        if(noStore){
+                OperationToast.showOperationResult(this,"请选择门店",0);
+                return;
+        }
             if(orderStoreAdapter != null){
                 String info = orderStoreAdapter.getSelInfo();
                 if(TextUtils.isEmpty(info)){
@@ -555,6 +560,8 @@ public class DoOrderNextActivity extends InitActivity implements View.OnClickLis
                 time = infos[1];
 
             }
+
+
 
             createOrderVolley.addParams("expectDateB", uploadTimeBegin);
             createOrderVolley.addParams("expectDateE", uploadTimeEnd);

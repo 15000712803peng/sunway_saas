@@ -839,7 +839,7 @@ public class HomeViewModel extends ViewModel{
                 Date now = toServerTime(new Date());
                 Date expectedTime = toTime(order.getExpectDateB());
                 if(expectedTime != null && now.getTime() > expectedTime.getTime()){
-                    return ORDER_STUTAS_THREE;
+                    return ORDER_STUTAS_TWO;
                 }
 
                 return ORDER_STUTAS_TWO;

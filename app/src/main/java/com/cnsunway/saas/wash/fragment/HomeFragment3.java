@@ -590,7 +590,6 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
     private PropertyChangeListener homeListListener = new PropertyChangeListener() {
         @Override
         public void propertyChange(PropertyChangeEvent event) {
-
             if (homeOrderModel.getHomeLists() == null || homeOrderModel.getHomeLists().size() <= 0) {
                 orderPager.setAdapter(new DefaultOrderAdapter());
                 return;
@@ -616,7 +615,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
     private List<Order> filterDoneOrder(List<Order> orders){
         List<Order> newOrders = new ArrayList<>();
         for(Order order : orders){
-            if(HomeViewModel.getOrderSimpleStatus(order) == HomeViewModel.ORDER_STUTAS_TWELVE && !order.isEvaluable()){
+            if(HomeViewModel.getOrderSimpleStatus(order) == HomeViewModel.ORDER_STUTAS_TWELVE){
 //                orders.remove(order);
             }else {
                 newOrders.add(order);
@@ -770,7 +769,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     //待上门
                     holder.imageArrow.setImageResource(R.mipmap.clock1);
                     holder.dotImage.setImageResource(R.drawable.dot1);
-                    holder.tvTips.setText(getString(R.string.tips_fetcher_name) + order.getPickerName()+",");
+                    holder.tvTips.setText(getString(R.string.tips_fetcher_name) + order.getFetcherName()+",");
                     holder.operationText.setVisibility(View.INVISIBLE);
                     holder.phnoeText.setVisibility(View.VISIBLE);
                     if(!TextUtils.isEmpty(order.getFetcherMobile())){
@@ -855,7 +854,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     holder.dotImage.setImageResource(R.drawable.dot2);
                     holder.operationText.setVisibility(View.INVISIBLE);
                     holder.phnoeText.setVisibility(View.GONE);
-                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
+                    holder.tvTips.setText("门店：" +"赛维云洗衣 - "+ order.getStoreName());
                     break;
                 case HomeViewModel.ORDER_STUTAS_SEVEN:
                     //入库检验
@@ -863,7 +862,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     holder.dotImage.setImageResource(R.drawable.dot3);
                     holder.operationText.setVisibility(View.INVISIBLE);
                     holder.phnoeText.setVisibility(View.GONE);
-                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
+                    holder.tvTips.setText("门店：" +"赛维云洗衣 - "+ order.getStoreName());
                     break;
                 case HomeViewModel.ORDER_STUTAS_EIGHT:
                     //洗涤中
@@ -871,7 +870,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     holder.dotImage.setImageResource(R.drawable.dot3);
                     holder.operationText.setVisibility(View.INVISIBLE);
                     holder.phnoeText.setVisibility(View.GONE);
-                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
+                    holder.tvTips.setText("门店：" +"赛维云洗衣 - "+ order.getStoreName());
                     break;
                 case HomeViewModel.ORDER_STUTAS_NINE:
                     //洗涤完成
@@ -879,7 +878,7 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                     holder.dotImage.setImageResource(R.drawable.dot3);
                     holder.operationText.setVisibility(View.INVISIBLE);
                     holder.phnoeText.setVisibility(View.GONE);
-                    holder.tvTips.setText("门店：" +"赛维洗衣 - "+ order.getStoreName());
+                    holder.tvTips.setText("门店：" +"赛维云洗衣 - "+ order.getStoreName());
                     break;
                 case HomeViewModel.ORDER_STUTAS_TEN:
                     // 送返中
@@ -949,7 +948,8 @@ public class HomeFragment3 extends BaseFragment implements View.OnClickListener,
                             public void onClick(View view) {
                                 Intent intent = new Intent(getActivity(), EvaluateActivity.class);
                                 intent.putExtra("order_no", order.getOrderNo());
-                                intent.putExtra("sender_name", order.getPickerName());
+                                intent.putExtra("site_name", order.getStoreName());
+                                intent.putExtra("sender_name", order.getDelivererName());
                                 startActivity(intent);
                             }
                         });

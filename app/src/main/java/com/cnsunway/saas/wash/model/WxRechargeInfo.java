@@ -5,22 +5,22 @@ package com.cnsunway.saas.wash.model;
  */
 public class WxRechargeInfo {
 
-    WepayConfig payInfo;
-    String depositOrderNo;
+    WepayConfig params;
+    String outTradeNo;
 
-    public WepayConfig getPayInfo() {
-        return payInfo;
+    public WepayConfig getParams() {
+        return params;
     }
 
-    public void setPayInfo(WepayConfig payInfo) {
-        this.payInfo = payInfo;
+    public void setParams(WepayConfig params) {
+        this.params = params;
     }
 
-    public String getDepositOrderNo() {
-        return depositOrderNo;
+    public String getOutTradeNo() {
+        return outTradeNo;
     }
 
-    public void setDepositOrderNo(String depositOrderNo) {
-        this.depositOrderNo = depositOrderNo;
+    public void setOutTradeNo(String outTradeNo) {
+        this.outTradeNo = outTradeNo;
     }
 }

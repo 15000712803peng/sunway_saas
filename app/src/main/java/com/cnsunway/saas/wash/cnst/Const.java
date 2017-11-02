@@ -131,7 +131,7 @@ public class Const {
             uploadPic = SERVER + "/pic/upload_info";
             operatoresSave = SERVER + "/users/save";
             profile = SERVER + "/users/profile";
-            startRecharge = SERVER + "/deposit/startRecharge";
+            startRecharge = SERVER + "/pay/recharge";
             balancelog = SERVER + "/accounts/balance/log";
             rechargeSucces = SERVER + "/deposit/rechargeSucces";
             exchangeCoupon = SERVER + "/redPackets/exchangeCoupon";

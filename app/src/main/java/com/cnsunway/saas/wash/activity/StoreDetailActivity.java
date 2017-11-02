@@ -36,6 +36,7 @@ import com.cnsunway.saas.wash.model.StoreDetail;
 import com.cnsunway.saas.wash.model.StoreImage;
 import com.cnsunway.saas.wash.resp.StoreDetailResp;
 import com.cnsunway.saas.wash.sharef.UserInfosPref;
+import com.cnsunway.saas.wash.util.NumberUtil;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.youth.banner.Banner;
@@ -125,6 +126,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StoreDetailActivity.this, RechargeWebActivity.class);
+                intent.putExtra("store_id",storeId);
                 String url = Const.Request.SERVER.replace("/saas-app", "/")+"?token=" + UserInfosPref.getInstance(StoreDetailActivity.this).getUser().getToken()+"&mobile="+UserInfosPref.getInstance(StoreDetailActivity.this).getUser().getMobile()+"#/storeRecharge/"+storeId;
                 Log.e("--","pass url:"+url);
                 https://saas-app.sunwayxiyi.com?token=1&mobile=1&username=15026801649#/storeRecharge/2
@@ -195,7 +197,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         if(!TextUtils.isEmpty(store.getStoreName())){
             storeNameText.setText(store.getStoreName());
         }
-        scoreText.setText(store.getScore() + "");
+        scoreText.setText(NumberUtil.format1Dicimal(store.getScore() +""));
         switch (store.getScore()){
             case 0:
                 oneScoreImage.setImageResource(R.mipmap.star_gray);
@@ -243,7 +245,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
 
         }
         serviceCountText.setText("已服务 " +store.getServiceCount() + " 次");
-        String fee = "订单满 " + store.getFreightRemitAmount() + " 元免 " + store.getFreightAmount() + " 元取送费"   + ",满 " + store.getStartAmount()+" 元上门";
+        String fee = "订单满 " + store.getFreightRemitAmount() + " 元免 " + store.getFreightAmount() + " 元取送费";
         feeText.setText(fee);
         addrText.setText(store.getAddress()+"");
         openTimeText.setText(store.getBeginService()+"-" + store.getEndService());
