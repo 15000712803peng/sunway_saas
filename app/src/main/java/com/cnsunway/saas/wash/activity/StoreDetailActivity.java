@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -155,6 +156,7 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
         productsView.setBackgroundColor(Color.WHITE);
 //        productsView.addItemDecoration(new SpaceItemDecoration(10));
         initStoreBanner();
+
         storeVolley.requestGet(Const.Request.storeDetail + "/" + storeId + "/detail",getHandler(), UserInfosPref.getInstance(this).getUser().getToken(),locationForService.getCityCode(),locationForService.getProvince(),locationForService.getAdcode(),locationForService.getDistrict());
 
 
@@ -289,6 +291,8 @@ public class StoreDetailActivity extends InitActivity implements OnBannerListene
                     startActivity(intent);
                 }
             });
+        }else {
+            Toast.makeText(this, "暂无门店电话", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -343,6 +343,8 @@ public class JsonVolley implements Response.ErrorListener, Listener<JSONObject> 
 		headers.put("x-sw-adcode",adcode);
 		headers.put("x-sw-district",district);
 		headers.put("x-sw-province",province);
+		headers.put("x-sw-devicetype","1");
+
 
 	}
 
